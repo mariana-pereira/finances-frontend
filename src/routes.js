@@ -6,6 +6,7 @@ import { isAuthenticated } from './services/auth';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
+import ForgotPassword from './pages/ForgotPassword';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route { ...rest} render={props => (
@@ -23,6 +24,7 @@ const Routes = () => (
         <Switch>
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
+            <Route path='/forgot_password' component={ForgotPassword} />
             <PrivateRoute path='/home' component={Home} />
             <Route path="*" component={() => <h1>Page not found</h1>} />
         </Switch>
