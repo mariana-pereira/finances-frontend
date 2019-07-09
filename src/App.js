@@ -1,13 +1,13 @@
 import React from 'react';
 import GlobalStyle from './styles/global';
 
-import Register from './pages/Register';
+import Routes from './routes';
 
 function App() {
   return (
     <div>
       <GlobalStyle />
-      <Register />
+      <Routes />
     </div>
   );
 }
