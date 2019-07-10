@@ -22,7 +22,7 @@ class ForgotPassword extends Component {
         } else {
             try {
                 await api.post("/auth/forgot_password", { email });
-                this.props.history.push("/login");
+                this.props.history.push("/reset_password");
             } catch (err) {
                 this.setState({
                     error:

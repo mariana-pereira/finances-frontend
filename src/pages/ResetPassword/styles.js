@@ -9,7 +9,7 @@ export const Content = styled.div`
     height: 475px;
 `;
 
-export const RegForm = styled.form`
+export const LoginForm = styled.form`
     width: 100%;
     max-width: 400px;
     margin: 30px auto 0;
@@ -19,8 +19,6 @@ export const RegForm = styled.form`
   
     display: flex;
     flex-direction: column;
-
-    margin-bottom: 55px;
 `;
 
 export const Title = styled.h1`
@@ -48,4 +46,16 @@ export const FormButton = styled.button`
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
+`;
+
+export const NBButton = styled.button`
+    margin-top: 70px;
+    border: 0;
+    padding: 10px 20px;
+    background: #2e2f2b;
+    color: #695eb8;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer; 
+    margin-left: 90px;
 `;
