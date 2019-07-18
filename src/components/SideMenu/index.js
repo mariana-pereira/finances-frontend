@@ -11,27 +11,142 @@ export default class SideMenu extends Component {
     super();
 
     this.state = {
-      showMenu: false,
+      showAccountMenu: false,
+      showCardMenu: false,
+      showTransactionMenu: false,
+      showTargetMenu: false,
+      showInvestmentMenu: false,
+      showInstitutionMenu: false,
     };
 
-    this.showMenu = this.showMenu.bind(this);
-    this.closeMenu = this.closeMenu.bind(this);
+    this.showAccountMenu = this.showAccountMenu.bind(this);
+    this.closeAccountMenu = this.closeAccountMenu.bind(this);
+
+    this.showCardMenu = this.showCardMenu.bind(this);
+    this.closeCardMenu = this.closeCardMenu.bind(this);
+
+    this.showTransactionMenu = this.showTransactionMenu.bind(this);
+    this.closeTransactionMenu = this.closeTransactionMenu.bind(this);
+
+    this.showTargetMenu = this.showTargetMenu.bind(this);
+    this.closeTargetMenu = this.closeTargetMenu.bind(this);
+
+    this.showInvestmentMenu = this.showInvestmentMenu.bind(this);
+    this.closeInvestmentMenu = this.closeInvestmentMenu.bind(this);
+
+    this.showInstitutionMenu = this.showInstitutionMenu.bind(this);
+    this.closeInstitutionMenu = this.closeInstitutionMenu.bind(this);
   }
 
-  showMenu(event) {
+  showAccountMenu(event) {
     event.preventDefault();
 
-    this.setState({ showMenu: true }, () => {
-      document.addEventListener('click', this.closeMenu);
+    this.setState({ showAccountMenu: true }, () => {
+      document.addEventListener('click', this.closeAccountMenu);
     });
   }
 
-  closeMenu(event) {
+  closeAccountMenu(event) {
 
     if (!this.dropdownMenu.contains(event.target)) {
 
-      this.setState({ showMenu: false }, () => {
-        document.removeEventListener('click', this.closeMenu);
+      this.setState({ showAccountMenu: false }, () => {
+        document.removeEventListener('click', this.closeAccountMenu);
+      });
+
+    }
+  }
+
+  showCardMenu(event) {
+    event.preventDefault();
+
+    this.setState({ showCardMenu: true }, () => {
+      document.addEventListener('click', this.closeCardMenu);
+    });
+  }
+
+  closeCardMenu(event) {
+
+    if (!this.dropdownMenu.contains(event.target)) {
+
+      this.setState({ showCardMenu: false }, () => {
+        document.removeEventListener('click', this.closeCardMenu);
+      });
+
+    }
+  }
+
+  showTransactionMenu(event) {
+    event.preventDefault();
+
+    this.setState({ showTransactionMenu: true }, () => {
+      document.addEventListener('click', this.closeTransactionMenu);
+    });
+  }
+
+  closeTransactionMenu(event) {
+
+    if (!this.dropdownMenu.contains(event.target)) {
+
+      this.setState({ showTransactionMenu: false }, () => {
+        document.removeEventListener('click', this.closeTransactionMenu);
+      });
+
+    }
+  }
+
+  showTargetMenu(event) {
+    event.preventDefault();
+
+    this.setState({ showTargetMenu: true }, () => {
+      document.addEventListener('click', this.closeTargetMenu);
+    });
+  }
+
+  closeTargetMenu(event) {
+
+    if (!this.dropdownMenu.contains(event.target)) {
+
+      this.setState({ showTargetMenu: false }, () => {
+        document.removeEventListener('click', this.closeTargetMenu);
+      });
+
+    }
+  }
+
+  showInvestmentMenu(event) {
+    event.preventDefault();
+
+    this.setState({ showInvestmentMenu: true }, () => {
+      document.addEventListener('click', this.closeInvestmentMenu);
+    });
+  }
+
+  closeInvestmentMenu(event) {
+
+    if (!this.dropdownMenu.contains(event.target)) {
+
+      this.setState({ showInvestmentMenu: false }, () => {
+        document.removeEventListener('click', this.closeInvestmentMenu);
+      });
+
+    }
+  }
+
+  showInstitutionMenu(event) {
+    event.preventDefault();
+
+    this.setState({ showInstitutionMenu: true }, () => {
+      document.addEventListener('click', this.closeInstitutionMenu);
+    });
+  }
+
+  closeInstitutionMenu(event) {
+
+    if (!this.dropdownMenu.contains(event.target)) {
+
+      this.setState({ showInstitutionMenu: false }, () => {
+        document.removeEventListener('click', this.closeInstitutionMenu);
       });
 
     }
@@ -45,13 +160,13 @@ export default class SideMenu extends Component {
             <NavItem>
               <NavIcons>
                 <MdAccountBalance color='#695eb8' size={24} />
-                <ShowButton onClick={this.showMenu}>
+                <ShowButton onClick={this.showAccountMenu}>
                   Contas
                 </ShowButton>
               </NavIcons>
               <NavLinks>
               {
-                this.state.showMenu
+                this.state.showAccountMenu
                   ? (
                     <div
                       className="menu"
@@ -72,13 +187,13 @@ export default class SideMenu extends Component {
             <NavItem>
               <NavIcons>
               <MdCreditCard color='#695eb8' size={24} />
-                <ShowButton onClick={this.showMenu}>
+                <ShowButton onClick={this.showCardMenu}>
                   Cartões
                 </ShowButton>
               </NavIcons>
               <NavLinks>
               {
-                this.state.showMenu
+                this.state.showCardMenu
                   ? (
                     <div
                       className="menu"
@@ -103,13 +218,13 @@ export default class SideMenu extends Component {
             <NavItem>
               <NavIcons>
               <MdReceipt color='#695eb8' size={24} />
-                <ShowButton onClick={this.showMenu}>
+                <ShowButton onClick={this.showTransactionMenu}>
                   Transações
                 </ShowButton>
               </NavIcons>
               <NavLinks>
               {
-                this.state.showMenu
+                this.state.showTransactionMenu
                   ? (
                     <div
                       className="menu"
@@ -133,13 +248,13 @@ export default class SideMenu extends Component {
             <NavItem>
               <NavIcons>
               <FaBullseye color='#695eb8' size={24} />
-                <ShowButton onClick={this.showMenu}>
+                <ShowButton onClick={this.showTargetMenu}>
                   Objetivos
                 </ShowButton>
               </NavIcons>
               <NavLinks>
               {
-                this.state.showMenu
+                this.state.showTargetMenu
                   ? (
                     <div
                       className="menu"
@@ -160,13 +275,13 @@ export default class SideMenu extends Component {
             <NavItem>
               <NavIcons>
               <MdTrendingUp color='#695eb8' size={24} />
-                <ShowButton onClick={this.showMenu}>
+                <ShowButton onClick={this.showInvestmentMenu}>
                   Investimentos
                 </ShowButton>
               </NavIcons>
               <NavLinks>
               {
-                this.state.showMenu
+                this.state.showInvestmentMenu
                   ? (
                     <div
                       className="menu"
@@ -189,13 +304,13 @@ export default class SideMenu extends Component {
             <NavItem>
               <NavIcons>
               <MdBusiness color='#695eb8' size={24} />
-                <ShowButton onClick={this.showMenu}>
+                <ShowButton onClick={this.showInstitutionMenu}>
                   Instituições
                 </ShowButton>
               </NavIcons>
               <NavLinks>
               {
-                this.state.showMenu
+                this.state.showInstitutionMenu
                   ? (
                     <div
                       className="menu"
@@ -213,6 +328,7 @@ export default class SideMenu extends Component {
               }
               </NavLinks>
             </NavItem>
+            <footer></footer>
           </Nav>
       </Container>
     );

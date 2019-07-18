@@ -6,7 +6,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-    height: 475px;
+    height: 500px;
 `;
 
 export const LoginForm = styled.form`
