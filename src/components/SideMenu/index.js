@@ -174,7 +174,9 @@ export default class SideMenu extends Component {
                         this.dropdownMenu = element;
                       }}
                     >
+                      <Link to='/add_account'>
                       <HiddenButton> Adicionar Conta </HiddenButton>
+                      </Link>
                       <HiddenButton> Consultar Contas </HiddenButton>
                     </div>
                   )
