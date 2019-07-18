@@ -1,15 +1,13 @@
 import styled from 'styled-components';
 
-export const Container = styled.header`
+export const Container = styled.div`
     width: 100%;
-    height: 70px;
+    height: 100%;
     display: flex;
-    justify-content: flex-end;
-    align-items: top;
-
 `;
 
 export const Content = styled.div`
    height: 100%; 
+   width: 80%;
    background: #fafafa;
 `;
