@@ -17,7 +17,7 @@ export const Container = styled.div`
 export const Nav = styled.div`
 
     footer {
-        height: 80px;
+        height: 10px;
     }
 `;
 

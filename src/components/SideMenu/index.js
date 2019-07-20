@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
-import { MdAccountBalance, MdCreditCard, MdReceipt, MdTrendingUp, MdBusiness, MdKeyboardArrowRight } from "react-icons/md";
+import { MdHome, MdAccountBalance, MdCreditCard, MdReceipt, MdTrendingUp, MdBusiness, MdKeyboardArrowRight } from "react-icons/md";
 import { FaBullseye } from "react-icons/fa";
 
 import { Container, Nav, NavItem, ShowButton, HiddenButton, NavIcons, NavLinks } from './styles';
@@ -55,6 +55,7 @@ export default class SideMenu extends Component {
       });
 
     }
+    
   }
 
   showCardMenu(event) {
@@ -155,16 +156,26 @@ export default class SideMenu extends Component {
   render() {
     return (
       <Container>
-          <h1>finances</h1>
-          <Nav>
-            <NavItem>
-              <NavIcons>
-                <MdAccountBalance color='#695eb8' size={24} />
-                <ShowButton onClick={this.showAccountMenu}>
-                  Contas
+        <h1>finances</h1>
+        <Nav>
+          <NavItem>
+            <NavIcons>
+              <MdHome color='#695eb8' size={24} />
+              <Link to='/home'>
+                <ShowButton>
+                  Home
                 </ShowButton>
-              </NavIcons>
-              <NavLinks>
+              </Link>
+            </NavIcons>
+          </NavItem>
+          <NavItem>
+            <NavIcons>
+              <MdAccountBalance color='#695eb8' size={24} />
+              <ShowButton onClick={this.showAccountMenu}>
+                Contas
+                </ShowButton>
+            </NavIcons>
+            <NavLinks>
               {
                 this.state.showAccountMenu
                   ? (
@@ -174,26 +185,24 @@ export default class SideMenu extends Component {
                         this.dropdownMenu = element;
                       }}
                     >
-                      <Link to='/add_account'>
-                      <HiddenButton> Adicionar Conta </HiddenButton>
-                      </Link>
-                      <HiddenButton> Consultar Contas </HiddenButton>
+                      <Link to='/add_account'><HiddenButton> Adicionar Conta </HiddenButton></Link>
+                      <Link to='/consult_account'><HiddenButton> Consultar Contas </HiddenButton></Link>
                     </div>
                   )
                   : (
                     null
                   )
               }
-              </NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavIcons>
+            </NavLinks>
+          </NavItem>
+          <NavItem>
+            <NavIcons>
               <MdCreditCard color='#695eb8' size={24} />
-                <ShowButton onClick={this.showCardMenu}>
-                  Cartões
+              <ShowButton onClick={this.showCardMenu}>
+                Cartões
                 </ShowButton>
-              </NavIcons>
-              <NavLinks>
+            </NavIcons>
+            <NavLinks>
               {
                 this.state.showCardMenu
                   ? (
@@ -203,28 +212,28 @@ export default class SideMenu extends Component {
                         this.dropdownMenu = element;
                       }}
                     >
-                      <HiddenButton> Adicionar Cartão </HiddenButton>
-                      <HiddenButton> Consultar Cartões </HiddenButton>
-                      <HiddenButton> Adicionar Fatura </HiddenButton>
-                      <HiddenButton> Consultar Faturas </HiddenButton>
-                      <HiddenButton> Adicionar Despesa </HiddenButton>
-                      <HiddenButton> Consultar Despesas </HiddenButton>
+                      <Link to='/add_card'><HiddenButton> Adicionar Cartão </HiddenButton></Link>
+                      <Link to='/consult_card'><HiddenButton> Consultar Cartões </HiddenButton></Link>
+                      <Link to='/add_invoice'><HiddenButton> Adicionar Fatura </HiddenButton></Link>
+                      <Link to='/consult_invoice'><HiddenButton> Consultar Faturas </HiddenButton></Link>
+                      <Link to='/add_expense'><HiddenButton> Adicionar Despesa </HiddenButton></Link>
+                      <Link to='/consult_expense'><HiddenButton> Consultar Despesas </HiddenButton></Link>
                     </div>
                   )
                   : (
                     null
                   )
               }
-              </NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavIcons>
+            </NavLinks>
+          </NavItem>
+          <NavItem>
+            <NavIcons>
               <MdReceipt color='#695eb8' size={24} />
-                <ShowButton onClick={this.showTransactionMenu}>
-                  Transações
+              <ShowButton onClick={this.showTransactionMenu}>
+                Transações
                 </ShowButton>
-              </NavIcons>
-              <NavLinks>
+            </NavIcons>
+            <NavLinks>
               {
                 this.state.showTransactionMenu
                   ? (
@@ -234,27 +243,27 @@ export default class SideMenu extends Component {
                         this.dropdownMenu = element;
                       }}
                     >
-                      <HiddenButton> Adicionar Entrada </HiddenButton>
-                      <HiddenButton> Consultar Entradas </HiddenButton>
-                      <HiddenButton> Adicionar Saída </HiddenButton>
-                      <HiddenButton> Consultar Saídas </HiddenButton>
-                      <HiddenButton> Transferir </HiddenButton>
+                      <Link to='/add_income'><HiddenButton> Adicionar Entrada </HiddenButton></Link>
+                      <Link to='/consult_income'><HiddenButton> Consultar Entradas </HiddenButton></Link>
+                      <Link to='/add_outcome'><HiddenButton> Adicionar Saída </HiddenButton></Link>
+                      <Link to='/consult_outcome'><HiddenButton> Consultar Saídas </HiddenButton></Link>
+                      <Link  to='/transfer'><HiddenButton> Transferir </HiddenButton></Link>
                     </div>
                   )
                   : (
                     null
                   )
               }
-              </NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavIcons>
+            </NavLinks>
+          </NavItem>
+          <NavItem>
+            <NavIcons>
               <FaBullseye color='#695eb8' size={24} />
-                <ShowButton onClick={this.showTargetMenu}>
-                  Objetivos
+              <ShowButton onClick={this.showTargetMenu}>
+                Objetivos
                 </ShowButton>
-              </NavIcons>
-              <NavLinks>
+            </NavIcons>
+            <NavLinks>
               {
                 this.state.showTargetMenu
                   ? (
@@ -264,24 +273,24 @@ export default class SideMenu extends Component {
                         this.dropdownMenu = element;
                       }}
                     >
-                      <HiddenButton> Adicionar Objetivo </HiddenButton>
-                      <HiddenButton> Consultar Objetivos </HiddenButton>
+                      <Link to='/add_target'><HiddenButton> Adicionar Objetivo </HiddenButton></Link>
+                      <Link to='/consult_target'><HiddenButton> Consultar Objetivos </HiddenButton></Link>
                     </div>
                   )
                   : (
                     null
                   )
               }
-              </NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavIcons>
+            </NavLinks>
+          </NavItem>
+          <NavItem>
+            <NavIcons>
               <MdTrendingUp color='#695eb8' size={24} />
-                <ShowButton onClick={this.showInvestmentMenu}>
-                  Investimentos
+              <ShowButton onClick={this.showInvestmentMenu}>
+                Investimentos
                 </ShowButton>
-              </NavIcons>
-              <NavLinks>
+            </NavIcons>
+            <NavLinks>
               {
                 this.state.showInvestmentMenu
                   ? (
@@ -291,26 +300,26 @@ export default class SideMenu extends Component {
                         this.dropdownMenu = element;
                       }}
                     >
-                      <HiddenButton> Adicionar Investimento </HiddenButton>
-                      <HiddenButton> Consultar Investimentos </HiddenButton>
-                      <HiddenButton> Adicionar Rendimento </HiddenButton>
-                      <HiddenButton> Consultar Rendimentos </HiddenButton>
+                      <Link to='/add_investment'><HiddenButton> Adicionar Investimento </HiddenButton></Link>
+                      <Link to='/consult_investment'><HiddenButton> Consultar Investimentos </HiddenButton></Link>
+                      <Link to='/add_profit'><HiddenButton> Adicionar Rendimento </HiddenButton></Link>
+                      <Link to='/consult_profit'><HiddenButton> Consultar Rendimentos </HiddenButton></Link>
                     </div>
                   )
                   : (
                     null
                   )
               }
-              </NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavIcons>
+            </NavLinks>
+          </NavItem>
+          <NavItem>
+            <NavIcons>
               <MdBusiness color='#695eb8' size={24} />
-                <ShowButton onClick={this.showInstitutionMenu}>
-                  Instituições
+              <ShowButton onClick={this.showInstitutionMenu}>
+                Instituições
                 </ShowButton>
-              </NavIcons>
-              <NavLinks>
+            </NavIcons>
+            <NavLinks>
               {
                 this.state.showInstitutionMenu
                   ? (
@@ -320,18 +329,18 @@ export default class SideMenu extends Component {
                         this.dropdownMenu = element;
                       }}
                     >
-                      <HiddenButton> Adicionar Instituição </HiddenButton>
-                      <HiddenButton> Consultar Instituições </HiddenButton>
+                      <Link to='/add_institution'><HiddenButton> Adicionar Instituição </HiddenButton></Link>
+                      <Link to='/consult_institution'><HiddenButton> Consultar Instituições </HiddenButton></Link>
                     </div>
                   )
                   : (
                     null
                   )
               }
-              </NavLinks>
-            </NavItem>
-            <footer></footer>
-          </Nav>
+            </NavLinks>
+          </NavItem>
+          <footer></footer>
+        </Nav>
       </Container>
     );
   }
