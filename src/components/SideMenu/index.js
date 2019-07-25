@@ -157,7 +157,7 @@ export default class SideMenu extends Component {
     return (
       <Container>
         
-        <Nav className>
+        <Nav>
         <h1>finances</h1>
           <NavItem>
             <NavIcons>
