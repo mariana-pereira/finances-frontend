@@ -1,19 +1,80 @@
 import React, { Component } from 'react';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 
 import { FaPiggyBank, FaRegFileAlt, FaDollarSign, FaAlignCenter } from "react-icons/fa";
 
 import SideMenu from '../../components/SideMenu';
 
-import { Container, Content, CardContainer, Card, Top, TileContainer, Tile } from './styles';
+import { Container, Content, Side, CardContainer, Card, Top, TileContainer, Tile, Title } from './styles';
 
 export default class Home extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      income: {
+        columnDefs: [{
+          headerName: "Data", field: "date"
+        }, {
+          headerName: "Valor", field: "amount"
+        }, {
+          headerName: "Categoria", field: "category"
+        },
+        {
+          headerName: "Empresa", field: "company"
+        },
+        {
+          headerName: "Conta", field: "account"
+        }],
+        rowData: [{
+        }]
+      },
+      outcome: {
+        columnDefs: [{
+          headerName: "Data", field: "date"
+        }, {
+          headerName: "Valor", field: "amount"
+        }, {
+          headerName: "Categoria", field: "category"
+        },
+        {
+          headerName: "Empresa", field: "company"
+        },
+        {
+          headerName: "Conta", field: "account"
+        }],
+        rowData: [{
+        }]
+      },
+      expense: {
+        columnDefs: [{
+          headerName: "Data", field: "date"
+        }, {
+          headerName: "Valor", field: "amount"
+        }, {
+          headerName: "Estabelecimento", field: "shop"
+        },
+        {
+          headerName: "Categoria", field: "category"
+        },
+        {
+          headerName: "Cartão", field: "card"
+        }],
+        rowData: [{
+        }]
+      }
+    }
+  }
 
   render() {
     return (
       <Container>
-        <SideMenu>
-        </SideMenu>
+        <Side>
+          <SideMenu>
+
+          </SideMenu>
+        </Side>
         <Content>
           <Top>
             <p>Olá Mariana</p>
@@ -37,14 +98,26 @@ export default class Home extends Component {
             </Card>
           </CardContainer>
           <TileContainer>
-            <Tile>
-              <h1>Entradas</h1>
+            <h1>Entradas</h1>
+            <Tile className="ag-theme-balham">
+              <AgGridReact
+                columnDefs={this.state.income.columnDefs}
+                rowData={this.state.income.rowData}>
+              </AgGridReact>
             </Tile>
-            <Tile>
-              <h1>Saídas</h1>
+            <h1>Saídas</h1>
+            <Tile className="ag-theme-balham">
+              <AgGridReact
+                columnDefs={this.state.outcome.columnDefs}
+                rowData={this.state.outcome.rowData}>
+              </AgGridReact>
             </Tile>
-            <Tile>
-              <h1>Despesas</h1>
+            <h1>Despesas</h1>
+            <Tile className="ag-theme-balham">
+              <AgGridReact
+                columnDefs={this.state.expense.columnDefs}
+                rowData={this.state.expense.rowData}>
+              </AgGridReact>
             </Tile>
           </TileContainer>
         </Content>

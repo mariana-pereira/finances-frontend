@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+    position: relative;
     height: 100%;
-    width: 20%;
-    background: #2e2f2b;
+    overflow: scroll;
+    overflow-anchor: none;
+    touch-action: auto;
+    display: block;
     text-align: center;
 
     h1 {
@@ -15,10 +18,7 @@ export const Container = styled.div`
 `;
 
 export const Nav = styled.div`
-
-    footer {
-        height: 10px;
-    }
+    
 `;
 
 export const NavItem = styled.div`

@@ -156,8 +156,9 @@ export default class SideMenu extends Component {
   render() {
     return (
       <Container>
+        
+        <Nav className>
         <h1>finances</h1>
-        <Nav>
           <NavItem>
             <NavIcons>
               <MdHome color='#695eb8' size={24} />
@@ -339,7 +340,6 @@ export default class SideMenu extends Component {
               }
             </NavLinks>
           </NavItem>
-          <footer></footer>
         </Nav>
       </Container>
     );
