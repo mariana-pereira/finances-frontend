@@ -57,7 +57,7 @@ export default class SideMenu extends Component {
           </NavItem>
           <NavItem>
             <FaBullseye color='#695eb8' size={24} />
-            <Link>
+            <Link to='/target'>
               <ShowButton>
                 Objetivos
                 </ShowButton>

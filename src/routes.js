@@ -12,6 +12,8 @@ import Account from './pages/Account';
 import AddAccount from './pages/AddAccount';
 import Card from './pages/Card';
 import AddCard from './pages/AddCard';
+import Target from './pages/Target';
+import AddTarget from './pages/AddTarget';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route { ...rest} render={props => (
@@ -36,6 +38,8 @@ const Routes = () => (
             <PrivateRoute path='/add_account' component={AddAccount} />
             <PrivateRoute path='/card' component={Card} />
             <PrivateRoute path='/add_card' component={AddCard} />
+            <PrivateRoute path='/target' component={Target} />
+            <PrivateRoute path='/add_target' component={AddTarget} />
             <Route path="*" component={() => <h1>Page not found</h1>} />
         </Switch>
     </BrowserRouter>
