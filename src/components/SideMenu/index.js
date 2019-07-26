@@ -33,7 +33,7 @@ export default class SideMenu extends Component {
           </NavItem>
           <NavItem>
             <MdCreditCard color='#695eb8' size={24} />
-            <Link>
+            <Link to='/card'>
               <ShowButton >
                 Cartões
                 </ShowButton>

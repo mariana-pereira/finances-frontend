@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Container, Side, Top, Content, AccountContainer, Title, Type, Amount, Button } from './styles';
 import SideMenu from '../../components/SideMenu';
 
-export default class Account extends Component {
+export default class Card extends Component {
   render() {
     return (
       <Container>
@@ -16,38 +16,38 @@ export default class Account extends Component {
             <p>Olá Mariana</p>
             <p>19 de Julho de 2019</p>
           </Top>
-          <div><h1>Contas</h1></div>
+          <div><h1>Cartões</h1></div>
           <Link>
           <AccountContainer>
-            <Title>Banco Santander</Title>
-            <Type>Conta Corrente</Type>
+            <Title>Santander</Title>
+            <Type>5199</Type>
             <Amount>
-              <span>Saldo em conta:</span>
+              <span>Limite total:</span>
               <span>125.45</span>
             </Amount>
             <Amount>
-              <span>Saldo investido:</span>
+              <span>Limite disponível:</span>
               <span>55.78</span>
             </Amount>
           </AccountContainer>
           </Link>
           <Link>
             <AccountContainer>
-            <Title>Banco Inter</Title>
-            <Type>Conta Corrente</Type>
+            <Title>Nubank</Title>
+            <Type>1926</Type>
             <Amount>
-              <span>Saldo em conta:</span>
-              <span>25.89</span>
+              <span>Limite total:</span>
+              <span>1225.89</span>
             </Amount>
             <Amount>
-              <span>Saldo investido:</span>
+              <span>Limite disponível:</span>
               <span>500.99</span>
             </Amount>
           </AccountContainer>
           </Link>
           <div>
             <Link to='add_account'>
-              <Button>Adicionar Conta</Button>
+              <Button>Adicionar Cartão</Button>
             </Link>
           </div>
         </Content>
