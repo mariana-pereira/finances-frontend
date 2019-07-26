@@ -49,7 +49,7 @@ export default class SideMenu extends Component {
           </NavItem>
           <NavItem>
             <MdReceipt color='#695eb8' size={24} />
-            <Link>
+            <Link to='/extract'>
               <ShowButton>
                 Extrato
                 </ShowButton>
