@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
 import { MdHome, MdAccountBalance, MdCreditCard, MdReceipt, MdTrendingUp, MdBusiness, MdSwapHoriz } from "react-icons/md";
-import { FaBullseye } from "react-icons/fa";
+import { FaBullseye, FaRegFileAlt } from "react-icons/fa";
 
 import { Container, Nav, NavItem, ShowButton } from './styles';
 
@@ -40,10 +40,18 @@ export default class SideMenu extends Component {
             </Link>
           </NavItem>
           <NavItem>
+            <FaRegFileAlt color='#695eb8' size={24} />
+            <Link to='/invoice'>
+              <ShowButton >
+                Faturas
+                </ShowButton>
+            </Link>
+          </NavItem>
+          <NavItem>
             <MdReceipt color='#695eb8' size={24} />
             <Link>
               <ShowButton>
-                Transações
+                Extrato
                 </ShowButton>
             </Link>
           </NavItem>
@@ -73,9 +81,9 @@ export default class SideMenu extends Component {
           </NavItem>
           <NavItem>
             <MdBusiness color='#695eb8' size={24} />
-            <Link>
+            <Link to='/company'>
               <ShowButton>
-                Instituições
+                Empresas
                 </ShowButton>
             </Link>
           </NavItem>

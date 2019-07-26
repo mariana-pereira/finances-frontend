@@ -16,6 +16,10 @@ import Target from './pages/Target';
 import AddTarget from './pages/AddTarget';
 import Investment from './pages/Investment';
 import AddInvestment from './pages/AddInvestment';
+import Company from './pages/Company';
+import AddCompany from './pages/AddCompany';
+import Invoice from './pages/Invoice';
+import AddInvoice from './pages/AddInvoice';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route { ...rest} render={props => (
@@ -44,6 +48,10 @@ const Routes = () => (
             <PrivateRoute path='/add_target' component={AddTarget} />
             <PrivateRoute path='/investment' component={Investment} />
             <PrivateRoute path='/add_investment' component={AddInvestment} />
+            <PrivateRoute path='/company' component={Company} />
+            <PrivateRoute path='/add_company' component={AddCompany} />
+            <PrivateRoute path='/invoice' component={Invoice} />
+            <PrivateRoute path='/add_invoice' component={AddInvoice} />
             <Route path="*" component={() => <h1>Page not found</h1>} />
         </Switch>
     </BrowserRouter>

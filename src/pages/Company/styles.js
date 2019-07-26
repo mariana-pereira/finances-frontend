@@ -61,7 +61,6 @@ export const AccountContainer = styled.div`
   
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
 `;
 
 export const Title = styled.span`

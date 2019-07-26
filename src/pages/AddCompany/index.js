@@ -4,12 +4,12 @@ import React, { Component } from 'react';
 
 //import { Container, Content } from './styles';
 
-export default class ConsultProfit extends Component {
+export default class AddCompany extends Component {
   
 
   render() {
     return (
-      <h1>Consultar Rendimentos</h1>
+      <h1>Adicionar Empresa</h1>
     );
   }
 }
