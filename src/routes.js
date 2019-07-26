@@ -14,6 +14,8 @@ import Card from './pages/Card';
 import AddCard from './pages/AddCard';
 import Target from './pages/Target';
 import AddTarget from './pages/AddTarget';
+import Investment from './pages/Investment';
+import AddInvestment from './pages/AddInvestment';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route { ...rest} render={props => (
@@ -40,6 +42,8 @@ const Routes = () => (
             <PrivateRoute path='/add_card' component={AddCard} />
             <PrivateRoute path='/target' component={Target} />
             <PrivateRoute path='/add_target' component={AddTarget} />
+            <PrivateRoute path='/investment' component={Investment} />
+            <PrivateRoute path='/add_investment' component={AddInvestment} />
             <Route path="*" component={() => <h1>Page not found</h1>} />
         </Switch>
     </BrowserRouter>

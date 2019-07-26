@@ -65,7 +65,7 @@ export default class SideMenu extends Component {
           </NavItem>
           <NavItem>
             <MdTrendingUp color='#695eb8' size={24} />
-            <Link>
+            <Link to='/investment'>
               <ShowButton>
                 Investimentos
                 </ShowButton>
