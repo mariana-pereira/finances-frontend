@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
@@ -81,7 +82,7 @@ export default class Home extends Component {
             <p>19 de Julho de 2019</p>
           </Top>
           <CardContainer>
-            <Card>
+          <Card>
               <FaDollarSign color='#695eb8' size={30} style={FaAlignCenter} />
               <h1>546.34</h1>
               <p>Saldo em conta</p>

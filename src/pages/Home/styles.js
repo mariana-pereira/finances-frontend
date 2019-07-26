@@ -96,7 +96,3 @@ export const Tile = styled.div`
     margin-bottom: 30px;
 `;
 
-export const Title = styled.span`
-    font-size: 18px;
-    font-weight: bold;
-`;
