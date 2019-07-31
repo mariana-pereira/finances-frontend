@@ -1592,6 +1592,18 @@ address@^1.0.1:
   resolved "https://registry.yarnpkg.com/address/-/address-1.1.0.tgz#ef8e047847fcd2c5b6f50c16965f924fd99fe709"
   integrity sha512-4diPfzWbLEIElVG4AnqP+00SULlPzNuyJFNnmMrLgyaxG6tZXJ1sn7mjBu4fHrJE+Yp/jgylOweJn2xsLMFggQ==
 
+ag-grid-community@^21.1.0:
+  version "21.1.0"
+  resolved "https://registry.yarnpkg.com/ag-grid-community/-/ag-grid-community-21.1.0.tgz#d8dba9486c2ef1879f9d97496183711b406258c2"
+  integrity sha512-giWg653lxihzRulz4tiiSAewaZVeSvA3GN+uIY5LEHfJ8Eb2FWbI2IZ1n+KMhnuvMy7936dOflTYm8m0sxXplA==
+
+ag-grid-react@^21.1.0:
+  version "21.1.0"
+  resolved "https://registry.yarnpkg.com/ag-grid-react/-/ag-grid-react-21.1.0.tgz#b9422bcfc54cdb346543550e31a583cdf74cb7f9"
+  integrity sha512-LV1T9BVJjUkfiSpkbro4ZogpcgV8JHFTQbfPaTFcTD8aikVB+9F26+ojKk7PTjye2D9dl1/GSPMvjer1Kd0f4g==
+  dependencies:
+    prop-types "^15.6.2"
+
 ajv-errors@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ajv-errors/-/ajv-errors-1.0.1.tgz#f35986aceb91afadec4102fbd85014950cefa64d"
@@ -2507,7 +2519,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.6:
+classnames@^2.2.3, classnames@^2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
@@ -3153,6 +3165,11 @@ data-urls@^1.0.0, data-urls@^1.1.0:
     abab "^2.0.0"
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
+
+date-arithmetic@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/date-arithmetic/-/date-arithmetic-3.1.0.tgz#1fcd03dbd504b9dbee2b9078c85a5f1c7d3cc2d3"
+  integrity sha1-H80D29UEudvuK5B4yFpfHH08wtM=
 
 date-now@^0.1.4:
   version "0.1.4"
@@ -7912,7 +7929,7 @@ prompts@^2.0.1:
     kleur "^3.0.2"
     sisteransi "^1.0.0"
 
-prop-types-extra@^1.1.0:
+prop-types-extra@^1.0.1, prop-types-extra@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/prop-types-extra/-/prop-types-extra-1.1.0.tgz#32609910ea2dcf190366bacd3490d5a6412a605f"
   integrity sha512-QFyuDxvMipmIVKD2TwxLVPzMnO4e5oOf1vr3tJIomL8E7d0lr6phTHd5nkPhFIzTD1idBLLEPeylL9g+rrTzRg==
@@ -8157,6 +8174,13 @@ react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
+react-dropdown@^1.6.4:
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/react-dropdown/-/react-dropdown-1.6.4.tgz#8dce141bb26fb6b3c3696d16e06f4517728c57f4"
+  integrity sha512-zTlNRZ6vzjEPsodBNgh6Xjp9IempEx9sReH3crT2Jw4S6KW2wS/BRIH3d/grYf/iXARadDRD91//uUCs9yjoLg==
+  dependencies:
+    classnames "^2.2.3"
+
 react-error-overlay@^5.1.6:
   version "5.1.6"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.6.tgz#0cd73407c5d141f9638ae1e0c63e7b2bf7e9929d"
@@ -8297,7 +8321,7 @@ react-scroll@^1.7.12:
     lodash.throttle "^4.1.1"
     prop-types "^15.5.8"
 
-react-transition-group@^4.0.0:
+react-transition-group@^4.0.0, react-transition-group@^4.0.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.2.1.tgz#61fc9e36568bff9a1fe4e60fae323c8a6dbc0680"
   integrity sha512-IXrPr93VzCPupwm2O6n6C2kJIofJ/Rp5Ltihhm9UfE8lkuVX2ng/SUUl/oWjblybK9Fq2Io7LGa6maVqPB762Q==
@@ -8306,6 +8330,21 @@ react-transition-group@^4.0.0:
     dom-helpers "^3.4.0"
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
+
+react-widgets@^5.0.0-7:
+  version "5.0.0-7"
+  resolved "https://registry.yarnpkg.com/react-widgets/-/react-widgets-5.0.0-7.tgz#de219ea65d62cd7c6873b26ca12f3ba60fe8d4c3"
+  integrity sha512-73iLIjGkOHE9PHSU0K1Ahp2m0hZJkyCRVVWUdMwPWCwgpZxM5NBPyLrPM8wrZ2dXmngU4dshvlmXZqbHOn+HYA==
+  dependencies:
+    "@restart/hooks" "^0.3.0"
+    classnames "^2.2.6"
+    date-arithmetic "^3.1.0"
+    dom-helpers "^3.4.0"
+    invariant "^2.2.4"
+    prop-types-extra "^1.0.1"
+    react-transition-group "^4.0.1"
+    uncontrollable "^6.1.0"
+    warning "^4.0.3"
 
 react@^16.8.6:
   version "16.8.6"

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+
+
 import SideMenu from '../../components/SideMenu';
 
 import { Container, Side, Content, AccountForm, Title, Field, Check, ButtonContainer, FormButton } from './styles';

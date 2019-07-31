@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import Extract from './pages/Extract';
+import Transfer from './pages/Transfer';
 import Account from './pages/Account';
 import AddAccount from './pages/AddAccount';
 import Card from './pages/Card';
@@ -54,6 +55,7 @@ const Routes = () => (
             <PrivateRoute path='/invoice' component={Invoice} />
             <PrivateRoute path='/add_invoice' component={AddInvoice} />
             <PrivateRoute path='/extract' component={Extract} />
+            <PrivateRoute path='/transfer' component={Transfer} />
             <Route path="*" component={() => <h1>Page not found</h1>} />
         </Switch>
     </BrowserRouter>
