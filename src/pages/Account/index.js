@@ -17,7 +17,7 @@ export default class Account extends Component {
             <p>19 de Julho de 2019</p>
           </Top>
           <div><h1>Contas</h1></div>
-          <Link>
+          <Link to='/account/detail'>
           <AccountContainer>
             <Title>Banco Santander</Title>
             <Type>Conta Corrente</Type>
@@ -46,7 +46,7 @@ export default class Account extends Component {
           </AccountContainer>
           </Link>
           <div>
-            <Link to='add_account'>
+            <Link to='/account/add'>
               <Button>Adicionar Conta</Button>
             </Link>
           </div>

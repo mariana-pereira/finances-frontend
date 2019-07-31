@@ -12,6 +12,7 @@ import Extract from './pages/Extract';
 import Transfer from './pages/Transfer';
 import Account from './pages/Account';
 import AddAccount from './pages/AddAccount';
+import AccountDetail from './pages/AccountDetail';
 import Card from './pages/Card';
 import AddCard from './pages/AddCard';
 import Target from './pages/Target';
@@ -42,18 +43,19 @@ const Routes = () => (
             <Route path='/forgot_password' component={ForgotPassword} />
             <Route path='/reset_password' component={ResetPassword} />
             <PrivateRoute path='/home' component={Home} />
-            <PrivateRoute path='/account' component={Account} />
-            <PrivateRoute path='/add_account' component={AddAccount} />
-            <PrivateRoute path='/card' component={Card} />
-            <PrivateRoute path='/add_card' component={AddCard} />
-            <PrivateRoute path='/target' component={Target} />
-            <PrivateRoute path='/add_target' component={AddTarget} />
-            <PrivateRoute path='/investment' component={Investment} />
-            <PrivateRoute path='/add_investment' component={AddInvestment} />
-            <PrivateRoute path='/company' component={Company} />
-            <PrivateRoute path='/add_company' component={AddCompany} />
-            <PrivateRoute path='/invoice' component={Invoice} />
-            <PrivateRoute path='/add_invoice' component={AddInvoice} />
+            <PrivateRoute path='/account' exact component={Account} />
+            <PrivateRoute path='/account/add' component={AddAccount} />
+            <PrivateRoute path='/account/detail' component={AccountDetail} />
+            <PrivateRoute path='/card' exact component={Card} />
+            <PrivateRoute path='/card/add' component={AddCard} />
+            <PrivateRoute path='/target' exact component={Target} />
+            <PrivateRoute path='/target/add' component={AddTarget} />
+            <PrivateRoute path='/investment' exact component={Investment} />
+            <PrivateRoute path='/investment/add' component={AddInvestment} />
+            <PrivateRoute path='/company' exact component={Company} />
+            <PrivateRoute path='/company/add' component={AddCompany} />
+            <PrivateRoute path='/invoice' exact component={Invoice} />
+            <PrivateRoute path='/invoice/add' component={AddInvoice} />
             <PrivateRoute path='/extract' component={Extract} />
             <PrivateRoute path='/transfer' component={Transfer} />
             <Route path="*" component={() => <h1>Page not found</h1>} />
