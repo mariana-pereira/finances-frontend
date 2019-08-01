@@ -32,16 +32,16 @@ export default class AccountDetail extends Component {
                     <MdDelete color='#695eb8' size={30} style={{marginLeft: '30px'}} />
                     </div>
                     <CardContainer>
-                        <Link>
+                        <Link to='/income/add'>
                             <Card>
                                 <FaArrowDown color='#695eb8' size={30} />
-                                <h1>Adicionar entrada</h1>
+                                <h1>Adicionar crédito</h1>
                             </Card>
                         </Link>
-                        <Link>
+                        <Link to='/outcome/add'>
                             <Card>
                                 <FaArrowUp color='#695eb8' size={30} />
-                                <h1>Adicionar saída</h1>
+                                <h1>Adicionar débito</h1>
                             </Card>
                         </Link>
                         <Link>

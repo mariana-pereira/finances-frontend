@@ -13,6 +13,8 @@ import Transfer from './pages/Transfer';
 import Account from './pages/Account';
 import AddAccount from './pages/AddAccount';
 import AccountDetail from './pages/AccountDetail';
+import AddIncome from './pages/AddIncome';
+import AddOutcome from './pages/AddOutcome';
 import Card from './pages/Card';
 import AddCard from './pages/AddCard';
 import CardDetail from './pages/CardDetail';
@@ -51,6 +53,8 @@ const Routes = () => (
             <PrivateRoute path='/account' exact component={Account} />
             <PrivateRoute path='/account/add' component={AddAccount} />
             <PrivateRoute path='/account/detail' component={AccountDetail} />
+            <PrivateRoute path='/income/add' component={AddIncome} />
+            <PrivateRoute path='/outcome/add' component={AddOutcome} />
             <PrivateRoute path='/card' exact component={Card} />
             <PrivateRoute path='/card/add' component={AddCard} />
             <PrivateRoute path='/card/detail' component={CardDetail} />

@@ -62,17 +62,17 @@ export default class AddExpense extends Component {
 
             />
             <Check value={this.state.value} onChange={this.handleComboChange}>
-              <option value="corrente">Alimentação</option>
-              <option value="corretora">Assinaturas</option>
-              <option value="poupanca">Beleza</option>
-              <option value="pagamento">Contas básicas</option>
-              <option value="corretora">Esportes</option>
-              <option value="corretora">Lazer</option>
-              <option value="corretora">Pet</option>
-              <option value="corretora">Saúde</option>
-              <option value="corretora">Tech</option>
-              <option value="corretora">Transporte</option>
-              <option value="corretora">Outros</option>
+              <option value="alimentacao">Alimentação</option>
+              <option value="assinaturas">Assinaturas</option>
+              <option value="beleza">Beleza</option>
+              <option value="contas">Contas básicas</option>
+              <option value="esportes">Esportes</option>
+              <option value="lazer">Lazer</option>
+              <option value="pet">Pet</option>
+              <option value="saude">Saúde</option>
+              <option value="tech">Tech</option>
+              <option value="transporte">Transporte</option>
+              <option value="outros">Outros</option>
             </Check>
 
             <ButtonContainer>
