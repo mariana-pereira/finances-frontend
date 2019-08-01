@@ -44,7 +44,7 @@ export default class AccountDetail extends Component {
                                 <h1>Adicionar débito</h1>
                             </Card>
                         </Link>
-                        <Link>
+                        <Link to='/investment/add'>
                             <Card>
                                 <FaPiggyBank color='#695eb8' size={30} />
                                 <h1>Investir</h1>
