@@ -83,3 +83,18 @@ export const Card = styled.div`
         font-size: 16px;
     }
 `;
+
+export const Button = styled.button`
+    width: 200px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: 0;
+    background: #695eb8;
+    color: #fafafa;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    align-self: center;
+`;

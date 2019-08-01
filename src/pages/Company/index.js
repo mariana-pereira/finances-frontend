@@ -4,7 +4,7 @@ import { MdEdit, MdDelete, MdBusiness } from "react-icons/md";
 
 import SideMenu from '../../components/SideMenu';
 
-import { Container, Side, Top, Content, Card, CardContainer } from './styles';
+import { Container, Side, Top, Content, Card, CardContainer, Button } from './styles';
 
 export default class Company extends Component {
   render() {
@@ -23,31 +23,36 @@ export default class Company extends Component {
           </div>
 
           <CardContainer>
-              <Card>
-                <MdBusiness color='#695eb8' size={30} />
-                <Link><h1>GoTranscript</h1></Link>
-                <div>
-                  <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
-                  <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
-                </div>
-              </Card>
-              <Card>
-                <MdBusiness color='#695eb8' size={30} />
-                <Link><h1>Santander</h1></Link>
-                <div>
-                  <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
-                  <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
-                </div>
-              </Card>
-              <Card>
-                <MdBusiness color='#695eb8' size={30} />
-                <Link><h1>Nubank</h1></Link>
-                <div>
-                  <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
-                  <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
-                </div>
-              </Card>
+            <Card>
+              <MdBusiness color='#695eb8' size={30} />
+              <h1>GoTranscript</h1>
+              <div>
+                <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
+                <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
+              </div>
+            </Card>
+            <Card>
+              <MdBusiness color='#695eb8' size={30} />
+              <h1>Santander</h1>
+              <div>
+                <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
+                <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
+              </div>
+            </Card>
+            <Card>
+              <MdBusiness color='#695eb8' size={30} />
+              <h1>Nubank</h1>
+              <div>
+                <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
+                <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
+              </div>
+            </Card>
           </CardContainer>
+          <div>
+            <Link to='/company/add'>
+              <Button>Adicionar empresa</Button>
+            </Link>
+          </div>
         </Content>
       </Container>
     )
