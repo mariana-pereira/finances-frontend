@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { MdDone, MdAdd, MdDoneAll } from "react-icons/md";
+import { MdDone, MdAdd, MdDoneAll, MdEdit, MdDelete } from "react-icons/md";
 
 import SideMenu from '../../components/SideMenu';
 
@@ -24,6 +24,10 @@ export default class CardDetail extends Component {
                         <h4 style={{marginBottom: '15px'}}>06/21</h4>
                         <p>Limite total: 1225.64</p>
                         <p>Limite disponível: 500.78</p>
+                    </div>
+                    <div>
+                    <MdEdit color='#695eb8' size={30} style={{marginRight: '30px'}} />
+                    <MdDelete color='#695eb8' size={30} style={{marginLeft: '30px'}} />
                     </div>
                     <CardContainer>
                         <Link>

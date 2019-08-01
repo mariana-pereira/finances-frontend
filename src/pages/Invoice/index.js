@@ -17,7 +17,7 @@ export default class Invoice extends Component {
             <p>19 de Julho de 2019</p>
           </Top>
           <div><h1>Faturas</h1></div>
-          <Link>
+          <Link to='/invoice/detail'>
           <AccountContainer>
             <Title>Julho 2019</Title>
             <Type>Nubank</Type>

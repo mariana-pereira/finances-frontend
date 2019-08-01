@@ -24,6 +24,7 @@ import Company from './pages/Company';
 import AddCompany from './pages/AddCompany';
 import Invoice from './pages/Invoice';
 import AddInvoice from './pages/AddInvoice';
+import InvoiceDetail from './pages/InvoiceDetail';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route { ...rest} render={props => (
@@ -58,6 +59,7 @@ const Routes = () => (
             <PrivateRoute path='/company/add' component={AddCompany} />
             <PrivateRoute path='/invoice' exact component={Invoice} />
             <PrivateRoute path='/invoice/add' component={AddInvoice} />
+            <PrivateRoute path='/invoice/detail' component={InvoiceDetail} />
             <PrivateRoute path='/extract' component={Extract} />
             <PrivateRoute path='/transfer' component={Transfer} />
             <Route path="*" component={() => <h1>Page not found</h1>} />

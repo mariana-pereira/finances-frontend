@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FaPiggyBank, FaArrowUp, FaArrowDown } from "react-icons/fa";
-import { MdEdit, MdDelete } from "react-icons/md";
+import { MdAdd, MdList, MdEdit, MdDelete } from "react-icons/md";
 
 import SideMenu from '../../components/SideMenu';
 
 import { Container, Side, Top, Content, Card, CardContainer } from './styles';
 
-export default class AccountDetail extends Component {
+export default class InvoiceDetail extends Component {
     render() {
         return (
             <Container>
@@ -20,12 +19,11 @@ export default class AccountDetail extends Component {
                         <p>19 de Julho de 2019</p>
                     </Top>
                     <div>
-                        <h1>Santander</h1>
-                        <h4>Conta corrente</h4>
-                        <h4>Agência: 3133</h4>
-                        <h4 style={{marginBottom: '15px'}}>Conta: 10577</h4>
-                        <p>Saldo em conta: 12.64</p>
-                        <p>Saldo investido: 500.78</p>
+                        <h1>Santander Junho</h1>
+                        <h4>Junho 2019</h4>
+                        <h4 style={{marginBottom: '15px'}}>12/06/2019</h4>
+                        <p>Valor: 1225.64</p>
+                        <p>Paga</p>
                     </div>
                     <div>
                     <MdEdit color='#695eb8' size={30} style={{marginRight: '30px'}} />
@@ -34,22 +32,17 @@ export default class AccountDetail extends Component {
                     <CardContainer>
                         <Link>
                             <Card>
-                                <FaArrowDown color='#695eb8' size={30} />
-                                <h1>Adicionar entrada</h1>
+                                <MdAdd color='#695eb8' size={30} />
+                                <h1>Adicionar despesa</h1>
                             </Card>
                         </Link>
                         <Link>
                             <Card>
-                                <FaArrowUp color='#695eb8' size={30} />
-                                <h1>Adicionar saída</h1>
+                                <MdList color='#695eb8' size={30} />
+                                <h1>Listar despesas</h1>
                             </Card>
                         </Link>
-                        <Link>
-                            <Card>
-                                <FaPiggyBank color='#695eb8' size={30} />
-                                <h1>Investir</h1>
-                            </Card>
-                        </Link>
+                        
                     </CardContainer>
                 </Content>
             </Container>

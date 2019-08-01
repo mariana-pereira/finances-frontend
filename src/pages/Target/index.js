@@ -46,7 +46,7 @@ export default class Target extends Component {
           </AccountContainer>
           </Link>
           <div>
-            <Link to='add_target'>
+            <Link to='/target/add'>
               <Button>Adicionar Objetivo</Button>
             </Link>
           </div>
