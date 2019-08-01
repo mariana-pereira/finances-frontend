@@ -17,7 +17,7 @@ export default class Investment extends Component {
             <p>19 de Julho de 2019</p>
           </Top>
           <div><h1>Investimentos</h1></div>
-          <Link>
+          <Link to='/investment/detail'>
           <AccountContainer>
             <Title>CDB 100% CDI</Title>
             <Type>Banco Inter</Type>

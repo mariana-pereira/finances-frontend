@@ -21,6 +21,7 @@ import AddTarget from './pages/AddTarget';
 import TargetDetail from './pages/TargetDetail';
 import Investment from './pages/Investment';
 import AddInvestment from './pages/AddInvestment';
+import InvestmentDetail from './pages/InvestmentDetail';
 import Company from './pages/Company';
 import AddCompany from './pages/AddCompany';
 import Invoice from './pages/Invoice';
@@ -57,6 +58,7 @@ const Routes = () => (
             <PrivateRoute path='/target/detail' component={TargetDetail} />
             <PrivateRoute path='/investment' exact component={Investment} />
             <PrivateRoute path='/investment/add' component={AddInvestment} />
+            <PrivateRoute path='/investment/detail' component={InvestmentDetail} />
             <PrivateRoute path='/company' exact component={Company} />
             <PrivateRoute path='/company/add' component={AddCompany} />
             <PrivateRoute path='/invoice' exact component={Invoice} />
