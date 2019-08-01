@@ -30,7 +30,7 @@ export default class CardDetail extends Component {
                     <MdDelete color='#695eb8' size={30} style={{marginLeft: '30px'}} />
                     </div>
                     <CardContainer>
-                        <Link>
+                        <Link to='/invoice/add'>
                             <Card>
                                 <MdAdd color='#695eb8' size={30} />
                                 <h1>Adicionar fatura</h1>

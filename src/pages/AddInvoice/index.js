@@ -5,21 +5,8 @@ import SideMenu from '../../components/SideMenu';
 import { Container, Side, Content, InvoiceForm, Title, Field, Check, ButtonContainer, FormButton } from './styles';
 
 export default class AddInvoice extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
+  
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-  }
 
   render() {
     return (
@@ -30,26 +17,29 @@ export default class AddInvoice extends Component {
         <Content>
           <InvoiceForm >
             <Title>Adicionar Fatura</Title>
-            <Check value={this.state.value} onChange={this.handleChange}>
-              <option value="nubank">Nubank</option>
-              <option value="santander">Santander</option>
-            </Check>
+            
             <Field
               type='text'
-              name='bank'
-              placeholder='banco'
+              name='month'
+              placeholder='mês'
 
             />
             <Field
               type='text'
-              name='branch'
-              placeholder='agência'
+              name='year'
+              placeholder='ano'
 
             />
             <Field
               type='text'
-              name='accountNumber'
-              placeholder='número da conta'
+              name='expiryDate'
+              placeholder='vencimento'
+
+            />
+            <Field
+              type='text'
+              name='amount'
+              placeholder='valor'
 
             />
             <ButtonContainer>
