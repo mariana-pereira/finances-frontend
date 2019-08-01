@@ -18,6 +18,7 @@ import AddCard from './pages/AddCard';
 import CardDetail from './pages/CardDetail';
 import Target from './pages/Target';
 import AddTarget from './pages/AddTarget';
+import TargetDetail from './pages/TargetDetail';
 import Investment from './pages/Investment';
 import AddInvestment from './pages/AddInvestment';
 import Company from './pages/Company';
@@ -53,6 +54,7 @@ const Routes = () => (
             <PrivateRoute path='/card/detail' component={CardDetail} />
             <PrivateRoute path='/target' exact component={Target} />
             <PrivateRoute path='/target/add' component={AddTarget} />
+            <PrivateRoute path='/target/detail' component={TargetDetail} />
             <PrivateRoute path='/investment' exact component={Investment} />
             <PrivateRoute path='/investment/add' component={AddInvestment} />
             <PrivateRoute path='/company' exact component={Company} />

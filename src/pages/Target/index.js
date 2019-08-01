@@ -17,7 +17,7 @@ export default class Target extends Component {
             <p>19 de Julho de 2019</p>
           </Top>
           <div><h1>Objetivos</h1></div>
-          <Link>
+          <Link to='/target/detail'>
           <AccountContainer>
             <Title>Aposentadoria</Title>
             <Type>12/12/2050</Type>
