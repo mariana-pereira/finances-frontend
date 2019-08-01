@@ -30,7 +30,7 @@ export default class InvoiceDetail extends Component {
                     <MdDelete color='#695eb8' size={30} style={{marginLeft: '30px'}} />
                     </div>
                     <CardContainer>
-                        <Link>
+                        <Link to='/expense/add'>
                             <Card>
                                 <MdAdd color='#695eb8' size={30} />
                                 <h1>Adicionar despesa</h1>
