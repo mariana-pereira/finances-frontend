@@ -17,7 +17,7 @@ export default class Card extends Component {
             <p>19 de Julho de 2019</p>
           </Top>
           <div><h1>Cartões</h1></div>
-          <Link>
+          <Link to='/card/detail'>
           <AccountContainer>
             <Title>Santander</Title>
             <Type>5199</Type>
@@ -46,7 +46,7 @@ export default class Card extends Component {
           </AccountContainer>
           </Link>
           <div>
-            <Link to='add_card'>
+            <Link to='/card/add'>
               <Button>Adicionar Cartão</Button>
             </Link>
           </div>

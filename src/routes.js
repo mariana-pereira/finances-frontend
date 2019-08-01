@@ -15,6 +15,7 @@ import AddAccount from './pages/AddAccount';
 import AccountDetail from './pages/AccountDetail';
 import Card from './pages/Card';
 import AddCard from './pages/AddCard';
+import CardDetail from './pages/CardDetail';
 import Target from './pages/Target';
 import AddTarget from './pages/AddTarget';
 import Investment from './pages/Investment';
@@ -48,6 +49,7 @@ const Routes = () => (
             <PrivateRoute path='/account/detail' component={AccountDetail} />
             <PrivateRoute path='/card' exact component={Card} />
             <PrivateRoute path='/card/add' component={AddCard} />
+            <PrivateRoute path='/card/detail' component={CardDetail} />
             <PrivateRoute path='/target' exact component={Target} />
             <PrivateRoute path='/target/add' component={AddTarget} />
             <PrivateRoute path='/investment' exact component={Investment} />
