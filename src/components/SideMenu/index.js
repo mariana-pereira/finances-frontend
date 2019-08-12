@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
-import { MdHome, MdAccountBalance, MdCreditCard, MdReceipt, MdTrendingUp, MdBusiness, MdSwapHoriz } from "react-icons/md";
+import { MdList, MdHome, MdAccountBalance, MdCreditCard, MdReceipt, MdTrendingUp, MdBusiness, MdSwapHoriz } from "react-icons/md";
 import { FaBullseye, FaRegFileAlt } from "react-icons/fa";
 
 import { Container, Nav, NavItem, ShowButton } from './styles';
@@ -60,6 +60,14 @@ export default class SideMenu extends Component {
             <Link to='/transfer'>
               <ShowButton>
                 Transferir
+                </ShowButton>
+            </Link>
+          </NavItem>
+          <NavItem>
+            <MdList color='#695eb8' size={24} />
+            <Link to='/budget'>
+              <ShowButton>
+                Budget
                 </ShowButton>
             </Link>
           </NavItem>
