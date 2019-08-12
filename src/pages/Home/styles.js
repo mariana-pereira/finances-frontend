@@ -84,15 +84,58 @@ export const TileContainer = styled.div`
         color: #2e2f2b;
         font-size: 24px;
         align-self: center;
-        margin-bottom: 15px;
+        margin-bottom: 30px;
     }
 `;
 
+export const Table = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 80px;
+`;
+
+export const HeaderTile = styled.div`
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #2e2f2b;
+    border: 1px solid #2e2f2b;
+  
+    display: flex;
+    flex-direction: row;
+`;
+
 export const Tile = styled.div`
-    height: 200px;
-    border: 1px #fff;
-    border-radius: 5px;
-    background: #fff;
-    margin-bottom: 30px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ccc2da;
+    border: 1px solid #ccc2da;
+  
+    display: flex;
+    flex-direction: row;
+`;
+
+export const HeaderCell = styled.div`
+    width: 20%
+    height: 60px;
+    background: #2e2f2b;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const TableCell = styled.div`
+    width: 20%
+    height: 60px;
+    background: #ccc2da;
+    text-align: center;
+    color: #2e2f2b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 

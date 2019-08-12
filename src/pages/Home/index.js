@@ -1,72 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 
 import { FaPiggyBank, FaRegFileAlt, FaDollarSign } from "react-icons/fa";
 
 import SideMenu from '../../components/SideMenu';
 
-import { Container, Content, Side, CardContainer, Card, Top, TileContainer, Tile, Title } from './styles';
+import { Container, Content, Side, CardContainer, Card, Top, TileContainer, Table, HeaderCell, HeaderTile, Tile, TableCell } from './styles';
 
 export default class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      income: {
-        columnDefs: [{
-          headerName: "Data", field: "date"
-        }, {
-          headerName: "Valor", field: "amount"
-        }, {
-          headerName: "Categoria", field: "category"
-        },
-        {
-          headerName: "Empresa", field: "company"
-        },
-        {
-          headerName: "Conta", field: "account"
-        }],
-        rowData: [{
-        }]
-      },
-      outcome: {
-        columnDefs: [{
-          headerName: "Data", field: "date"
-        }, {
-          headerName: "Valor", field: "amount"
-        }, {
-          headerName: "Categoria", field: "category"
-        },
-        {
-          headerName: "Empresa", field: "company"
-        },
-        {
-          headerName: "Conta", field: "account"
-        }],
-        rowData: [{
-        }]
-      },
-      expense: {
-        columnDefs: [{
-          headerName: "Data", field: "date"
-        }, {
-          headerName: "Valor", field: "amount"
-        }, {
-          headerName: "Estabelecimento", field: "shop"
-        },
-        {
-          headerName: "Categoria", field: "category"
-        },
-        {
-          headerName: "Cartão", field: "card"
-        }],
-        rowData: [{
-        }]
-      }
-    }
-  }
+
 
   render() {
     return (
@@ -106,26 +48,218 @@ export default class Home extends Component {
           </CardContainer>
           <TileContainer>
             <h1>Entradas</h1>
-            <Tile className="ag-theme-balham">
-              <AgGridReact
-                columnDefs={this.state.income.columnDefs}
-                rowData={this.state.income.rowData}>
-              </AgGridReact>
-            </Tile>
+            <Table>
+              <HeaderTile>
+                <HeaderCell>
+                  <span>Data</span>
+                </HeaderCell>
+                <HeaderCell>
+                  <span>Valor</span>
+                </HeaderCell>
+                <HeaderCell>
+                  <span>Categoria</span>
+                </HeaderCell>
+                <HeaderCell>
+                  <span>Empresa</span>
+                </HeaderCell>
+                <HeaderCell>
+                  <span>Conta</span>
+                </HeaderCell>
+              </HeaderTile>
+              <Tile>
+                <TableCell>
+                  <span>19/07/2019</span>
+                </TableCell>
+                <TableCell>
+                  <span>854.49</span>
+                </TableCell>
+                <TableCell>
+                  <span>Salário</span>
+                </TableCell>
+                <TableCell>
+                  <span>GoTranscript</span>
+                </TableCell>
+                <TableCell>
+                  <span>Inter</span>
+                </TableCell>
+              </Tile>
+              <Tile>
+                <TableCell>
+                  <span>19/07/2019</span>
+                </TableCell>
+                <TableCell>
+                  <span>854.49</span>
+                </TableCell>
+                <TableCell>
+                  <span>Salário</span>
+                </TableCell>
+                <TableCell>
+                  <span>GoTranscript</span>
+                </TableCell>
+                <TableCell>
+                  <span>Inter</span>
+                </TableCell>
+              </Tile>
+              <Tile>
+                <TableCell>
+                  <span>19/07/2019</span>
+                </TableCell>
+                <TableCell>
+                  <span>854.49</span>
+                </TableCell>
+                <TableCell>
+                  <span>Salário</span>
+                </TableCell>
+                <TableCell>
+                  <span>GoTranscript</span>
+                </TableCell>
+                <TableCell>
+                  <span>Inter</span>
+                </TableCell>
+              </Tile>
+            </Table>
             <h1>Saídas</h1>
-            <Tile className="ag-theme-balham">
-              <AgGridReact
-                columnDefs={this.state.outcome.columnDefs}
-                rowData={this.state.outcome.rowData}>
-              </AgGridReact>
-            </Tile>
+            <Table>
+              <HeaderTile>
+                <HeaderCell>
+                  <span>Data</span>
+                </HeaderCell>
+                <HeaderCell>
+                  <span>Valor</span>
+                </HeaderCell>
+                <HeaderCell>
+                  <span>Categoria</span>
+                </HeaderCell>
+                <HeaderCell>
+                  <span>Empresa</span>
+                </HeaderCell>
+                <HeaderCell>
+                  <span>Conta</span>
+                </HeaderCell>
+              </HeaderTile>
+              <Tile>
+                <TableCell>
+                  <span>19/07/2019</span>
+                </TableCell>
+                <TableCell>
+                  <span>854.49</span>
+                </TableCell>
+                <TableCell>
+                  <span>Pagamento de fatura</span>
+                </TableCell>
+                <TableCell>
+                  <span>Santander</span>
+                </TableCell>
+                <TableCell>
+                  <span>Nubank</span>
+                </TableCell>
+              </Tile>
+              <Tile>
+                <TableCell>
+                  <span>19/07/2019</span>
+                </TableCell>
+                <TableCell>
+                  <span>854.49</span>
+                </TableCell>
+                <TableCell>
+                  <span>Pagamento de fatura</span>
+                </TableCell>
+                <TableCell>
+                  <span>Santander</span>
+                </TableCell>
+                <TableCell>
+                  <span>Nubank</span>
+                </TableCell>
+              </Tile>
+              <Tile>
+                <TableCell>
+                  <span>19/07/2019</span>
+                </TableCell>
+                <TableCell>
+                  <span>854.49</span>
+                </TableCell>
+                <TableCell>
+                  <span>Pagamento de fatura</span>
+                </TableCell>
+                <TableCell>
+                  <span>Santander</span>
+                </TableCell>
+                <TableCell>
+                  <span>Nubank</span>
+                </TableCell>
+              </Tile>
+            </Table>
             <h1>Despesas</h1>
-            <Tile className="ag-theme-balham">
-              <AgGridReact
-                columnDefs={this.state.expense.columnDefs}
-                rowData={this.state.expense.rowData}>
-              </AgGridReact>
-            </Tile>
+            <Table>
+              <HeaderTile>
+                <HeaderCell>
+                  <span>Data</span>
+                </HeaderCell>
+                <HeaderCell>
+                  <span>Valor</span>
+                </HeaderCell>
+                <HeaderCell>
+                  <span>Estabelecimento</span>
+                </HeaderCell>
+                <HeaderCell>
+                  <span>Categoria</span>
+                </HeaderCell>
+                <HeaderCell>
+                  <span>Cartão</span>
+                </HeaderCell>
+              </HeaderTile>
+              <Tile>
+                <TableCell>
+                  <span>19/07/2019</span>
+                </TableCell>
+                <TableCell>
+                  <span>4.49</span>
+                </TableCell>
+                <TableCell>
+                  <span>JB</span>
+                </TableCell>
+                <TableCell>
+                  <span>Alimentação</span>
+                </TableCell>
+                <TableCell>
+                  <span>Inter</span>
+                </TableCell>
+              </Tile>
+              <Tile>
+                <TableCell>
+                  <span>19/07/2019</span>
+                </TableCell>
+                <TableCell>
+                  <span>4.49</span>
+                </TableCell>
+                <TableCell>
+                  <span>JB</span>
+                </TableCell>
+                <TableCell>
+                  <span>Alimentação</span>
+                </TableCell>
+                <TableCell>
+                  <span>Inter</span>
+                </TableCell>
+              </Tile>
+              <Tile>
+                <TableCell>
+                  <span>19/07/2019</span>
+                </TableCell>
+                <TableCell>
+                  <span>4.49</span>
+                </TableCell>
+                <TableCell>
+                  <span>JB</span>
+                </TableCell>
+                <TableCell>
+                  <span>Alimentação</span>
+                </TableCell>
+                <TableCell>
+                  <span>Inter</span>
+                </TableCell>
+              </Tile>
+            </Table>
           </TileContainer>
         </Content>
       </Container>
