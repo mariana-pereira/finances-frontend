@@ -36,7 +36,7 @@ export default class InvoiceDetail extends Component {
                                 <h1>Adicionar despesa</h1>
                             </Card>
                         </Link>
-                        <Link>
+                        <Link to='/expense'>
                             <Card>
                                 <MdList color='#695eb8' size={30} />
                                 <h1>Listar despesas</h1>
