@@ -110,8 +110,8 @@ export const Tile = styled.div`
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
-    background: #ccc2da;
-    border: 1px solid #ccc2da;
+    background: #fff;
+    border: 1px solid #fff;
   
     display: flex;
     flex-direction: row;
@@ -131,7 +131,7 @@ export const HeaderCell = styled.div`
 export const TableCell = styled.div`
     width: 20%
     height: 60px;
-    background: #ccc2da;
+    background: #fff;
     text-align: center;
     color: #2e2f2b;
     display: flex;

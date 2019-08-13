@@ -52,3 +52,47 @@ export const ExtractContainer = styled.div`
     background: #fff;
     padding: 40px;
 `;
+
+export const HeaderTile = styled.div`
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #2e2f2b;
+    border: 1px solid #2e2f2b;
+  
+    display: flex;
+    flex-direction: row;
+`;
+
+export const Tile = styled.div`
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ccc2da;
+    border: 1px solid #ccc2da;
+  
+    display: flex;
+    flex-direction: row;
+`;
+
+export const HeaderCell = styled.div`
+    width: 20%
+    height: 60px;
+    background: #2e2f2b;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const TableCell = styled.div`
+    width: 20%
+    height: 60px;
+    background: #ccc2da;
+    text-align: center;
+    color: #2e2f2b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;

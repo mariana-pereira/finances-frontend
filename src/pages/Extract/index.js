@@ -1,30 +1,11 @@
 import React, { Component } from 'react';
-import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 
 import SideMenu from '../../components/SideMenu';
 
-import { Container, Side, Content, Top, ExtractContainer } from './styles';
+import { Container, Side, Content, Top, ExtractContainer, TableCell, Tile, HeaderCell, HeaderTile } from './styles';
 
 export default class Extract extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      columnDefs: [{
-        headerName: "Data", field: "date"
-      }, {
-        headerName: "Valor", field: "amount"
-      }, {
-        headerName: "Tipo", field: "type"
-      }, {
-        headerName: "Categoria", field: "category"
-      }, {
-        headerName: "Conta", field: "account"
-      }],
-      rowData: [{}]
-    }
-  }
+  
 
   render() {
     return (
@@ -38,13 +19,75 @@ export default class Extract extends Component {
             <p>19 de Julho de 2019</p>
           </Top>
           <h1>Extrato</h1>
-          <ExtractContainer
-            className="ag-theme-balham"
-          >
-            <AgGridReact
-              columnDefs={this.state.columnDefs}
-              rowData={this.state.rowData}>
-            </AgGridReact>
+          <ExtractContainer>
+          <HeaderTile>
+                <HeaderCell>
+                  <span>Data</span>
+                </HeaderCell>
+                <HeaderCell>
+                  <span>Valor</span>
+                </HeaderCell>
+                <HeaderCell>
+                  <span>Categoria</span>
+                </HeaderCell>
+                <HeaderCell>
+                  <span>Empresa</span>
+                </HeaderCell>
+                <HeaderCell>
+                  <span>Conta</span>
+                </HeaderCell>
+              </HeaderTile>
+              <Tile>
+                <TableCell>
+                  <span>19/07/2019</span>
+                </TableCell>
+                <TableCell>
+                  <span>854.49</span>
+                </TableCell>
+                <TableCell>
+                  <span>Salário</span>
+                </TableCell>
+                <TableCell>
+                  <span>GoTranscript</span>
+                </TableCell>
+                <TableCell>
+                  <span>Inter</span>
+                </TableCell>
+              </Tile>
+              <Tile>
+                <TableCell>
+                  <span>19/07/2019</span>
+                </TableCell>
+                <TableCell>
+                  <span>854.49</span>
+                </TableCell>
+                <TableCell>
+                  <span>Salário</span>
+                </TableCell>
+                <TableCell>
+                  <span>GoTranscript</span>
+                </TableCell>
+                <TableCell>
+                  <span>Inter</span>
+                </TableCell>
+              </Tile>
+              <Tile>
+                <TableCell>
+                  <span>19/07/2019</span>
+                </TableCell>
+                <TableCell>
+                  <span>854.49</span>
+                </TableCell>
+                <TableCell>
+                  <span>Salário</span>
+                </TableCell>
+                <TableCell>
+                  <span>GoTranscript</span>
+                </TableCell>
+                <TableCell>
+                  <span>Inter</span>
+                </TableCell>
+              </Tile>
           </ExtractContainer>
         </Content>
       </Container>
