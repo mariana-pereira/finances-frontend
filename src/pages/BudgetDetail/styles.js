@@ -38,29 +38,26 @@ export const Content = styled.div`
    margin-left: 250px;
 
    .title {
-    height: 200px;
+    margin-top: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
    }
    
-   .year-picker {
-    height: 38px;
-    width: 200px;
-    border-radius: 4px;
-    border: 1px solid #2e2f2b;
-    padding: 0 20px;
-    font-size: 14px;
-
+   h1 {
+    
+    font-size: 45px;
+    color: #2e2f2b;
    }
 `;
 
 export const CardContainer = styled.div`
     width: 100%;
+    height: 250px;
     padding: 50px;
     
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     grid-gap: 30px;
 `;
 
@@ -92,3 +89,13 @@ export const Card = styled.div`
     }
 `;
 
+export const Button = styled.button`
+    width: 120px;
+    height: 120px;
+    border: 0;
+    padding: 20px;
+    background: #fff;
+
+    display: flex;
+    justify-content: center;
+`;

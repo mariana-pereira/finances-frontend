@@ -1,56 +1,106 @@
-import React, { Component } from 'react';
-import { MdAddCircle, MdAdd, MdRemove } from "react-icons/md";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import YearPicker from "react-year-picker";
 
 import SideMenu from '../../components/SideMenu';
 
-import { Container, Side, Top, Content, CardContainer, Card, Button } from './styles';
+import { Container, Side, Top, Content, CardContainer, Card } from './styles';
 
-export default class Budget extends Component {
-    render() {
-        return (
-            <Container>
-                <Side>
-                    <SideMenu></SideMenu>
-                </Side>
-                <Content>
-                    <Top>
-                        <p>Olá Mariana</p>
-                        <p>19 de Julho de 2019</p>
-                    </Top>
-                    <div className='title'><h1>Janeiro</h1></div>
-                    <CardContainer>
-                        <Card>
-                            <strong>Total</strong>
-                            <p>437.56</p>
-                        </Card>
-                        <Card>
-                            <strong>Internet</strong>
-                            <p>10.23</p>
-                            <div>
-                                <MdAdd color='#695eb8' size={24} />
-                                <MdRemove color='#695eb8' size={24} />
-                            </div>
-                        </Card>
-                        <Card>
-                            <strong>PicPay</strong>
-                            <p>400</p>
-                            <div>
-                                <MdAdd color='#695eb8' size={24} />
-                                <MdRemove color='#695eb8' size={24} />
-                            </div>
-                        </Card>
-                        <Card>
-                            <strong>Farmácia</strong>
-                            <p>27.33</p>
-                            <div>
-                                <MdAdd color='#695eb8' size={24} />
-                                <MdRemove color='#695eb8' size={24} />
-                            </div>
-                        </Card>
-                        <Button><MdAddCircle color='#695eb8' size={60} /></Button>
-                    </CardContainer>
-                </Content>
-            </Container>
-        )
+export default function Budget() {
+    const [year, setYear] = useState(null);
+
+    function handleChange(date) {
+        setYear(date);
     }
+
+    return (
+        <Container>
+            <Side>
+                <SideMenu></SideMenu>
+            </Side>
+            <Content>
+                <Top>
+                    <p>Olá Mariana</p>
+                    <p>19 de Julho de 2019</p>
+                </Top>
+                <div className='title'><YearPicker className='year-picker' onChange={handleChange} /></div>
+                {year && (
+                    <CardContainer>
+                        <Link to='/budget/detail'>
+                            <Card>
+                                <strong>Janeiro</strong>
+                                <p>437.56</p>
+                            </Card>
+                        </Link>
+                        <Link to='/budget/detail'>
+                            <Card>
+                                <strong>Fevereiro</strong>
+                                <p>437.56</p>
+                            </Card>
+                        </Link>
+                        <Link to='/budget/detail'>
+                            <Card>
+                                <strong>Março</strong>
+                                <p>437.56</p>
+                            </Card>
+                        </Link>
+                        <Link to='/budget/detail'>
+                            <Card>
+                                <strong>Abril</strong>
+                                <p>437.56</p>
+                            </Card>
+                        </Link>
+                        <Link to='/budget/detail'>
+                            <Card>
+                                <strong>Maio</strong>
+                                <p>437.56</p>
+                            </Card>
+                        </Link>
+                        <Link to='/budget/detail'>
+                            <Card>
+                                <strong>Junho</strong>
+                                <p>437.56</p>
+                            </Card>
+                        </Link>
+                        <Link to='/budget/detail'>
+                            <Card>
+                                <strong>Julho</strong>
+                                <p>437.56</p>
+                            </Card>
+                        </Link>
+                        <Link to='/budget/detail'>
+                            <Card>
+                                <strong>Agosto</strong>
+                                <p>437.56</p>
+                            </Card>
+                        </Link>
+                        <Link to='/budget/detail'>
+                            <Card>
+                                <strong>Setembro</strong>
+                                <p>437.56</p>
+                            </Card>
+                        </Link>
+                        <Link to='/budget/detail'>
+                            <Card>
+                                <strong>Outubro</strong>
+                                <p>437.56</p>
+                            </Card>
+                        </Link>
+                        <Link to='/budget/detail'>
+                            <Card>
+                                <strong>Novembro</strong>
+                                <p>437.56</p>
+                            </Card>
+                        </Link>
+                        <Link to='/budget/detail'>
+                            <Card>
+                                <strong>Dezembro</strong>
+                                <p>437.56</p>
+                            </Card>
+                        </Link>
+                    </CardContainer>
+            )}
+            </Content>
+        </Container>
+    )
 }

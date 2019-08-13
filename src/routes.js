@@ -35,6 +35,7 @@ import AddExpense from './pages/AddExpense';
 import Receipt from './pages/Receipt';
 import AddReceipt from './pages/AddReceipt';
 import Budget from './pages/Budget';
+import BudgetDetail from './pages/BudgetDetail';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route { ...rest} render={props => (
@@ -81,7 +82,8 @@ const Routes = () => (
             <PrivateRoute path='/receipt/add' component={AddReceipt} />
             <PrivateRoute path='/extract' component={Extract} />
             <PrivateRoute path='/transfer' component={Transfer} />
-            <PrivateRoute path='/budget' component={Budget} />
+            <PrivateRoute path='/budget' exact component={Budget} />
+            <PrivateRoute path='/budget/detail' component={BudgetDetail} />
             <Route path="*" component={() => <h1>Page not found</h1>} />
         </Switch>
     </BrowserRouter>
