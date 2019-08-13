@@ -91,16 +91,3 @@ export const Amount = styled.div`
         margin-right: 5px;
     }
 `;
-
-export const Button = styled.button`
-    padding: 10px 20px;
-    border-radius: 4px;
-    border: 0;
-    background: #695eb8;
-    color: #fafafa;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-bottom: 20px;
-`;

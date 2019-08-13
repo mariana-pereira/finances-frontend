@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdAdd, MdList, MdEdit, MdDelete } from "react-icons/md";
 
@@ -6,8 +6,7 @@ import SideMenu from '../../components/SideMenu';
 
 import { Container, Side, Top, Content, Card, CardContainer } from './styles';
 
-export default class InvoiceDetail extends Component {
-    render() {
+export default function InvoiceDetail() {
         return (
             <Container>
                 <Side>
@@ -48,4 +47,3 @@ export default class InvoiceDetail extends Component {
             </Container>
         )
     }
-}

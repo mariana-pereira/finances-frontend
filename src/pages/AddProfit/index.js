@@ -1,35 +1,19 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 
 import "react-datepicker/dist/react-datepicker.css";
 
 import SideMenu from '../../components/SideMenu';
 
-import { Container, Side, Content, InvoiceForm, Title, Field, Check, ButtonContainer, FormButton } from './styles';
+import { Container, Side, Content, InvoiceForm, Title, Field, ButtonContainer, FormButton } from './styles';
 
-export default class AddProfit extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      startDate: new Date()
-    };
+export default function AddProfit() {
+  const [startDate, setStartDate] = useState(new Date());
 
-    this.handleDateChange = this.handleDateChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  function handleDateChange(date) {
+    setStartDate(date);
   }
 
-  handleDateChange(date) {
-    this.setState({
-      startDate: date
-    });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-  }
-
-
-  render() {
     return (
       <Container>
         <Side>
@@ -41,8 +25,8 @@ export default class AddProfit extends Component {
             <DatePicker
               className='form-date'
               dateFormat="dd/MM/yyyy"
-              selected={this.state.startDate}
-              onChange={this.handleDateChange}
+              selected={startDate}
+              onChange={handleDateChange}
             />
             <Field
               type='text'
@@ -60,4 +44,3 @@ export default class AddProfit extends Component {
       </Container>
     );
   }
-}

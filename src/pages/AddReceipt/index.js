@@ -1,21 +1,11 @@
-import React, { Component } from 'react';
-import DatePicker from 'react-datepicker';
-
-import "react-datepicker/dist/react-datepicker.css";
+import React from 'react';
 
 import SideMenu from '../../components/SideMenu';
 
 import { Container, Side, Content, Top, Form, Input, Button, Footer, ItemCell, ValueCell, HeaderItem, HeaderValue, HeaderTile, Tile } from './styles';
 
-export default class AddReceipt extends Component {
+export default function AddReceipt() {
 
-
-  handleSubmit(event) {
-    event.preventDefault();
-  }
-
-
-  render() {
     return (
       <Container>
         <Side>
@@ -62,4 +52,3 @@ export default class AddReceipt extends Component {
       </Container>
     );
   }
-}

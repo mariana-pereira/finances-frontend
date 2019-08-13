@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import SideMenu from '../../components/SideMenu';
 
 import { Container, Side, Content, Top, ExtractContainer, TableCell, Tile, HeaderCell, HeaderTile } from './styles';
 
-export default class Extract extends Component {
+export default function Extract() {
   
-
-  render() {
     return (
       <Container>
         <Side>
@@ -93,4 +91,3 @@ export default class Extract extends Component {
       </Container>
     );
   }
-}

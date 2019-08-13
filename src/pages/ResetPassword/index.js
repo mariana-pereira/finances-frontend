@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import api from "../../services/api";
 
@@ -12,7 +12,6 @@ import {
     LoginForm,
     Field,
     FormButton,
-    NBButton,
     Title
 } from './styles';
 

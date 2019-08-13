@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-
 import { FaPiggyBank, FaRegFileAlt, FaDollarSign } from "react-icons/fa";
 
 import SideMenu from '../../components/SideMenu';
 
 import { Container, Content, Side, CardContainer, Card, Top, TileContainer, Table, HeaderCell, HeaderTile, Tile, TableCell } from './styles';
 
-export default class Home extends Component {
+export default function Home() {
 
-
-  render() {
     return (
       <Container>
         <Side>
@@ -265,4 +262,3 @@ export default class Home extends Component {
       </Container>
     );
   }
-}

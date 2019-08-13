@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { Container, Side, Top, Content, Tile, HeaderTile, HeaderItem, HeaderValue, ItemCell, ValueCell } from './styles';
 import SideMenu from '../../components/SideMenu';
 
-export default class Receipt extends Component {
-    render() {
+export default function Receipt() {
         return (
             <Container>
                 <Side>
@@ -28,4 +27,3 @@ export default class Receipt extends Component {
             </Container>
         );
     }
-}

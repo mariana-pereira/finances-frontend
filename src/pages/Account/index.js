@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Container, Side, Top, Content, AccountContainer, Title, Type, Amount, Button } from './styles';
 import SideMenu from '../../components/SideMenu';
 
-export default class Account extends Component {
-  render() {
+export default function Account() {
     return (
       <Container>
         <Side>
@@ -54,4 +53,3 @@ export default class Account extends Component {
       </Container>
     );
   }
-}

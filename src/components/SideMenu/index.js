@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 
 import { MdList, MdHome, MdAccountBalance, MdCreditCard, MdReceipt, MdTrendingUp, MdBusiness, MdSwapHoriz } from "react-icons/md";
@@ -6,10 +6,8 @@ import { FaBullseye, FaRegFileAlt } from "react-icons/fa";
 
 import { Container, Nav, NavItem, ShowButton } from './styles';
 
-export default class SideMenu extends Component {
+export default function SideMenu() {
 
-
-  render() {
     return (
       <Container>
 
@@ -99,4 +97,3 @@ export default class SideMenu extends Component {
       </Container>
     );
   }
-}

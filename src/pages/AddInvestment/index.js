@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,48 +7,28 @@ import SideMenu from '../../components/SideMenu';
 
 import { Container, Side, Content, InvoiceForm, Title, Field, Check, ButtonContainer, FormButton } from './styles';
 
-export default class AddInvestment extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      applicationDate: new Date(),
-      redeemDate: new Date(),
-      targetValue: '',
-      typeValue: ''
-    };
-    this.handleAppDateChange = this.handleAppDateChange.bind(this);
-    this.handleRedDateChange = this.handleRedDateChange.bind(this);
-    this.handleTypeChange = this.handleTypeChange.bind(this);
-    this.handleTargetChange = this.handleTargetChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+export default function AddInvestment() {
+  const [applicationDate, setApplicationDate] = useState(null);
+  const [redeemDate, setRedeemDate] = useState(null);
+  const [targetValue, setTargetValue] = useState(null);
+  const [typeValue, setTypeValue] = useState(null);
+
+  function handleAppDateChange(date) {
+    setApplicationDate(date);
   }
 
-  handleAppDateChange(date) {
-    this.setState({
-      applicationDate: date
-    });
+  function handleRedDateChange(date) {
+    setRedeemDate(date);
   }
 
-  handleRedDateChange(date) {
-    this.setState({
-      redeemDate: date
-    });
+  function handleTypeChange(event) {
+    setTypeValue(event.target.value);
   }
 
-  handleTypeChange(event) {
-    this.setState({ value: event.target.typeValue });
+  function handleTargetChange(event) {
+    setTargetValue(event.target.value);
   }
 
-  handleTargetChange(event) {
-    this.setState({ value: event.target.targetValue });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-  }
-
-
-  render() {
     return (
       <Container>
         <Side>
@@ -62,7 +42,7 @@ export default class AddInvestment extends Component {
               name='name'
               placeholder='nome'
             />
-            <Check value={this.state.value} onChange={this.handleTypeChange}>
+            <Check value={typeValue} onChange={handleTypeChange}>
               <option value="acoes">Ações</option>
               <option value="cdb">CDB</option>
               <option value="coe">COE</option>
@@ -86,7 +66,7 @@ export default class AddInvestment extends Component {
               name='tax'
               placeholder='taxa'
             />
-            <Check value={this.state.value} onChange={this.handleTargetChange}>
+            <Check value={targetValue} onChange={handleTargetChange}>
               <option value="acoes">Aposentadoria</option>
               <option value="cdb">Mudança</option>
               <option value="coe">Viagem</option>
@@ -94,14 +74,14 @@ export default class AddInvestment extends Component {
             <DatePicker
               className='form-date'
               dateFormat="dd/MM/yyyy"
-              selected={this.state.applicationDate}
-              onChange={this.handleAppDateChange}
+              selected={applicationDate}
+              onChange={handleAppDateChange}
             />
             <DatePicker
               className='form-date'
               dateFormat="dd/MM/yyyy"
-              selected={this.state.redeemDate}
-              onChange={this.handleRedDateChange}
+              selected={redeemDate}
+              onChange={handleRedDateChange}
             />
             <Field
               type='text'
@@ -118,4 +98,3 @@ export default class AddInvestment extends Component {
       </Container>
     );
   }
-}

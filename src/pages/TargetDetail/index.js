@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { MdDone, MdAdd, MdDoneAll, MdEdit, MdDelete } from "react-icons/md";
+import React from 'react';
+import { MdEdit, MdDelete } from "react-icons/md";
 
 import SideMenu from '../../components/SideMenu';
 
-import { Container, Side, Top, Content, Card, CardContainer } from './styles';
+import { Container, Side, Top, Content } from './styles';
 
-export default class TargetDetail extends Component {
-    render() {
+export default function TargetDetail() {
         return (
             <Container>
                 <Side>
@@ -33,4 +31,3 @@ export default class TargetDetail extends Component {
             </Container>
         )
     }
-}

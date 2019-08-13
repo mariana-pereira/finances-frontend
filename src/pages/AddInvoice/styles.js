@@ -53,15 +53,6 @@ export const Field = styled.input`
     font-size: 14px;
 `;
 
-export const Check = styled.select`
-    margin-bottom: 30px;
-    height: 38px;
-    border-radius: 4px;
-    border: 1px solid #2e2f2b;
-    padding: 0 20px;
-    font-size: 14px;
-`;
-
 export const ButtonContainer = styled.div`
     display: flex;
     align-items: center;

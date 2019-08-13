@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { MdAttachFile, MdReceipt } from "react-icons/md";
 
-import { Container, Side, Top, Content, Tile, TileHeader, HeaderCell, TableCell, HeaderTile } from './styles';
+import { Container, Side, Top, Content, Tile, HeaderCell, TableCell, HeaderTile } from './styles';
 import SideMenu from '../../components/SideMenu';
 
-export default class Expense extends Component {
-    render() {
+export default function Expense() {
         return (
             <Container>
                 <Side>
@@ -100,4 +99,3 @@ export default class Expense extends Component {
             </Container>
         );
     }
-}

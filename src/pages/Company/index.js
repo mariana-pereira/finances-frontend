@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdEdit, MdDelete, MdBusiness } from "react-icons/md";
 
@@ -6,8 +6,7 @@ import SideMenu from '../../components/SideMenu';
 
 import { Container, Side, Top, Content, Card, CardContainer, Button } from './styles';
 
-export default class Company extends Component {
-  render() {
+export default function Company() {
     return (
       <Container>
         <Side>
@@ -21,7 +20,6 @@ export default class Company extends Component {
           <div>
             <h1>Empresas</h1>
           </div>
-
           <CardContainer>
             <Card>
               <MdBusiness color='#695eb8' size={30} />
@@ -57,4 +55,3 @@ export default class Company extends Component {
       </Container>
     )
   }
-}

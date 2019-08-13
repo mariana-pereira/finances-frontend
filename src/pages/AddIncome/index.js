@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,40 +7,23 @@ import SideMenu from '../../components/SideMenu';
 
 import { Container, Side, Content, InvoiceForm, Title, Field, Check, ButtonContainer, FormButton } from './styles';
 
-export default class AddIncome extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      startDate: new Date(),
-      categoryValue: '',
-      companyValue: ''
-    };
-    this.handleDateChange = this.handleDateChange.bind(this);
-    this.handleCategoryChange = this.handleCategoryChange.bind(this);
-    this.handleCompanyChange = this.handleCompanyChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+export default function AddIncome() {
+  const [startDate, setStartDate] = useState(null);
+  const [categoryValue, setCategoryValue] = useState(null);
+  const [companyValue, setCompanyValue] = useState(null);
+
+  function handleDateChange(date) {
+    setStartDate(date);
   }
 
-  handleDateChange(date) {
-    this.setState({
-      startDate: date
-    });
+  function handleCategoryChange(event) {
+    setCategoryValue(event.target.value);
   }
 
-  handleCategoryChange(event) {
-    this.setState({ value: event.target.categoryValue });
+  function handleCompanyChange(event) {
+    setCompanyValue(event.target.value);
   }
 
-  handleCompanyChange(event) {
-    this.setState({ value: event.target.companyValue });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-  }
-
-
-  render() {
     return (
       <Container>
         <Side>
@@ -52,8 +35,8 @@ export default class AddIncome extends Component {
             <DatePicker
               className='form-date'
               dateFormat="dd/MM/yyyy"
-              selected={this.state.startDate}
-              onChange={this.handleDateChange}
+              selected={startDate}
+              onChange={handleDateChange}
             />
             <Field
               type='text'
@@ -62,7 +45,7 @@ export default class AddIncome extends Component {
 
             />
 
-            <Check value={this.state.value} onChange={this.handleCategoryChange}>
+            <Check value={categoryValue} onChange={handleCategoryChange}>
               <option value="bonificacao">Bonificação</option>
               <option value="cashback">Cashback</option>
               <option value="extra">Extra</option>
@@ -71,7 +54,7 @@ export default class AddIncome extends Component {
               <option value="transferencia">Transferência</option>
             </Check>
 
-            <Check value={this.state.value} onChange={this.handleCompanyChange}>
+            <Check value={companyValue} onChange={handleCompanyChange}>
               <option value="gotranscript">GoTranscript</option>
               <option value="santander">Santander</option>
               <option value="nubank">Nubank</option>
@@ -87,4 +70,3 @@ export default class AddIncome extends Component {
       </Container>
     );
   }
-}

@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container, Side, Top, Content, AccountContainer, Title, Type, Amount, Button } from './styles';
+import { Container, Side, Top, Content, AccountContainer, Title, Type, Amount } from './styles';
 import SideMenu from '../../components/SideMenu';
 
-export default class Investment extends Component {
-  render() {
+export default function Investment() {
     return (
       <Container>
         <Side>
@@ -57,4 +56,3 @@ export default class Investment extends Component {
       </Container>
     );
   }
-}

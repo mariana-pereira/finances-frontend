@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaPiggyBank, FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { MdEdit, MdDelete, MdAdd, MdList } from "react-icons/md";
 
 import SideMenu from '../../components/SideMenu';
 
 import { Container, Side, Top, Content, Card, CardContainer } from './styles';
 
-export default class InvestmentDetail extends Component {
-    render() {
+export default function InvestmentDetail() {
         return (
             <Container>
                 <Side>
@@ -52,4 +50,3 @@ export default class InvestmentDetail extends Component {
             </Container>
         )
     }
-}

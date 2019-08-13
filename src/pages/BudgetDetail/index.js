@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { MdAddCircle, MdAdd, MdRemove } from "react-icons/md";
 
 import SideMenu from '../../components/SideMenu';
 
 import { Container, Side, Top, Content, CardContainer, Card, Button } from './styles';
 
-export default class BudgetDetail extends Component {
-    render() {
+export default function BudgetDetail() {
+ 
         return (
             <Container>
                 <Side>
@@ -53,4 +53,3 @@ export default class BudgetDetail extends Component {
             </Container>
         )
     }
-}

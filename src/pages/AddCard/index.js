@@ -1,27 +1,16 @@
-import React, { Component } from 'react';
+import React, { useState} from 'react';
 
 import SideMenu from '../../components/SideMenu';
 
 import { Container, Side, Content, CardForm, Title, Field, Check, ButtonContainer, FormButton } from './styles';
 
-export default class AddCard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: '' };
+export default function AddCard() {
+  const [value, setValue] = useState(null);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+    function handleChange(event) {
+        setValue(event.target.value);
+    }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-  }
-
-  render() {
     return (
       <Container>
         <Side>
@@ -54,7 +43,7 @@ export default class AddCard extends Component {
               placeholder='limite disponível'
 
             />
-            <Check value={this.state.value} onChange={this.handleChange}>
+            <Check value={value} onChange={handleChange}>
               <option value="01">01</option>
               <option value="02">02</option>
               <option value="03">03</option>
@@ -97,4 +86,3 @@ export default class AddCard extends Component {
       </Container>
     );
   }
-}

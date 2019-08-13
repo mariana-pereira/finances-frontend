@@ -1,14 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import SideMenu from '../../components/SideMenu';
 
-import { Container, Side, Content, InvoiceForm, Title, Field, Check, ButtonContainer, FormButton } from './styles';
+import { Container, Side, Content, InvoiceForm, Title, Field, ButtonContainer, FormButton } from './styles';
 
-export default class AddInvoice extends Component {
+export default function AddInvoice() {
   
-
-
-  render() {
     return (
       <Container>
         <Side>
@@ -52,4 +49,3 @@ export default class AddInvoice extends Component {
       </Container>
     );
   }
-}
