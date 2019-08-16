@@ -29,7 +29,7 @@ export default function Account() {
           </Top>
           <div><h1>Contas</h1></div>
           { accounts.map(account => (
-            <Link key={account.id} to='/account/detail'>
+            <Link key={account.id} to={`accounts/detail/${account.id}`}>
             <AccountContainer>
               <Title>Banco {account.bank}</Title>
               <Type>{account.type}</Type>

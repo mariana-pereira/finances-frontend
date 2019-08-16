@@ -1,56 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Container, Side, Top, Content, AccountContainer, Title, Type, Amount, Button } from './styles';
 import SideMenu from '../../components/SideMenu';
+import api from '../../services/api';
 
 export default function Card() {
-  
-    return (
-      <Container>
-        <Side>
-          <SideMenu></SideMenu>
-        </Side>
-        <Content>
-          <Top>
-            <p>Olá Mariana</p>
-            <p>19 de Julho de 2019</p>
-          </Top>
-          <div><h1>Cartões</h1></div>
-          <Link to='/card/detail'>
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    async function loadCards() {
+      const response = await api.get('/cards')
+
+      setCards(response.data.cards);
+    }
+    loadCards();
+  }, []);
+
+  return (
+    <Container>
+      <Side>
+        <SideMenu></SideMenu>
+      </Side>
+      <Content>
+        <Top>
+          <p>Olá Mariana</p>
+          <p>19 de Julho de 2019</p>
+        </Top>
+        <div><h1>Cartões</h1></div>
+        {cards.map(card => (
+          <Link key={card.id} to='/card/detail'>
           <AccountContainer>
-            <Title>Santander</Title>
-            <Type>5199</Type>
+            <Title>{card.name}</Title>
+            <Type>{card.number}</Type>
             <Amount>
               <span>Limite total:</span>
-              <span>125.45</span>
+              <span>{card.totalLimit}</span>
             </Amount>
             <Amount>
               <span>Limite disponível:</span>
-              <span>55.78</span>
+              <span>{card.availableLimit}</span>
             </Amount>
           </AccountContainer>
+        </Link>
+        ))}
+        <div>
+          <Link to='/card/add'>
+            <Button>Adicionar Cartão</Button>
           </Link>
-          <Link>
-            <AccountContainer>
-            <Title>Nubank</Title>
-            <Type>1926</Type>
-            <Amount>
-              <span>Limite total:</span>
-              <span>1225.89</span>
-            </Amount>
-            <Amount>
-              <span>Limite disponível:</span>
-              <span>500.99</span>
-            </Amount>
-          </AccountContainer>
-          </Link>
-          <div>
-            <Link to='/card/add'>
-              <Button>Adicionar Cartão</Button>
-            </Link>
-          </div>
-        </Content>
-      </Container>
-    );
-  }
+        </div>
+      </Content>
+    </Container>
+  );
+}
