@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import YearPicker from "react-year-picker";
 
 import SideMenu from '../../components/SideMenu';
+import api from '../../services/api';
 
 import { Container, Side, Top, Content, CardContainer, Card } from './styles';
 
 export default function Budget() {
+    const [total, setTotal] = useState(null);
     const [year, setYear] = useState(null);
+
+    useEffect(() => {
+        async function loadTotal() {
+            const response = await api.get('/budgets/month', {
+                headers: {
+                  month: 'Janeiro',
+                }
+              })
+
+            setTotal(response.data.total);
+        }
+        loadTotal();
+    }, []);
 
     function handleChange(date) {
         setYear(date);
@@ -99,7 +114,7 @@ export default function Budget() {
                             </Card>
                         </Link>
                     </CardContainer>
-            )}
+                )}
             </Content>
         </Container>
     )
