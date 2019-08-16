@@ -1,264 +1,246 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaPiggyBank, FaRegFileAlt, FaDollarSign } from "react-icons/fa";
+
+import api from '../../services/api';
 
 import SideMenu from '../../components/SideMenu';
 
 import { Container, Content, Side, CardContainer, Card, Top, TileContainer, Table, HeaderCell, HeaderTile, Tile, TableCell } from './styles';
 
 export default function Home() {
+  const [accountTotal, setAccountTotal] = useState(null);
+  const [investmentsTotal, setInvestmentsTotal] = useState(null);
+  const [invoiceTotal, setInvoiceTotal] = useState(null);
+  const [incomes, setIncomes] = useState([]);
+  const [outcomes, setOutcomes] = useState([]);
+  const [expenses, setExpenses] = useState([]);
 
-    return (
-      <Container>
-        <Side>
-          <SideMenu>
+  useEffect(() => {
+    async function loadAccounts() {
+      const response = await api.get('/accounts');
 
-          </SideMenu>
-        </Side>
-        <Content>
-          <Top>
-            <p>Olá Mariana</p>
-            <p>19 de Julho de 2019</p>
-          </Top>
-          <CardContainer>
-            <Link to='/account'>
-              <Card>
-                <FaDollarSign color='#695eb8' size={30} />
-                <h1>546.34</h1>
-                <p>Saldo em conta</p>
-              </Card>
-            </Link>
-            <Link to='/investment'>
-              <Card>
-                <FaPiggyBank color='#695eb8' size={30} />
-                <h1>1467.23</h1>
-                <p>Saldo investido</p>
-              </Card>
-            </Link>
-            <Link to='/invoice'>
-              <Card>
-                <FaRegFileAlt color='#695eb8' size={30} />
-                <h1>342.87</h1>
-                <p>Total de faturas</p>
-              </Card>
-            </Link>
-          </CardContainer>
-          <TileContainer>
-            <h1>Entradas</h1>
-            <Table>
-              <HeaderTile>
-                <HeaderCell>
-                  <span>Data</span>
-                </HeaderCell>
-                <HeaderCell>
-                  <span>Valor</span>
-                </HeaderCell>
-                <HeaderCell>
-                  <span>Categoria</span>
-                </HeaderCell>
-                <HeaderCell>
-                  <span>Empresa</span>
-                </HeaderCell>
-                <HeaderCell>
-                  <span>Conta</span>
-                </HeaderCell>
-              </HeaderTile>
-              <Tile>
-                <TableCell>
-                  <span>19/07/2019</span>
-                </TableCell>
-                <TableCell>
-                  <span>854.49</span>
-                </TableCell>
-                <TableCell>
-                  <span>Salário</span>
-                </TableCell>
-                <TableCell>
-                  <span>GoTranscript</span>
-                </TableCell>
-                <TableCell>
-                  <span>Inter</span>
-                </TableCell>
-              </Tile>
-              <Tile>
-                <TableCell>
-                  <span>19/07/2019</span>
-                </TableCell>
-                <TableCell>
-                  <span>854.49</span>
-                </TableCell>
-                <TableCell>
-                  <span>Salário</span>
-                </TableCell>
-                <TableCell>
-                  <span>GoTranscript</span>
-                </TableCell>
-                <TableCell>
-                  <span>Inter</span>
-                </TableCell>
-              </Tile>
-              <Tile>
-                <TableCell>
-                  <span>19/07/2019</span>
-                </TableCell>
-                <TableCell>
-                  <span>854.49</span>
-                </TableCell>
-                <TableCell>
-                  <span>Salário</span>
-                </TableCell>
-                <TableCell>
-                  <span>GoTranscript</span>
-                </TableCell>
-                <TableCell>
-                  <span>Inter</span>
-                </TableCell>
-              </Tile>
-            </Table>
-            <h1>Saídas</h1>
-            <Table>
-              <HeaderTile>
-                <HeaderCell>
-                  <span>Data</span>
-                </HeaderCell>
-                <HeaderCell>
-                  <span>Valor</span>
-                </HeaderCell>
-                <HeaderCell>
-                  <span>Categoria</span>
-                </HeaderCell>
-                <HeaderCell>
-                  <span>Empresa</span>
-                </HeaderCell>
-                <HeaderCell>
-                  <span>Conta</span>
-                </HeaderCell>
-              </HeaderTile>
-              <Tile>
-                <TableCell>
-                  <span>19/07/2019</span>
-                </TableCell>
-                <TableCell>
-                  <span>854.49</span>
-                </TableCell>
-                <TableCell>
-                  <span>Pagamento de fatura</span>
-                </TableCell>
-                <TableCell>
-                  <span>Santander</span>
-                </TableCell>
-                <TableCell>
-                  <span>Nubank</span>
-                </TableCell>
-              </Tile>
-              <Tile>
-                <TableCell>
-                  <span>19/07/2019</span>
-                </TableCell>
-                <TableCell>
-                  <span>854.49</span>
-                </TableCell>
-                <TableCell>
-                  <span>Pagamento de fatura</span>
-                </TableCell>
-                <TableCell>
-                  <span>Santander</span>
-                </TableCell>
-                <TableCell>
-                  <span>Nubank</span>
-                </TableCell>
-              </Tile>
-              <Tile>
-                <TableCell>
-                  <span>19/07/2019</span>
-                </TableCell>
-                <TableCell>
-                  <span>854.49</span>
-                </TableCell>
-                <TableCell>
-                  <span>Pagamento de fatura</span>
-                </TableCell>
-                <TableCell>
-                  <span>Santander</span>
-                </TableCell>
-                <TableCell>
-                  <span>Nubank</span>
-                </TableCell>
-              </Tile>
-            </Table>
-            <h1>Despesas</h1>
-            <Table>
-              <HeaderTile>
-                <HeaderCell>
-                  <span>Data</span>
-                </HeaderCell>
-                <HeaderCell>
-                  <span>Valor</span>
-                </HeaderCell>
-                <HeaderCell>
-                  <span>Estabelecimento</span>
-                </HeaderCell>
-                <HeaderCell>
-                  <span>Categoria</span>
-                </HeaderCell>
-                <HeaderCell>
-                  <span>Cartão</span>
-                </HeaderCell>
-              </HeaderTile>
-              <Tile>
-                <TableCell>
-                  <span>19/07/2019</span>
-                </TableCell>
-                <TableCell>
-                  <span>4.49</span>
-                </TableCell>
-                <TableCell>
-                  <span>JB</span>
-                </TableCell>
-                <TableCell>
-                  <span>Alimentação</span>
-                </TableCell>
-                <TableCell>
-                  <span>Inter</span>
-                </TableCell>
-              </Tile>
-              <Tile>
-                <TableCell>
-                  <span>19/07/2019</span>
-                </TableCell>
-                <TableCell>
-                  <span>4.49</span>
-                </TableCell>
-                <TableCell>
-                  <span>JB</span>
-                </TableCell>
-                <TableCell>
-                  <span>Alimentação</span>
-                </TableCell>
-                <TableCell>
-                  <span>Inter</span>
-                </TableCell>
-              </Tile>
-              <Tile>
-                <TableCell>
-                  <span>19/07/2019</span>
-                </TableCell>
-                <TableCell>
-                  <span>4.49</span>
-                </TableCell>
-                <TableCell>
-                  <span>JB</span>
-                </TableCell>
-                <TableCell>
-                  <span>Alimentação</span>
-                </TableCell>
-                <TableCell>
-                  <span>Inter</span>
-                </TableCell>
-              </Tile>
-            </Table>
-          </TileContainer>
-        </Content>
-      </Container>
-    );
-  }
+      setAccountTotal(response.data.total);
+    }
+    loadAccounts();
+  }, []);
+
+  useEffect(() => {
+    async function loadInvestiments() {
+      const response = await api.get('/investments');
+
+      setInvestmentsTotal(response.data.total);
+    }
+    loadInvestiments();
+  }, []);
+
+  useEffect(() => {
+    async function loadInvoices() {
+      const response = await api.get('/invoices/month', {
+        headers: {
+          month: 'Junho',
+        }
+      });
+
+      setInvoiceTotal(response.data.total);
+    }
+    loadInvoices();
+  }, []);
+
+  useEffect(() => {
+    async function loadIncomes() {
+      const response = await api.get('/movimentations/month/income', {
+        headers: {
+          month: 8,
+        }
+      })
+
+      setIncomes(response.data.movimentations);
+    }
+    loadIncomes();
+  }, []);
+
+  useEffect(() => {
+    async function loadOutcomes() {
+      const response = await api.get('/movimentations/month/outcome', {
+        headers: {
+          month: 7,
+        }
+      })
+
+      setOutcomes(response.data.movimentations);
+    }
+    loadOutcomes();
+  }, []);
+
+  useEffect(() => {
+    async function loadExpenses() {
+      const response = await api.get('/expenses/month', {
+        headers: {
+          month: 7,
+        }
+      })
+
+      setExpenses(response.data.expenses);
+    }
+    loadExpenses();
+  }, []);
+
+  return (
+    <Container>
+      <Side>
+        <SideMenu>
+
+        </SideMenu>
+      </Side>
+      <Content>
+        <Top>
+          <p>Olá Mariana</p>
+          <p>19 de Julho de 2019</p>
+        </Top>
+        <CardContainer>
+          <Link to='/account'>
+            <Card>
+              <FaDollarSign color='#695eb8' size={30} />
+              <h1>{accountTotal}</h1>
+              <p>Saldo em conta</p>
+            </Card>
+          </Link>
+          <Link to='/investment'>
+            <Card>
+              <FaPiggyBank color='#695eb8' size={30} />
+              <h1>{investmentsTotal}</h1>
+              <p>Saldo investido</p>
+            </Card>
+          </Link>
+          <Link to='/invoice'>
+            <Card>
+              <FaRegFileAlt color='#695eb8' size={30} />
+              <h1>{invoiceTotal}</h1>
+              <p>Total de faturas</p>
+            </Card>
+          </Link>
+        </CardContainer>
+        <TileContainer>
+          <h1>Entradas</h1>
+          <Table>
+            <HeaderTile>
+              <HeaderCell>
+                <span>Data</span>
+              </HeaderCell>
+              <HeaderCell>
+                <span>Valor</span>
+              </HeaderCell>
+              <HeaderCell>
+                <span>Categoria</span>
+              </HeaderCell>
+              <HeaderCell>
+                <span>Origem</span>
+              </HeaderCell>
+              <HeaderCell>
+                <span>Conta</span>
+              </HeaderCell>
+            </HeaderTile>
+            {incomes.map(income => (
+              <Tile key={income.id}>
+              <TableCell>
+                <span>{income.date}</span>
+              </TableCell>
+              <TableCell>
+                <span>{income.amount}</span>
+              </TableCell>
+              <TableCell>
+                <span>{income.category}</span>
+              </TableCell>
+              <TableCell>
+                <span>{income.company_id}</span>
+              </TableCell>
+              <TableCell>
+                <span>{income.account_id}</span>
+              </TableCell>
+            </Tile>
+            ))}
+          </Table>
+          <h1>Saídas</h1>
+          <Table>
+            <HeaderTile>
+              <HeaderCell>
+                <span>Data</span>
+              </HeaderCell>
+              <HeaderCell>
+                <span>Valor</span>
+              </HeaderCell>
+              <HeaderCell>
+                <span>Categoria</span>
+              </HeaderCell>
+              <HeaderCell>
+                <span>Destino</span>
+              </HeaderCell>
+              <HeaderCell>
+                <span>Conta</span>
+              </HeaderCell>
+            </HeaderTile>
+            {outcomes.map(outcome => (
+              <Tile key={outcome.id}>
+              <TableCell>
+                <span>{outcome.date}</span>
+              </TableCell>
+              <TableCell>
+                <span>{outcome.amount}</span>
+              </TableCell>
+              <TableCell>
+                <span>{outcome.category}</span>
+              </TableCell>
+              <TableCell>
+                <span>{outcome.company_id}</span>
+              </TableCell>
+              <TableCell>
+                <span>{outcome.account_id}</span>
+              </TableCell>
+            </Tile>
+            ))}
+          </Table>
+          <h1>Despesas</h1>
+          <Table>
+            <HeaderTile>
+              <HeaderCell>
+                <span>Data</span>
+              </HeaderCell>
+              <HeaderCell>
+                <span>Valor</span>
+              </HeaderCell>
+              <HeaderCell>
+                <span>Estabelecimento</span>
+              </HeaderCell>
+              <HeaderCell>
+                <span>Categoria</span>
+              </HeaderCell>
+              <HeaderCell>
+                <span>Cartão</span>
+              </HeaderCell>
+            </HeaderTile>
+            {expenses.map(expense => (
+              <Tile key={expense.id}>
+              <TableCell>
+                <span>{expense.date}</span>
+              </TableCell>
+              <TableCell>
+                <span>{expense.amount}</span>
+              </TableCell>
+              <TableCell>
+                <span>{expense.shop}</span>
+              </TableCell>
+              <TableCell>
+                <span>{expense.category}</span>
+              </TableCell>
+              <TableCell>
+                <span>{}</span>
+              </TableCell>
+            </Tile>
+            ))}
+          </Table>
+        </TileContainer>
+      </Content>
+    </Container>
+  );
+}
