@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import SideMenu from '../../components/SideMenu';
 import api from '../../services/api';
 
-import { Container, Side, Content, AccountForm, Title, Field, Check, ButtonContainer, FormButton } from './styles';
+import { Container, Side, Content, Form, Title, Field, Check, ButtonContainer, FormButton } from './styles';
 
 export default function AddAccount() {
   const [bank, setBank] = useState('');
@@ -34,7 +34,7 @@ export default function AddAccount() {
         <SideMenu></SideMenu>
       </Side>
       <Content>
-        <AccountForm onSubmit={handleSubmit} >
+        <Form onSubmit={handleSubmit} >
           <Title>Adicionar Conta</Title>
           <Field
             type='text'
@@ -70,7 +70,7 @@ export default function AddAccount() {
             <FormButton onClick={handleClear}>Cancelar</FormButton>
             <FormButton type="submit">Salvar</FormButton>
           </ButtonContainer>
-        </AccountForm>
+        </Form>
       </Content>
     </Container>
   );

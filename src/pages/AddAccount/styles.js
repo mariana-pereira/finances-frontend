@@ -25,7 +25,7 @@ export const Content = styled.div`
    margin-left: 250px;
 `;
 
-export const AccountForm = styled.form`
+export const Form = styled.form`
     width: 100%;
     max-width: 500px;
     margin: 30px auto 0;

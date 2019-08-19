@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import SideMenu from '../../components/SideMenu';
 import api from '../../services/api';
 
-import { Container, Side, Content, InvoiceForm, Title, Field, ButtonContainer, FormButton } from './styles';
+import { Container, Side, Content, Form, Title, Field, ButtonContainer, FormButton } from './styles';
 
 export default function AddTarget() {
   const [name, setName] = useState('');
@@ -35,7 +35,7 @@ export default function AddTarget() {
         <SideMenu></SideMenu>
       </Side>
       <Content>
-        <InvoiceForm onSubmit={handleSubmit} >
+        <Form onSubmit={handleSubmit} >
           <Title>Adicionar Objetivo</Title>
           <Field
             type='text'
@@ -63,7 +63,7 @@ export default function AddTarget() {
             <FormButton>Cancelar</FormButton>
             <FormButton type="submit">Salvar</FormButton>
           </ButtonContainer>
-        </InvoiceForm>
+        </Form>
       </Content>
     </Container>
   );

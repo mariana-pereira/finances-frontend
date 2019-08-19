@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import SideMenu from '../../components/SideMenu';
 import api from '../../services/api';
 
-import { Container, Side, Content, CardForm, Title, Field, Check, ButtonContainer, FormButton } from './styles';
+import { Container, Side, Content, Form, Title, Field, Check, ButtonContainer, FormButton } from './styles';
 
 export default function AddCard() {
   const [name, setName] = useState('');
@@ -36,7 +36,7 @@ export default function AddCard() {
         <SideMenu></SideMenu>
       </Side>
       <Content>
-        <CardForm onSubmit={handleSubmit} >
+        <Form onSubmit={handleSubmit} >
           <Title>Adicionar Cartão</Title>
           <Field
             type='text'
@@ -107,7 +107,7 @@ export default function AddCard() {
             <FormButton>Cancelar</FormButton>
             <FormButton type="submit">Salvar</FormButton>
           </ButtonContainer>
-        </CardForm>
+        </Form>
       </Content>
     </Container>
   );
