@@ -104,7 +104,7 @@ export default function AddCard() {
             <option value="31">31</option>
           </Check>
           <ButtonContainer>
-            <FormButton>Cancelar</FormButton>
+            <FormButton onClick={handleClear}>Cancelar</FormButton>
             <FormButton type="submit">Salvar</FormButton>
           </ButtonContainer>
         </Form>

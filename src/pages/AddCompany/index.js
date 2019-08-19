@@ -38,7 +38,7 @@ export default function AddCompany() {
             onChange={e => setName(e.target.value)}
           />
           <ButtonContainer>
-            <FormButton>Cancelar</FormButton>
+            <FormButton onClick={handleClear}>Cancelar</FormButton>
             <FormButton type="submit">Salvar</FormButton>
           </ButtonContainer>
         </Form>

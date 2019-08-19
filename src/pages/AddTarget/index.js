@@ -60,7 +60,7 @@ export default function AddTarget() {
             onChange={date => setDeadline(date)}
           />
           <ButtonContainer>
-            <FormButton>Cancelar</FormButton>
+            <FormButton onClick={handleClear}>Cancelar</FormButton>
             <FormButton type="submit">Salvar</FormButton>
           </ButtonContainer>
         </Form>

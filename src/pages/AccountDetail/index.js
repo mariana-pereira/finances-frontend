@@ -43,19 +43,19 @@ export default function AccountDetail({ match }) {
                     <MdDelete color='#695eb8' size={30} style={{marginLeft: '30px'}} />
                     </div>
                     <CardContainer>
-                        <Link to='/income/add'>
+                        <Link to={`/income/add/${account.id}`}>
                             <Card>
                                 <FaArrowDown color='#695eb8' size={30} />
                                 <h1>Adicionar crédito</h1>
                             </Card>
                         </Link>
-                        <Link to='/outcome/add'>
+                        <Link to={`/outcome/add/${account.id}`}>
                             <Card>
                                 <FaArrowUp color='#695eb8' size={30} />
                                 <h1>Adicionar débito</h1>
                             </Card>
                         </Link>
-                        <Link to='/investment/add'>
+                        <Link to={`/investment/add/${account.id}`}>
                             <Card>
                                 <FaPiggyBank color='#695eb8' size={30} />
                                 <h1>Investir</h1>
