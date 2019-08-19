@@ -9,20 +9,22 @@ export default function AddAccount() {
   const [bank, setBank] = useState('');
   const [branch, setBranch] = useState('');
   const [accountNumber, setAccountNumber] = useState('');
-  const [type, setType] = useState('');
+  const [typeValue, setTypeValue] = useState('');
+
+  const types = ['Conta Corrente', 'Conta Poupança', 'Conta de pagamentos', 'Corretora'];
 
   function handleClear() {
     setBank('');
     setBranch('');
     setAccountNumber('');
-    setType('');
+    setTypeValue('');
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     await api.post('/accounts', {
-      bank, branch, accountNumber, type
+      bank, branch, accountNumber, type: typeValue
     });
 
     handleClear();
@@ -60,11 +62,10 @@ export default function AddAccount() {
             onChange={e => setAccountNumber(e.target.value)}
 
           />
-          <Check value={type} onChange={e => setType(e.target.value)}>
-            <option value="Conta Corrente">Conta Corrente</option>
-            <option value="Conta Poupança">Conta Poupança</option>
-            <option value="Conta de Pagamentos">Conta de Pagamentos</option>
-            <option value="Conta de Pagamentos">Corretora</option>
+          <Check value={typeValue} onChange={e => setTypeValue(e.target.value)}>
+            {types.map(type => (
+              <option value={type}>{type}</option>
+            ))}
           </Check>
           <ButtonContainer>
             <FormButton onClick={handleClear}>Cancelar</FormButton>
