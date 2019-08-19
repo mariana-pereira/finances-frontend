@@ -1,55 +1,77 @@
 import React, { useState } from 'react';
 
 import SideMenu from '../../components/SideMenu';
+import api from '../../services/api';
 
 import { Container, Side, Content, AccountForm, Title, Field, Check, ButtonContainer, FormButton } from './styles';
 
 export default function AddAccount() {
-  const [value, setValue] = useState(null);
+  const [bank, setBank] = useState('');
+  const [branch, setBranch] = useState('');
+  const [accountNumber, setAccountNumber] = useState('');
+  const [type, setType] = useState('');
 
-    function handleChange(event) {
-        setValue(event.target.value);
-    }
-
-    return (
-      <Container>
-        <Side>
-          <SideMenu></SideMenu>
-        </Side>
-        <Content>
-          <AccountForm >
-            <Title>Adicionar Conta</Title>
-            <Field
-              type='text'
-              name='bank'
-              placeholder='banco'
-
-            />
-            <Field
-              type='text'
-              name='branch'
-              placeholder='agência'
-
-            />
-            <Field
-              type='text'
-              name='accountNumber'
-              placeholder='número da conta'
-
-            />
-            <Check value={value} onChange={handleChange}>
-              <option value="corrente">Conta Corrente</option>
-              <option value="poupanca">Conta Poupança</option>
-              <option value="pagamento">Conta de Pagamentos</option>
-              <option value="corretora">Corretora</option>
-            </Check>
-            <ButtonContainer>
-              <FormButton type="submit">Novo</FormButton>
-              <FormButton type="submit">Cancelar</FormButton>
-              <FormButton type="submit">Salvar</FormButton>
-            </ButtonContainer>
-          </AccountForm>
-        </Content>
-      </Container>
-    );
+  function handleClear() {
+    setBank('');
+    setBranch('');
+    setAccountNumber('');
+    setType('');
   }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    await api.post('/accounts', {
+      bank, branch, accountNumber, type
+    });
+
+    handleClear();
+  }
+
+  return (
+    <Container>
+      <Side>
+        <SideMenu></SideMenu>
+      </Side>
+      <Content>
+        <AccountForm onSubmit={handleSubmit} >
+          <Title>Adicionar Conta</Title>
+          <Field
+            type='text'
+            name='bank'
+            placeholder='banco'
+            value={bank}
+            onChange={e => setBank(e.target.value)}
+
+          />
+          <Field
+            type='text'
+            name='branch'
+            placeholder='agência'
+            value={branch}
+            onChange={e => setBranch(e.target.value)}
+
+          />
+          <Field
+            type='text'
+            name='accountNumber'
+            placeholder='número da conta'
+            value={accountNumber}
+            onChange={e => setAccountNumber(e.target.value)}
+
+          />
+          <Check value={type} onChange={e => setType(e.target.value)}>
+            <option value="Conta Corrente">Conta Corrente</option>
+            <option value="Conta Poupança">Conta Poupança</option>
+            <option value="Conta de Pagamentos">Conta de Pagamentos</option>
+            <option value="Conta de Pagamentos">Corretora</option>
+          </Check>
+          <ButtonContainer>
+            <FormButton onClick={handleClear}>Cancelar</FormButton>
+            <FormButton type="submit">Salvar</FormButton>
+          </ButtonContainer>
+        </AccountForm>
+      </Content>
+    </Container>
+  );
+}
