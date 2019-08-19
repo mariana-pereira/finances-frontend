@@ -4,55 +4,67 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
 import SideMenu from '../../components/SideMenu';
+import api from '../../services/api';
 
 import { Container, Side, Content, InvoiceForm, Title, Field, ButtonContainer, FormButton } from './styles';
 
 export default function AddTarget() {
-  const [startDate, setStartDate] = useState(new Date());
+  const [name, setName] = useState('');
+  const [necessaryAmount, setNecessaryAmount] = useState(null);
+  const [deadline, setDeadline] = useState(new Date());
 
-  function handleDateChange(date) {
-    setStartDate(date);
+  function handleClear() {
+    setName('');
+    setNecessaryAmount('');
+    setDeadline(new Date());
   }
 
-    return (
-      <Container>
-        <Side>
-          <SideMenu></SideMenu>
-        </Side>
-        <Content>
-          <InvoiceForm >
-            <Title>Adicionar Objetivo</Title>
-            <Field
-              type='text'
-              name='name'
-              placeholder='nome'
+  async function handleSubmit(e) {
+    e.preventDefault();
 
-            />
-            <Field
-              type='text'
-              name='necessaryAmount'
-              placeholder='valor necessário'
+    await api.post('/targets', {
+      name, necessaryAmount, deadline
+    });
 
-            />
-            <Field
-              type='text'
-              name='actualValue'
-              placeholder='valor atual'
-
-            />
-            <DatePicker
-              className='form-date'
-              dateFormat="dd/MM/yyyy"
-              selected={startDate}
-              onChange={handleDateChange}
-            />
-            <ButtonContainer>
-              <FormButton type="submit">Novo</FormButton>
-              <FormButton type="submit">Cancelar</FormButton>
-              <FormButton type="submit">Salvar</FormButton>
-            </ButtonContainer>
-          </InvoiceForm>
-        </Content>
-      </Container>
-    );
+    handleClear();
   }
+
+  return (
+    <Container>
+      <Side>
+        <SideMenu></SideMenu>
+      </Side>
+      <Content>
+        <InvoiceForm onSubmit={handleSubmit} >
+          <Title>Adicionar Objetivo</Title>
+          <Field
+            type='text'
+            name='name'
+            placeholder='nome'
+            value={name}
+            onChange={e => setName(e.target.value)}
+
+          />
+          <Field
+            type='text'
+            name='necessaryAmount'
+            placeholder='valor necessário'
+            value={necessaryAmount}
+            onChange={e => setNecessaryAmount(e.target.value)}
+
+          />
+          <DatePicker
+            className='form-date'
+            dateFormat="dd/MM/yyyy"
+            selected={deadline}
+            onChange={date => setDeadline(date)}
+          />
+          <ButtonContainer>
+            <FormButton>Cancelar</FormButton>
+            <FormButton type="submit">Salvar</FormButton>
+          </ButtonContainer>
+        </InvoiceForm>
+      </Content>
+    </Container>
+  );
+}
