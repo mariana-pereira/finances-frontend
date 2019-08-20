@@ -29,7 +29,7 @@ export default function Investment() {
         </Top>
         <div><h1>Investimentos</h1></div>
         {investments.map(investment => (
-          <Link key={investment.id} to='/investment/detail'>
+          <Link key={investment.id} to={`/investment/detail/${investment.id}`}>
           <AccountContainer>
             <Title>{investment.name}</Title>
             <Type>Banco {investment.account_id}</Type>

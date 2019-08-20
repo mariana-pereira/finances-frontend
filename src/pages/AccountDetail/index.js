@@ -48,7 +48,7 @@ export default function AccountDetail({ match }) {
                                 <FaArrowDown color='#695eb8' size={30} />
                                 <h1>Adicionar crédito</h1>
                             </Card>
-                        </Link>
+                            </Link>
                         <Link to={`/outcome/add/${account.id}`}>
                             <Card>
                                 <FaArrowUp color='#695eb8' size={30} />
