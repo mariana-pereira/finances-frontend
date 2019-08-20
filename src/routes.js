@@ -30,6 +30,7 @@ import AddCompany from './pages/AddCompany';
 import Invoice from './pages/Invoice';
 import AddInvoice from './pages/AddInvoice';
 import InvoiceDetail from './pages/InvoiceDetail';
+import PaidInvoice from './pages/PaidInvoice';
 import Expense from './pages/Expense';
 import AddExpense from './pages/AddExpense';
 import Receipt from './pages/Receipt';
@@ -76,6 +77,7 @@ const Routes = () => (
             <PrivateRoute path='/invoice' exact component={Invoice} />
             <PrivateRoute path='/invoice/add/:id' component={AddInvoice} />
             <PrivateRoute path='/invoice/detail' component={InvoiceDetail} />
+            <PrivateRoute path='/invoice/:paid/paid/:id' component={PaidInvoice} />
             <PrivateRoute path='/expense' exact component={Expense} />
             <PrivateRoute path='/expense/add/:id' component={AddExpense} />
             <PrivateRoute path='/receipt' exact component={Receipt} />

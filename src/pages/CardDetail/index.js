@@ -47,13 +47,13 @@ export default function CardDetail({ match }) {
                             <h1>Adicionar fatura</h1>
                         </Card>
                     </Link>
-                    <Link>
+                    <Link to={`/invoice/0/paid/${card.id}`}>
                         <Card>
                             <MdDone color='#695eb8' size={30} />
                             <h1>Faturas abertas</h1>
                         </Card>
                     </Link>
-                    <Link>
+                    <Link to={`/invoice/1/paid/${card.id}`}>
                         <Card>
                             <MdDoneAll color='#695eb8' size={30} />
                             <h1>Faturas pagas</h1>
