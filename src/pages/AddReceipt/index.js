@@ -49,7 +49,7 @@ export default function AddReceipt({ match }) {
   return (
     <Container>
       <Side>
-        <SideMenu></SideMenu>
+        <SideMenu/>
       </Side>
       <Content>
         <Top>

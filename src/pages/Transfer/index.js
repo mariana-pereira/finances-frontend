@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import SideMenu from '../../components/SideMenu';
+import TopHeader from '../../components/TopHeader';
 
 import { Container, Content, Side, Top, TransferBox, Check, Button, AccountContainer, Amount, Title, Type } from './styles';
 
@@ -20,12 +21,11 @@ export default function Transfer() {
   return (
     <Container>
       <Side>
-        <SideMenu></SideMenu>
+        <SideMenu/>
       </Side>
       <Content>
         <Top>
-          <p>Olá Mariana</p>
-          <p>19 de Julho de 2019</p>
+          <TopHeader/>
         </Top>
         <div><h1>Transferir</h1></div>
         <TransferBox>

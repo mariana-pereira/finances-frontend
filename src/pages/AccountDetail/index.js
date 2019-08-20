@@ -4,6 +4,7 @@ import { FaPiggyBank, FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { MdEdit, MdDelete } from "react-icons/md";
 
 import SideMenu from '../../components/SideMenu';
+import TopHeader from '../../components/TopHeader';
 import api from '../../services/api';
 
 import { Container, Side, Top, Content, Card, CardContainer } from './styles';
@@ -23,12 +24,11 @@ export default function AccountDetail({ match }) {
         return (
             <Container>
                 <Side>
-                    <SideMenu></SideMenu>
+                    <SideMenu/>
                 </Side>
                 <Content>
                     <Top>
-                        <p>Olá Mariana</p>
-                        <p>19 de Julho de 2019</p>
+                        <TopHeader/>
                     </Top>
                     <div>
                         <h1>{account.bank}</h1>

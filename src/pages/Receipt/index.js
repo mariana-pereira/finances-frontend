@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { Container, Side, Top, Content, Tile, HeaderTile, HeaderItem, HeaderValue, ItemCell, ValueCell } from './styles';
 import SideMenu from '../../components/SideMenu';
+import TopHeader from '../../components/TopHeader';
 import api from '../../services/api';
 
 export default function Receipt({ match }) {
@@ -29,12 +30,11 @@ export default function Receipt({ match }) {
     return (
         <Container>
             <Side>
-                <SideMenu></SideMenu>
+                <SideMenu/>
             </Side>
             <Content>
                 <Top>
-                    <p>Olá Mariana</p>
-                    <p>19 de Julho de 2019</p>
+                    <TopHeader/>
                 </Top>
                 <div className='content'><h1>Cupom {expense.date} {expense.shop}</h1></div>
                 <HeaderTile>

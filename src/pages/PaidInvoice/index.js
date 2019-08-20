@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Container, Side, Top, Content, AccountContainer, Title, Type, Amount } from './styles';
 import SideMenu from '../../components/SideMenu';
+import TopHeader from '../../components/TopHeader';
 import api from '../../services/api';
 
 export default function PaidInvoice({ match }) {
@@ -24,12 +25,11 @@ export default function PaidInvoice({ match }) {
   return (
     <Container>
       <Side>
-        <SideMenu></SideMenu>
+        <SideMenu/>
       </Side>
       <Content>
         <Top>
-          <p>Olá Mariana</p>
-          <p>19 de Julho de 2019</p>
+          <TopHeader/>
         </Top>
         {match.params.paid == 1 ? (
           <div><h1>Faturas Pagas</h1></div>

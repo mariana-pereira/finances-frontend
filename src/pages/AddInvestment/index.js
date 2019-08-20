@@ -52,7 +52,7 @@ export default function AddInvestment({ match }) {
   return (
     <Container>
       <Side>
-        <SideMenu></SideMenu>
+        <SideMenu/>
       </Side>
       <Content>
         <Form onSubmit={handleSubmit} >

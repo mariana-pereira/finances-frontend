@@ -5,6 +5,7 @@ import { MdAttachFile, MdReceipt } from "react-icons/md";
 
 import { Container, Side, Top, Content, Tile, HeaderCell, TableCell, HeaderTile } from './styles';
 import SideMenu from '../../components/SideMenu';
+import TopHeader from '../../components/TopHeader';
 import api from '../../services/api';
 
 export default function Expense({ match }) {
@@ -22,12 +23,11 @@ export default function Expense({ match }) {
     return (
         <Container>
             <Side>
-                <SideMenu></SideMenu>
+                <SideMenu/>
             </Side>
             <Content>
                 <Top>
-                    <p>Olá Mariana</p>
-                    <p>19 de Julho de 2019</p>
+                    <TopHeader/>
                 </Top>
                 <div className='content'><h1>Despesas</h1></div>
                 <HeaderTile>

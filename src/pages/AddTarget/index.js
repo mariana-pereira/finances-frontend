@@ -32,7 +32,7 @@ export default function AddTarget() {
   return (
     <Container>
       <Side>
-        <SideMenu></SideMenu>
+        <SideMenu/>
       </Side>
       <Content>
         <Form onSubmit={handleSubmit} >

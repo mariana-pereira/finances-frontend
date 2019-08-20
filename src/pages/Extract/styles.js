@@ -22,13 +22,6 @@ export const Top = styled.header`
     width: 100%;
     height: 60px;
     background: #bdb4c9;
-    padding: 20px;
-    font-size: 17px;
-    color: #2e2f2b;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 `;
 
 export const Content = styled.div`

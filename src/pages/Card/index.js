@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Container, Side, Top, Content, AccountContainer, Title, Type, Amount, Button } from './styles';
 import SideMenu from '../../components/SideMenu';
+import TopHeader from '../../components/TopHeader';
 import api from '../../services/api';
 
 export default function Card() {
@@ -20,12 +21,11 @@ export default function Card() {
   return (
     <Container>
       <Side>
-        <SideMenu></SideMenu>
+        <SideMenu/>
       </Side>
       <Content>
         <Top>
-          <p>Olá Mariana</p>
-          <p>19 de Julho de 2019</p>
+          <TopHeader/>
         </Top>
         <div><h1>Cartões</h1></div>
         {cards.map(card => (

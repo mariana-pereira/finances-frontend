@@ -5,6 +5,7 @@ import { FaPiggyBank, FaRegFileAlt, FaDollarSign } from "react-icons/fa";
 import api from '../../services/api';
 
 import SideMenu from '../../components/SideMenu';
+import TopHeader from '../../components/TopHeader';
 
 import { Container, Content, Side, CardContainer, Card, Top, TileContainer, Table, HeaderCell, HeaderTile, Tile, TableCell } from './styles';
 
@@ -89,14 +90,11 @@ export default function Home() {
   return (
     <Container>
       <Side>
-        <SideMenu>
-
-        </SideMenu>
+        <SideMenu/>
       </Side>
       <Content>
         <Top>
-          <p>Olá Mariana</p>
-          <p>19 de Julho de 2019</p>
+          <TopHeader/>
         </Top>
         <CardContainer>
           <Link to='/account'>

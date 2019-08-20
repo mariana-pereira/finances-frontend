@@ -33,7 +33,7 @@ export default function AddAccount() {
   return (
     <Container>
       <Side>
-        <SideMenu></SideMenu>
+        <SideMenu/>
       </Side>
       <Content>
         <Form onSubmit={handleSubmit} >

@@ -46,7 +46,7 @@ export default function AddIncome({ match }) {
   return (
     <Container>
       <Side>
-        <SideMenu></SideMenu>
+        <SideMenu/>
       </Side>
       <Content>
         <Form onSubmit={handleSubmit} >
