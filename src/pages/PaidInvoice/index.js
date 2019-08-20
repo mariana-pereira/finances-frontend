@@ -31,7 +31,11 @@ export default function PaidInvoice({ match }) {
           <p>Olá Mariana</p>
           <p>19 de Julho de 2019</p>
         </Top>
-        <div><h1>Faturas</h1></div>
+        {match.params.paid == 1 ? (
+          <div><h1>Faturas Pagas</h1></div>
+        ) : (
+          <div><h1>Faturas Abertas</h1></div>
+        )}
         {invoices.map(invoice => (
           <Link key={invoice.id} to='/invoice/detail'>
           <AccountContainer>

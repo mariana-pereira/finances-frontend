@@ -4,69 +4,75 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
 import SideMenu from '../../components/SideMenu';
+import api from '../../services/api';
 
-import { Container, Side, Content, InvoiceForm, Title, Field, Check, ButtonContainer, FormButton } from './styles';
+import { Container, Side, Content, Form, Title, Field, Check, ButtonContainer, FormButton } from './styles';
 
-export default function AddExpense() {
-  const [startDate, setStartDate] = useState(new Date());
-  const [value, setValue] = useState(null);
+export default function AddExpense({ match }) {
+  const [date, setDate] = useState(new Date());
+  const [amount, setAmount] = useState('');
+  const [shop, setShop] = useState('');
+  const [categoryValue, setCategoryValue] = useState('');
 
-  function handleDateChange(date) {
-    setStartDate(date);
+  const categories = ['Alimentação', 'Assinaturas', 'Beleza', 'Contas', 'Esporte', 'Lazer', 'Pet', 'Saúde', 'Tech', 'Transporte', 'Outros'];
+
+  function handleClear() {
+    setDate(new Date());
+    setAmount('');
+    setShop('');
+    setCategoryValue('');
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault();
 
-  function handleComboChange(event) {
-    setValue(event.target.value);
+    await api.post(`/invoices/${match.params.id}/expenses`, {
+      date, amount, shop, category: categoryValue
+    });
+
+    handleClear();
   }
 
-    return (
-      <Container>
-        <Side>
-          <SideMenu></SideMenu>
-        </Side>
-        <Content>
-          <InvoiceForm >
-            <Title>Adicionar Despesa</Title>
-            <DatePicker
-              className='form-date'
-              dateFormat="dd/MM/yyyy"
-              selected={startDate}
-              onChange={handleDateChange}
-            />
-            <Field
-              type='text'
-              name='amount'
-              placeholder='valor'
+  return (
+    <Container>
+      <Side>
+        <SideMenu></SideMenu>
+      </Side>
+      <Content>
+        <Form onSubmit={handleSubmit}>
+          <Title>Adicionar Despesa</Title>
+          <DatePicker
+            className='form-date'
+            dateFormat="dd/MM/yyyy"
+            selected={date}
+            onChange={date => setDate(date)}
+          />
+          <Field
+            type='text'
+            name='amount'
+            placeholder='valor'
+            value={amount}
+            onChange={e => setAmount(e.target.value)}
+          />
+          <Field
+            type='text'
+            name='shop'
+            placeholder='estabelecimento'
+            value={shop}
+            onChange={e => setShop(e.target.value)}
+          />
+          <Check value={categoryValue} onChange={e => setCategoryValue(e.target.value)}>
+            {categories.map(category => (
+              <option key={category} value={category}>{category}</option>
+            ))}
+          </Check>
 
-            />
-            <Field
-              type='text'
-              name='shop'
-              placeholder='estabelecimento'
-
-            />
-            <Check value={value} onChange={handleComboChange}>
-              <option value="alimentacao">Alimentação</option>
-              <option value="assinaturas">Assinaturas</option>
-              <option value="beleza">Beleza</option>
-              <option value="contas">Contas básicas</option>
-              <option value="esportes">Esportes</option>
-              <option value="lazer">Lazer</option>
-              <option value="pet">Pet</option>
-              <option value="saude">Saúde</option>
-              <option value="tech">Tech</option>
-              <option value="transporte">Transporte</option>
-              <option value="outros">Outros</option>
-            </Check>
-
-            <ButtonContainer>
-              <FormButton type="submit">Novo</FormButton>
-              <FormButton type="submit">Cancelar</FormButton>
-              <FormButton type="submit">Salvar</FormButton>
-            </ButtonContainer>
-          </InvoiceForm>
-        </Content>
-      </Container>
-    );
-  }
+          <ButtonContainer>
+            <FormButton onClick={handleClear}>Cancelar</FormButton>
+            <FormButton type="submit">Salvar</FormButton>
+          </ButtonContainer>
+        </Form>
+      </Content>
+    </Container>
+  );
+}

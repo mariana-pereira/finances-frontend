@@ -29,7 +29,7 @@ export default function Invoice() {
         </Top>
         <div><h1>Faturas</h1></div>
         {invoices.map(invoice => (
-          <Link key={invoice.id} to='/invoice/detail'>
+          <Link key={invoice.id} to={`/invoice/detail/${invoice.id}`}>
           <AccountContainer>
             <Title>{invoice.name}</Title>
             <Type>{invoice.card_id}</Type>
