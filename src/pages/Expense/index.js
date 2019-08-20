@@ -49,25 +49,29 @@ export default function Expense({ match }) {
                 </HeaderTile>
                 {expenses.map(expense => (
                     <Tile key={expense.id}>
-                    <TableCell>
-                        <span>{expense.date}</span>
-                    </TableCell>
-                    <TableCell>
-                        <span>{expense.amount}</span>
-                    </TableCell>
-                    <TableCell>
-                        <span>{expense.shop}</span>
-                    </TableCell>
-                    <TableCell>
-                        <span>{expense.category}</span>
-                    </TableCell>
-                    <TableCell>
-                        <div>
-                            <MdReceipt color='#695eb8' size={24} style={{ marginRight: '10px' }} />
-                            <MdAttachFile color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
-                        </div>
-                    </TableCell>
-                </Tile>
+                        <TableCell>
+                            <span>{expense.date}</span>
+                        </TableCell>
+                        <TableCell>
+                            <span>{expense.amount}</span>
+                        </TableCell>
+                        <TableCell>
+                            <span>{expense.shop}</span>
+                        </TableCell>
+                        <TableCell>
+                            <span>{expense.category}</span>
+                        </TableCell>
+                        <TableCell>
+                            <div>
+                                <Link to={`/receipt/${expense.id}`}>
+                                    <MdReceipt color='#695eb8' size={24} style={{ marginRight: '10px' }} />
+                                </Link>
+                                <Link to={`/receipt/add/${expense.id}`}>
+                                    <MdAttachFile color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
+                                </Link>
+                            </div>
+                        </TableCell>
+                    </Tile>
                 ))}
             </Content>
         </Container>

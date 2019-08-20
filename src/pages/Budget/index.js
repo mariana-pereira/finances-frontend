@@ -44,7 +44,7 @@ export default function Budget() {
                         <Link to='/budget/detail'>
                             <Card>
                                 <strong>Janeiro</strong>
-                                <p>437.56</p>
+                                <p>{total}</p>
                             </Card>
                         </Link>
                         <Link to='/budget/detail'>

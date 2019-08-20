@@ -103,7 +103,6 @@ export const ValueCell = styled.div`
 `;
 
 export const Form = styled.form`
-    height: 60px;
     margin-top: 60px;
     display: flex;
     justify-content: center;
