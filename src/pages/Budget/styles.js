@@ -31,7 +31,7 @@ export const Content = styled.div`
    margin-left: 250px;
 
    .title {
-    height: 200px;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -21,15 +21,13 @@ export default function Home() {
   const month = formatDate(new Date());
   const monthIndex = date.getMonth() + 1;
   const year = date.getFullYear();
-
-  console.log(month, monthIndex, year)
     
     function formatDate(date) {
         var monthNames = [
           "Janeiro", "Fevereiro", "Março",
           "Abril", "Maio", "Junho", "Julho",
           "Agosto", "Setembro", "Outubro",
-          "Novembro", "Decembro"
+          "Novembro", "Dezembro"
         ];
         var monthIndex = date.getMonth();
       

@@ -92,3 +92,9 @@ export const Button = styled.button`
     display: flex;
     justify-content: center;
 `;
+
+export const ActionButton = styled.button`
+    border: 0;
+    background: #bdb4c9;
+    cursor: pointer;
+`;

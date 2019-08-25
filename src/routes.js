@@ -85,7 +85,7 @@ const Routes = () => (
             <PrivateRoute path='/extract' component={Extract} />
             <PrivateRoute path='/transfer' component={Transfer} />
             <PrivateRoute path='/budget' exact component={Budget} />
-            <PrivateRoute path='/budget/detail' component={BudgetDetail} />
+            <PrivateRoute path='/budget/detail/:year/:month' component={BudgetDetail} />
             <Route path="*" component={() => <h1>Page not found</h1>} />
         </Switch>
     </BrowserRouter>
