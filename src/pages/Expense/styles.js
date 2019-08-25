@@ -88,3 +88,9 @@ export const TableCell = styled.div`
     justify-content: center;
 `;
 
+export const Button = styled.button`
+    border: 0;
+    background: #ccc2da;
+    cursor: pointer;
+`;
+

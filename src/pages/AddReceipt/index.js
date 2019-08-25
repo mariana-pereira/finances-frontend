@@ -26,6 +26,7 @@ export default function AddReceipt({ match }) {
       const response = await api.get(`/items/${match.params.id}`);
 
       setItems(response.data.items);
+      setTotal(response.data.total);
       
     }
     loadItems();
@@ -86,7 +87,7 @@ export default function AddReceipt({ match }) {
         </Form>
         <Footer>
           <div>
-            <h4>5.56</h4>
+            <h4>{total}</h4>
           </div>
         </Footer>
       </Content>

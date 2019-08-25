@@ -19,7 +19,7 @@ export default function Home() {
 
   const date = new Date();
   const month = formatDate(new Date());
-  const monthIndex = date.getMonth();
+  const monthIndex = date.getMonth() + 1;
   const year = date.getFullYear();
 
   console.log(month, monthIndex, year)

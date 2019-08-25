@@ -78,7 +78,8 @@ export const Card = styled.div`
 
 export const ActionButton = styled.button`
     border: 0;
-    background: #bdb4c9;
+    background: #fff;
+    cursor: pointer;
 `;
 
 export const Button = styled.button`

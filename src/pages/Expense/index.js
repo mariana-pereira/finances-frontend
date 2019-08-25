@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { MdAttachFile, MdReceipt } from "react-icons/md";
+import { MdAttachFile, MdReceipt, MdDelete } from "react-icons/md";
 
-import { Container, Side, Top, Content, Tile, HeaderCell, TableCell, HeaderTile } from './styles';
+import { Container, Side, Top, Content, Tile, HeaderCell, TableCell, HeaderTile, Button } from './styles';
 import SideMenu from '../../components/SideMenu';
 import TopHeader from '../../components/TopHeader';
 import api from '../../services/api';
@@ -19,6 +19,12 @@ export default function Expense({ match }) {
         }
         loadExpenses();
     }, []);
+
+    async function deleteItem(id) {
+        api.delete(`/expenses/${id}`);
+    
+        setExpenses(expenses.filter(expense => expense.id !== id));
+      }
 
     return (
         <Container>
@@ -69,6 +75,9 @@ export default function Expense({ match }) {
                                 <Link to={`/receipt/add/${expense.id}`}>
                                     <MdAttachFile color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
                                 </Link>
+                                <Button type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem(expense.id) }}>
+                                <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
+                            </Button>
                             </div>
                         </TableCell>
                     </Tile>

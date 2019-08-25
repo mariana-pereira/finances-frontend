@@ -109,3 +109,30 @@ export const ValueCell = styled.div`
     align-items: center;
     justify-content: center;
 `;
+
+export const Button = styled.button`
+    border: 0;
+    background: #ccc2da;
+    cursor: pointer;
+`;
+
+export const Footer = styled.footer`
+    width: 100%;
+    height: 60px;
+    margin-top: 30px;
+    position: fixed;
+    bottom: 0;
+    
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    h4 {
+        font-size: 15px;
+        color: #2e2f2b;
+        margin-right: 20px;
+    }
+`;
