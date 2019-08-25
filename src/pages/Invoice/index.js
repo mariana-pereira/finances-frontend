@@ -21,28 +21,28 @@ export default function Invoice() {
   return (
     <Container>
       <Side>
-        <SideMenu/>
+        <SideMenu />
       </Side>
       <Content>
         <Top>
-          <TopHeader/>
+          <TopHeader />
         </Top>
         <div><h1>Faturas</h1></div>
         {invoices.map(invoice => (
           <Link key={invoice.id} to={`/invoice/detail/${invoice.id}`}>
-          <AccountContainer>
-            <Title>{invoice.name}</Title>
-            <Type>{invoice.card_id}</Type>
-            <Amount>
-              <span>vencimento:</span>
-              <span>{invoice.expiryDate}</span>
-            </Amount>
-            <Amount>
-              <span>valor:</span>
-              <span>{invoice.invoiceAmount}</span>
-            </Amount>
-          </AccountContainer>
-        </Link>
+            <AccountContainer>
+              <Title>{invoice.name}</Title>
+              <Type>{invoice.card.name}</Type>
+              <Amount>
+                <span>vencimento:</span>
+                <span>{invoice.expiryDate}</span>
+              </Amount>
+              <Amount>
+                <span>valor:</span>
+                <span>{invoice.invoiceAmount}</span>
+              </Amount>
+            </AccountContainer>
+          </Link>
         ))}
       </Content>
     </Container>

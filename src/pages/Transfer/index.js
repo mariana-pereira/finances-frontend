@@ -1,54 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import SideMenu from '../../components/SideMenu';
 import TopHeader from '../../components/TopHeader';
+import api from '../../services/api';
 
 import { Container, Content, Side, Top, TransferBox, Check, Button, AccountContainer, Amount, Title, Type } from './styles';
 
 
 export default function Transfer() {
-  const [originValue, setOriginValue] = useState(null);
-  const [targetValue, setTargetValue] = useState(null);
+  const [originValue, setOriginValue] = useState('');
+  const [targetValue, setTargetValue] = useState('');
+  const [accounts, setAccounts] = useState([]);
+  const [originAccount, setOriginAccount] = useState({});
+  const [targetAccount, setTargetAccount] = useState({});
 
-  function handleOriginChange(event) {
-    setOriginValue(event.target.value);
+  useEffect(() => {
+    async function loadAccounts() {
+      const response = await api.get('/accounts');
+
+      setAccounts(response.data.accounts);
+    }
+    loadAccounts();
+
+  }, []);
+
+  async function loadAccount(originValue, targetValue) {
+    const origin = await api.get(`/accounts/${originValue}`);
+    const target = await api.get(`/accounts/${targetValue}`);
+
+    console.log(originValue)
   }
 
-  function handleTargetChange(event) {
-    setTargetValue(event.target.value);
-  }
-
+  loadAccount(originValue, targetValue);
+  
   return (
     <Container>
       <Side>
-        <SideMenu/>
+        <SideMenu />
       </Side>
       <Content>
         <Top>
-          <TopHeader/>
+          <TopHeader />
         </Top>
         <div><h1>Transferir</h1></div>
         <TransferBox>
           <div>
             <Check
               value={originValue}
-              onChange={handleOriginChange}
+              onChange={e => setOriginValue(e.target.value)}
               style={{ marginRight: '150px' }}
             >
-              <option value="itau">Itaú</option>
-              <option value="santander">Santander</option>
-              <option value="nubank">Nubank</option>
-              <option value="inter">Inter</option>
+              {accounts.map(account => (
+                <option key={account.id} value={account.id}>{account.bank}</option>
+              ))}
             </Check>
             <Check
               value={targetValue}
-              onChange={handleTargetChange}
+              onChange={e => setTargetValue(e.target.value)}
               style={{ marginLeft: '150px' }}
             >
-              <option value="itau">Itaú</option>
-              <option value="santander">Santander</option>
-              <option value="nubank">Nubank</option>
-              <option value="inter">Inter</option>
+              {accounts.map(account => (
+                <option key={account.id} value={account.id}>{account.bank}</option>
+              ))}
             </Check>
           </div>
           <div>

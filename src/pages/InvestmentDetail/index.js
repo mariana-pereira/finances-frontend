@@ -6,9 +6,9 @@ import SideMenu from '../../components/SideMenu';
 import TopHeader from '../../components/TopHeader';
 import api from '../../services/api';
 
-import { Container, Side, Top, Content, Card, CardContainer } from './styles';
+import { Container, Side, Top, Content, Button, Card, CardContainer } from './styles';
 
-export default function InvestmentDetail({ match }) {
+export default function InvestmentDetail({ match, history }) {
     const [investment, setInvestment] = useState({});
 
     useEffect(() => {
@@ -16,20 +16,26 @@ export default function InvestmentDetail({ match }) {
             const response = await api.get(`/investments/${match.params.id}`);
 
             setInvestment(response.data.investment);
-            
+
         }
         loadInvestment();
-        
+
     }, []);
+
+    async function deleteItem() {
+        api.delete(`/investments/${investment.id}`);
+
+        history.push(`/investment`);
+    }
 
     return (
         <Container>
             <Side>
-                <SideMenu/>
+                <SideMenu />
             </Side>
             <Content>
                 <Top>
-                    <TopHeader/>
+                    <TopHeader />
                 </Top>
                 <div>
                     <h1>{investment.name}</h1>
@@ -43,8 +49,12 @@ export default function InvestmentDetail({ match }) {
                     <p>Valor total: {investment.totalAmount}</p>
                 </div>
                 <div>
-                    <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
-                    <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
+                    <Button type='button'>
+                        <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
+                    </Button>
+                    <Button type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem() }}>
+                        <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
+                    </Button>
                 </div>
                 <CardContainer>
                     <Link to={`/profit/add/${investment.id}`}>
@@ -53,12 +63,12 @@ export default function InvestmentDetail({ match }) {
                             <h1>Adicionar rendimentos</h1>
                         </Card>
                     </Link>
-                    
-                        <Card>
-                            <MdList color='#695eb8' size={30} />
-                            <h1>Listar rendimentos</h1>
-                        </Card>
-                    
+
+                    <Card>
+                        <MdList color='#695eb8' size={30} />
+                        <h1>Listar rendimentos</h1>
+                    </Card>
+
                 </CardContainer>
             </Content>
         </Container>

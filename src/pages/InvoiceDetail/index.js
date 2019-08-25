@@ -6,9 +6,9 @@ import SideMenu from '../../components/SideMenu';
 import TopHeader from '../../components/TopHeader';
 import api from '../../services/api';
 
-import { Container, Side, Top, Content, Card, CardContainer } from './styles';
+import { Container, Side, Top, Content, Button, Card, CardContainer } from './styles';
 
-export default function InvoiceDetail({ match }) {
+export default function InvoiceDetail({ match, history }) {
     const [invoice, setInvoice] = useState({});
 
     useEffect(() => {
@@ -16,18 +16,24 @@ export default function InvoiceDetail({ match }) {
             const response = await api.get(`/invoices/${match.params.id}`);
 
             setInvoice(response.data.invoice);
-            console.log()
         }
         loadInvoice();
     }, []);
+
+    async function deleteItem() {
+        api.delete(`/invoices/${invoice.id}`);
+
+        history.push(`/invoice`);
+    }
+
     return (
         <Container>
             <Side>
-                <SideMenu/>
+                <SideMenu />
             </Side>
             <Content>
                 <Top>
-                    <TopHeader/>
+                    <TopHeader />
                 </Top>
                 <div>
                     <h1>{invoice.name}</h1>
@@ -37,12 +43,16 @@ export default function InvoiceDetail({ match }) {
                     {invoice.paid === true ? (
                         <p>Paga</p>
                     ) : (
-                        <p>Aberta</p>
-                    )}
+                            <p>Aberta</p>
+                        )}
                 </div>
                 <div>
-                    <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
-                    <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
+                    <Button type='button'>
+                        <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
+                    </Button>
+                    <Button type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem() }}>
+                        <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
+                    </Button>
                 </div>
                 <CardContainer>
                     <Link to={`/expense/add/${invoice.id}`}>

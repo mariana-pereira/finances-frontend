@@ -47,11 +47,10 @@ export const Content = styled.div`
 
 export const CardContainer = styled.div`
     width: 100%;
-    height: 250px;
-    
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px
 `;
 
 export const Card = styled.div`
@@ -75,6 +74,11 @@ export const Card = styled.div`
         color: #2e2f2b;
         font-size: 16px;
     }
+`;
+
+export const ActionButton = styled.button`
+    border: 0;
+    background: #bdb4c9;
 `;
 
 export const Button = styled.button`

@@ -56,3 +56,7 @@ export const Content = styled.div`
    }
 `;
 
+export const Button = styled.button`
+    border: 0;
+    background: #fff;
+`;

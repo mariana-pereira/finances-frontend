@@ -6,7 +6,7 @@ import SideMenu from '../../components/SideMenu';
 import TopHeader from '../../components/TopHeader';
 import api from '../../services/api';
 
-import { Container, Side, Top, Content, Card, CardContainer, Button } from './styles';
+import { Container, Side, Top, Content, ActionButton, Card, CardContainer, Button } from './styles';
 
 export default function Company() {
   const [companies, setCompanies] = useState([]);
@@ -20,28 +20,39 @@ export default function Company() {
     loadCompanies();
   }, []);
 
+  async function deleteItem(id) {
+    api.delete(`/companies/${id}`);
+
+    setCompanies(companies.filter(company => company.id !== id));
+
+  }
+
   return (
     <Container>
       <Side>
-        <SideMenu/>
+        <SideMenu />
       </Side>
       <Content>
         <Top>
-          <TopHeader/>
+          <TopHeader />
         </Top>
         <div>
           <h1>Empresas</h1>
         </div>
         <CardContainer>
           {companies.map(company => (
-            <Card key={company}>
-            <MdBusiness color='#695eb8' size={30} />
-            <h1>{company.name}</h1>
-            <div>
-              <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
-              <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
-            </div>
-          </Card>
+            <Card key={company.id}>
+              <MdBusiness color='#695eb8' size={30} />
+              <h1>{company.name}</h1>
+              <div>
+                <ActionButton type='button'>
+                  <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
+                </ActionButton>
+                <ActionButton type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem(company.id) }}>
+                  <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
+                </ActionButton>
+              </div>
+            </Card>
           ))}
         </CardContainer>
         <div>

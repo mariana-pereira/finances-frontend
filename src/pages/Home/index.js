@@ -17,6 +17,25 @@ export default function Home() {
   const [outcomes, setOutcomes] = useState([]);
   const [expenses, setExpenses] = useState([]);
 
+  const date = new Date();
+  const month = formatDate(new Date());
+  const monthIndex = date.getMonth();
+  const year = date.getFullYear();
+
+  console.log(month, monthIndex, year)
+    
+    function formatDate(date) {
+        var monthNames = [
+          "Janeiro", "Fevereiro", "Março",
+          "Abril", "Maio", "Junho", "Julho",
+          "Agosto", "Setembro", "Outubro",
+          "Novembro", "Decembro"
+        ];
+        var monthIndex = date.getMonth();
+      
+        return monthNames[monthIndex];
+      }
+
   useEffect(() => {
     async function loadAccounts() {
       const response = await api.get('/accounts');
@@ -39,7 +58,8 @@ export default function Home() {
     async function loadInvoices() {
       const response = await api.get('/invoices/month', {
         headers: {
-          month: 'Junho',
+          month: month,
+          year: year
         }
       });
 
@@ -52,7 +72,8 @@ export default function Home() {
     async function loadIncomes() {
       const response = await api.get('/movimentations/month/income', {
         headers: {
-          month: 8,
+          month: monthIndex,
+          year: year
         }
       })
 
@@ -65,7 +86,8 @@ export default function Home() {
     async function loadOutcomes() {
       const response = await api.get('/movimentations/month/outcome', {
         headers: {
-          month: 7,
+          month: monthIndex,
+          year: year
         }
       })
 
@@ -78,7 +100,8 @@ export default function Home() {
     async function loadExpenses() {
       const response = await api.get('/expenses/month', {
         headers: {
-          month: 7,
+          month: monthIndex,
+          year: year
         }
       })
 
@@ -151,10 +174,10 @@ export default function Home() {
                 <span>{income.category}</span>
               </TableCell>
               <TableCell>
-                <span>{income.company_id}</span>
+                <span>{income.company.name}</span>
               </TableCell>
               <TableCell>
-                <span>{income.account_id}</span>
+                <span>{income.account.bank}</span>
               </TableCell>
             </Tile>
             ))}
@@ -190,10 +213,10 @@ export default function Home() {
                 <span>{outcome.category}</span>
               </TableCell>
               <TableCell>
-                <span>{outcome.company_id}</span>
+                <span>{outcome.company.name}</span>
               </TableCell>
               <TableCell>
-                <span>{outcome.account_id}</span>
+                <span>{outcome.account.bank}</span>
               </TableCell>
             </Tile>
             ))}
@@ -232,7 +255,7 @@ export default function Home() {
                 <span>{expense.category}</span>
               </TableCell>
               <TableCell>
-                <span>{}</span>
+                <span>{expense.card.name}</span>
               </TableCell>
             </Tile>
             ))}

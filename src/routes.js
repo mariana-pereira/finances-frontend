@@ -66,8 +66,8 @@ const Routes = () => (
             <PrivateRoute path='/card/add' component={AddCard} />
             <PrivateRoute path='/card/detail/:id' component={CardDetail} />
             <PrivateRoute path='/target' exact component={Target} />
-            <PrivateRoute path='/target/add' component={AddTarget} />
-            <PrivateRoute path='/target/detail' component={TargetDetail} />
+            <PrivateRoute path='/target/add/' component={AddTarget} />
+            <PrivateRoute path='/target/detail/:id' component={TargetDetail} />
             <PrivateRoute path='/investment' exact component={Investment} />
             <PrivateRoute path='/investment/add/:id' component={AddInvestment} />
             <PrivateRoute path='/investment/detail/:id' component={InvestmentDetail} />

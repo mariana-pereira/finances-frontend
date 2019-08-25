@@ -39,7 +39,6 @@ export const Content = styled.div`
 `;
 
 export const ExtractContainer = styled.div`
-    height: 600px;
     border: 1px #fff;
     border-radius: 5px;
     background: #fff;
@@ -88,4 +87,9 @@ export const TableCell = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+`;
+
+export const Button = styled.button`
+    border: 0;
+    background: #ccc2da;
 `;

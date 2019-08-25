@@ -6,9 +6,9 @@ import SideMenu from '../../components/SideMenu';
 import TopHeader from '../../components/TopHeader';
 import api from '../../services/api';
 
-import { Container, Side, Top, Content, Card, CardContainer } from './styles';
+import { Container, Side, Top, Content, Button, Card, CardContainer } from './styles';
 
-export default function CardDetail({ match }) {
+export default function CardDetail({ match, history }) {
     const [card, setCard] = useState({});
 
     useEffect(() => {
@@ -20,14 +20,20 @@ export default function CardDetail({ match }) {
         loadCard();
     }, []);
 
+    async function deleteItem() {
+        api.delete(`/cards/${card.id}`);
+
+        history.push(`/card`);
+    }
+
     return (
         <Container>
             <Side>
-                <SideMenu/>
+                <SideMenu />
             </Side>
             <Content>
                 <Top>
-                    <TopHeader/>
+                    <TopHeader />
                 </Top>
                 <div>
                     <h1>{card.name}</h1>
@@ -37,8 +43,12 @@ export default function CardDetail({ match }) {
                     <p>Limite disponível: {card.availableLimit}</p>
                 </div>
                 <div>
-                    <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
-                    <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
+                    <Button type='button'>
+                        <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
+                    </Button>
+                    <Button type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem() }}>
+                        <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
+                    </Button>
                 </div>
                 <CardContainer>
                     <Link to={`/invoice/add/${card.id}`}>

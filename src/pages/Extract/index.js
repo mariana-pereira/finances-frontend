@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { MdDelete } from "react-icons/md";
 
 import SideMenu from '../../components/SideMenu';
 import TopHeader from '../../components/TopHeader';
 import api from '../../services/api';
 
-import { Container, Side, Content, Top, ExtractContainer, TableCell, Tile, HeaderCell, HeaderTile } from './styles';
+import { Container, Side, Content, Top, ExtractContainer, TableCell, Tile, HeaderCell, HeaderTile, Button } from './styles';
 
 export default function Extract() {
   const [movimentations, setMovimentations] = useState([]);
@@ -18,14 +19,20 @@ export default function Extract() {
     loadMovimentations();
   }, []);
 
+  async function deleteItem(id) {
+    api.delete(`/movimentations/${id}`);
+
+    setMovimentations(movimentations.filter(movimentation => movimentation.id !== id));
+  }
+
   return (
     <Container>
       <Side>
-        <SideMenu/>
+        <SideMenu />
       </Side>
       <Content>
         <Top>
-          <TopHeader/>
+          <TopHeader />
         </Top>
         <h1>Extrato</h1>
         <ExtractContainer>
@@ -45,25 +52,33 @@ export default function Extract() {
             <HeaderCell>
               <span>Conta</span>
             </HeaderCell>
+            <HeaderCell>
+              <span></span>
+            </HeaderCell>
           </HeaderTile>
           {movimentations.map(movimentation => (
             <Tile key={movimentation.id}>
-            <TableCell>
-              <span>{movimentation.date}</span>
-            </TableCell>
-            <TableCell>
-              <span>{movimentation.amount}</span>
-            </TableCell>
-            <TableCell>
-              <span>{movimentation.category}</span>
-            </TableCell>
-            <TableCell>
-              <span>{movimentation.company_id}</span>
-            </TableCell>
-            <TableCell>
-              <span>{movimentation.account_id}</span>
-            </TableCell>
-          </Tile>
+              <TableCell>
+                <span>{movimentation.date}</span>
+              </TableCell>
+              <TableCell>
+                <span>{movimentation.amount}</span>
+              </TableCell>
+              <TableCell>
+                <span>{movimentation.category}</span>
+              </TableCell>
+              <TableCell>
+                <span>{movimentation.company.name}</span>
+              </TableCell>
+              <TableCell>
+                <span>{movimentation.account.bank}</span>
+              </TableCell>
+              <TableCell>
+                <Button type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem(movimentation.id) }}>
+                  <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
+                </Button>
+              </TableCell>
+            </Tile>
           ))}
         </ExtractContainer>
       </Content>

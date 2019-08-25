@@ -29,7 +29,7 @@ export default function Target() {
         </Top>
         <div><h1>Objetivos</h1></div>
         {targets.map(target => (
-          <Link key={target.id} to='/target/detail'>
+          <Link key={target.id} to={`/target/detail/${target.id}`}>
           <AccountContainer>
             <Title>{target.name}</Title>
             <Type>{target.deadline}</Type>
