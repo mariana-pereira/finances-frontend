@@ -18,21 +18,21 @@ export default function Home() {
   const [expenses, setExpenses] = useState([]);
 
   const date = new Date();
-  const month = formatDate(new Date());
+  const month = formatMonth(new Date());
   const monthIndex = date.getMonth() + 1;
   const year = date.getFullYear();
-    
-    function formatDate(date) {
-        var monthNames = [
-          "Janeiro", "Fevereiro", "Março",
-          "Abril", "Maio", "Junho", "Julho",
-          "Agosto", "Setembro", "Outubro",
-          "Novembro", "Dezembro"
-        ];
-        var monthIndex = date.getMonth();
-      
-        return monthNames[monthIndex];
-      }
+
+  function formatMonth(date) {
+    var monthNames = [
+      "Janeiro", "Fevereiro", "Março",
+      "Abril", "Maio", "Junho", "Julho",
+      "Agosto", "Setembro", "Outubro",
+      "Novembro", "Dezembro"
+    ];
+    var monthIndex = date.getMonth();
+
+    return monthNames[monthIndex];
+  }  
 
   useEffect(() => {
     async function loadAccounts() {
@@ -111,11 +111,11 @@ export default function Home() {
   return (
     <Container>
       <Side>
-        <SideMenu/>
+        <SideMenu />
       </Side>
       <Content>
         <Top>
-          <TopHeader/>
+          <TopHeader />
         </Top>
         <CardContainer>
           <Link to='/account'>
@@ -162,22 +162,22 @@ export default function Home() {
             </HeaderTile>
             {incomes.map(income => (
               <Tile key={income.id}>
-              <TableCell>
-                <span>{income.date}</span>
-              </TableCell>
-              <TableCell>
-                <span>{income.amount}</span>
-              </TableCell>
-              <TableCell>
-                <span>{income.category}</span>
-              </TableCell>
-              <TableCell>
-                <span>{income.company.name}</span>
-              </TableCell>
-              <TableCell>
-                <span>{income.account.bank}</span>
-              </TableCell>
-            </Tile>
+                <TableCell>
+                  <span>{income.date}</span>
+                </TableCell>
+                <TableCell>
+                  <span>{income.amount}</span>
+                </TableCell>
+                <TableCell>
+                  <span>{income.category}</span>
+                </TableCell>
+                <TableCell>
+                  <span>{income.company.name}</span>
+                </TableCell>
+                <TableCell>
+                  <span>{income.account.bank}</span>
+                </TableCell>
+              </Tile>
             ))}
           </Table>
           <h1>Saídas</h1>
@@ -201,22 +201,22 @@ export default function Home() {
             </HeaderTile>
             {outcomes.map(outcome => (
               <Tile key={outcome.id}>
-              <TableCell>
-                <span>{outcome.date}</span>
-              </TableCell>
-              <TableCell>
-                <span>{outcome.amount}</span>
-              </TableCell>
-              <TableCell>
-                <span>{outcome.category}</span>
-              </TableCell>
-              <TableCell>
-                <span>{outcome.company.name}</span>
-              </TableCell>
-              <TableCell>
-                <span>{outcome.account.bank}</span>
-              </TableCell>
-            </Tile>
+                <TableCell>
+                  <span>{outcome.date}</span>
+                </TableCell>
+                <TableCell>
+                  <span>{outcome.amount}</span>
+                </TableCell>
+                <TableCell>
+                  <span>{outcome.category}</span>
+                </TableCell>
+                <TableCell>
+                  <span>{outcome.company.name}</span>
+                </TableCell>
+                <TableCell>
+                  <span>{outcome.account.bank}</span>
+                </TableCell>
+              </Tile>
             ))}
           </Table>
           <h1>Despesas</h1>
@@ -240,22 +240,22 @@ export default function Home() {
             </HeaderTile>
             {expenses.map(expense => (
               <Tile key={expense.id}>
-              <TableCell>
-                <span>{expense.date}</span>
-              </TableCell>
-              <TableCell>
-                <span>{expense.amount}</span>
-              </TableCell>
-              <TableCell>
-                <span>{expense.shop}</span>
-              </TableCell>
-              <TableCell>
-                <span>{expense.category}</span>
-              </TableCell>
-              <TableCell>
-                <span>{expense.card.name}</span>
-              </TableCell>
-            </Tile>
+                <TableCell>
+                  <span>{expense.date}</span>
+                </TableCell>
+                <TableCell>
+                  <span>{expense.amount}</span>
+                </TableCell>
+                <TableCell>
+                  <span>{expense.shop}</span>
+                </TableCell>
+                <TableCell>
+                  <span>{expense.category}</span>
+                </TableCell>
+                <TableCell>
+                  <span>{expense.card.name}</span>
+                </TableCell>
+              </Tile>
             ))}
           </Table>
         </TileContainer>

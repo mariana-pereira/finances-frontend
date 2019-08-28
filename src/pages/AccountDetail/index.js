@@ -45,9 +45,11 @@ export default function AccountDetail({ match, history }) {
                     <p>Saldo investido: {account.investmentsBalance}</p>
                 </div>
                 <div>
-                    <Button type='button'>
-                        <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
-                    </Button>
+                    <Link to={`/account/edit/${account.id}`}>
+                        <Button type='button'>
+                            <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
+                        </Button>
+                    </Link>
                     <Button type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem() }}>
                         <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
                     </Button>

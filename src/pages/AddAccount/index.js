@@ -1,17 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import SideMenu from '../../components/SideMenu';
 import api from '../../services/api';
 
 import { Container, Side, Content, Form, Title, Field, Check, ButtonContainer, FormButton } from './styles';
 
-export default function AddAccount() {
+export default function AddAccount({ match }) {
   const [bank, setBank] = useState('');
   const [branch, setBranch] = useState('');
   const [accountNumber, setAccountNumber] = useState('');
   const [typeValue, setTypeValue] = useState('');
 
   const types = ['Conta Corrente', 'Conta Poupança', 'Conta de pagamentos', 'Corretora'];
+
+  useEffect(() => {
+    async function setFields() {
+      if (match.params.id) {
+        const response = await api.get(`/accounts/${match.params.id}`);
+        setBank(response.data.account.bank);
+        setBranch(response.data.account.branch);
+        setAccountNumber(response.data.account.accountNumber);
+        setTypeValue(response.data.account.type);
+      }
+    }
+    setFields();
+  }, []);
 
   function handleClear() {
     setBank('');
@@ -23,9 +36,16 @@ export default function AddAccount() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    await api.post('/accounts', {
-      bank, branch, accountNumber, type: typeValue
-    });
+    if (match.params.id) {
+      await api.put(`/accounts/${match.params.id}`, {
+        bank, branch, accountNumber, type: typeValue
+      });
+
+    } else {
+      await api.post('/accounts', {
+        bank, branch, accountNumber, type: typeValue
+      });
+    }
 
     handleClear();
   }
@@ -33,11 +53,11 @@ export default function AddAccount() {
   return (
     <Container>
       <Side>
-        <SideMenu/>
+        <SideMenu />
       </Side>
       <Content>
         <Form onSubmit={handleSubmit} >
-          <Title>Adicionar Conta</Title>
+          {match.params.id ? (<Title>Editar Conta</Title>) : (<Title>Adicionar Conta</Title>)}
           <Field
             type='text'
             name='bank'
