@@ -45,9 +45,11 @@ export default function Company() {
               <MdBusiness color='#695eb8' size={30} />
               <h1>{company.name}</h1>
               <div>
-                <ActionButton type='button'>
-                  <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
-                </ActionButton>
+                <Link to={`/company/edit/${company.id}`}>
+                  <ActionButton type='button'>
+                    <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
+                  </ActionButton>
+                </Link>
                 <ActionButton type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem(company.id) }}>
                   <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
                 </ActionButton>

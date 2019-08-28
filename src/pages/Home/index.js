@@ -32,7 +32,13 @@ export default function Home() {
     var monthIndex = date.getMonth();
 
     return monthNames[monthIndex];
-  }  
+  } 
+  
+  function formatDate(date) {
+    var formatedDate = new Date(date);
+
+    return formatedDate.toLocaleDateString();
+  }
 
   useEffect(() => {
     async function loadAccounts() {
@@ -163,7 +169,7 @@ export default function Home() {
             {incomes.map(income => (
               <Tile key={income.id}>
                 <TableCell>
-                  <span>{income.date}</span>
+                  <span>{formatDate(income.date)}</span>
                 </TableCell>
                 <TableCell>
                   <span>{income.amount}</span>
@@ -202,7 +208,7 @@ export default function Home() {
             {outcomes.map(outcome => (
               <Tile key={outcome.id}>
                 <TableCell>
-                  <span>{outcome.date}</span>
+                  <span>{formatDate(outcome.date)}</span>
                 </TableCell>
                 <TableCell>
                   <span>{outcome.amount}</span>
@@ -241,7 +247,7 @@ export default function Home() {
             {expenses.map(expense => (
               <Tile key={expense.id}>
                 <TableCell>
-                  <span>{expense.date}</span>
+                  <span>{formatDate(expense.date)}</span>
                 </TableCell>
                 <TableCell>
                   <span>{expense.amount}</span>

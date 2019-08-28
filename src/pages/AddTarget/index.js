@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -8,10 +8,23 @@ import api from '../../services/api';
 
 import { Container, Side, Content, Form, Title, Field, ButtonContainer, FormButton } from './styles';
 
-export default function AddTarget() {
+export default function AddTarget({ match }) {
   const [name, setName] = useState('');
   const [necessaryAmount, setNecessaryAmount] = useState(null);
   const [deadline, setDeadline] = useState(new Date());
+
+  useEffect(() => {
+    async function setFields() {
+      if (match.params.id) {
+        const response = await api.get(`/targets/${match.params.id}`);
+
+        setName(response.data.target.name);
+        setNecessaryAmount(response.data.target.necessaryAmount);
+        setDeadline(new Date(response.data.target.deadline));
+      }
+    }
+    setFields();
+  }, []);
 
   function handleClear() {
     setName('');
@@ -22,9 +35,16 @@ export default function AddTarget() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    await api.post('/targets', {
-      name, necessaryAmount, deadline
-    });
+    if (match.params.id) {
+      await api.put('/targets', {
+        name, necessaryAmount, deadline
+      });
+
+    } else {
+      await api.post(`/targets/${match.params.id}`, {
+        name, necessaryAmount, deadline
+      });
+    }
 
     handleClear();
   }
@@ -32,11 +52,11 @@ export default function AddTarget() {
   return (
     <Container>
       <Side>
-        <SideMenu/>
+        <SideMenu />
       </Side>
       <Content>
         <Form onSubmit={handleSubmit} >
-          <Title>Adicionar Objetivo</Title>
+        {match.params.id ? (<Title>Editar Objetivo</Title>) : (<Title>Adicionar Objetivo</Title>)}
           <Field
             type='text'
             name='name'

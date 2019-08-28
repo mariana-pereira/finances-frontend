@@ -17,6 +17,7 @@ export default function AddAccount({ match }) {
     async function setFields() {
       if (match.params.id) {
         const response = await api.get(`/accounts/${match.params.id}`);
+        
         setBank(response.data.account.bank);
         setBranch(response.data.account.branch);
         setAccountNumber(response.data.account.accountNumber);

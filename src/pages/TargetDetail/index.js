@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MdEdit, MdDelete } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 import SideMenu from '../../components/SideMenu';
 import TopHeader from '../../components/TopHeader';
@@ -41,10 +42,12 @@ export default function TargetDetail({ match, history }) {
                     <p>Valor atual: {target.actualAmount}</p>
                 </div>
                 <div>
-                    <Button type='button'>
-                        <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
-                    </Button>
-                    <Button type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem() }}>
+                    <Link to={`/target/edit/${target.id}`}>
+                        <Button type='button'>
+                            <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
+                        </Button>
+                    </Link>
+                    <Button type='button' onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem() }}>
                         <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
                     </Button>
                 </div>

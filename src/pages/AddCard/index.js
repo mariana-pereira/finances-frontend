@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import SideMenu from '../../components/SideMenu';
 import api from '../../services/api';
 
 import { Container, Side, Content, Form, Title, Field, Check, ButtonContainer, FormButton } from './styles';
 
-export default function AddCard() {
+export default function AddCard({ match }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [totalLimit, setTotalLimit] = useState('');
@@ -16,9 +16,23 @@ export default function AddCard() {
   var i = null;
 
   for (i = 1; i < 32; i++) {
-      dates.push(i);
+    dates.push(i);
   }
 
+  useEffect(() => {
+    async function setFields() {
+      if (match.params.id) {
+        const response = await api.get(`/cards/${match.params.id}`);
+
+        setName(response.data.card.name);
+        setNumber(response.data.card.number);
+        setTotalLimit(response.data.card.totalLimit);
+        setAvailableLimit(response.data.card.availableLimit);
+        setExpiryDate(response.data.card.expiryDate);
+      }
+    }
+    setFields();
+  }, []);
 
   function handleClear() {
     setName('');
@@ -31,9 +45,16 @@ export default function AddCard() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    await api.post('/cards', {
-      name, number, totalLimit, availableLimit, expiryDate
-    });
+    if (match.params.id) {
+      await api.put(`/cards/${match.params.id}`, {
+        name, number, totalLimit, availableLimit, expiryDate
+      });
+
+    } else {
+      await api.post('/cards', {
+        name, number, totalLimit, availableLimit, expiryDate
+      });
+    }
 
     handleClear();
   }
@@ -41,11 +62,11 @@ export default function AddCard() {
   return (
     <Container>
       <Side>
-        <SideMenu/>
+        <SideMenu />
       </Side>
       <Content>
         <Form onSubmit={handleSubmit} >
-          <Title>Adicionar Cartão</Title>
+        {match.params.id ? (<Title>Editar Cartão</Title>) : (<Title>Adicionar Cartão</Title>)}
           <Field
             type='text'
             name='name'
