@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdEdit } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 import SideMenu from '../../components/SideMenu';
 import TopHeader from '../../components/TopHeader';
@@ -23,6 +24,12 @@ export default function Extract() {
     api.delete(`/movimentations/${id}`);
 
     setMovimentations(movimentations.filter(movimentation => movimentation.id !== id));
+  }
+
+  function formatDate(date) {
+    var formatedDate = new Date(date);
+
+    return formatedDate.toLocaleDateString();
   }
 
   return (
@@ -59,7 +66,7 @@ export default function Extract() {
           {movimentations.map(movimentation => (
             <Tile key={movimentation.id}>
               <TableCell>
-                <span>{movimentation.date}</span>
+                <span>{formatDate(movimentation.date)}</span>
               </TableCell>
               <TableCell>
                 <span>{movimentation.amount}</span>
@@ -74,6 +81,9 @@ export default function Extract() {
                 <span>{movimentation.account.bank}</span>
               </TableCell>
               <TableCell>
+                <Link to={`/movimentation/edit/${movimentation.id}`}>
+                  <MdEdit color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
+                </Link>
                 <Button type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem(movimentation.id) }}>
                   <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
                 </Button>

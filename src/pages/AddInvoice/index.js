@@ -18,11 +18,27 @@ export default function AddInvoice({ match }) {
 
   useEffect(() => {
     async function loadCard() {
-      const response = await api.get(`/cards/${match.params.id}`);
+      if (match.params.card) {
+        const response = await api.get(`/cards/${match.params.card}`);
 
-      setCard(response.data.card.name);
+        setCard(response.data.card.name);
+      }
     }
     loadCard();
+  }, []);
+
+  useEffect(() => {
+    async function setFields() {
+      if (match.params.invoice) {
+        const response = await api.get(`/invoices/${match.params.invoice}`);
+
+        setMonthValue(response.data.invoice.month);
+        setYear(response.data.invoice.year);
+        setExpiryDate(new Date(response.data.invoice.expiryDate));
+        //setCard(response.data.card.name);
+      }
+    }
+    setFields();
   }, []);
 
   function handleClear() {
@@ -34,11 +50,20 @@ export default function AddInvoice({ match }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const name = card.concat(" ", monthValue);
+    if (match.params.invoice) {
+      const name = card.concat(" ", monthValue);
 
-    await api.post(`/cards/${match.params.id}/invoices`, {
-      name, month: monthValue, year, expiryDate
-    });
+      await api.put(`/invoices/${match.params.invoice}`, {
+        name, month: monthValue, year, expiryDate, invoiceAmount: 350
+      });
+
+    } else {
+      const name = card.concat(" ", monthValue);
+
+      await api.post(`/cards/${match.params.card}/invoices`, {
+        name, month: monthValue, year, expiryDate
+      });
+    }
 
     handleClear();
   }
@@ -46,11 +71,11 @@ export default function AddInvoice({ match }) {
   return (
     <Container>
       <Side>
-        <SideMenu/>
+        <SideMenu />
       </Side>
       <Content>
         <Form onSubmit={handleSubmit}>
-          <Title>Adicionar Fatura</Title>
+        {match.params.invoice ? (<Title>Editar Fatura</Title>) : (<Title>Adicionar Fatura</Title>)}
           <Check value={monthValue} onChange={e => setMonthValue(e.target.value)}>
             {months.map(month => (
               <option key={month} value={month}>{month}</option>

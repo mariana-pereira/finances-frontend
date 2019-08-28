@@ -18,6 +18,12 @@ export default function Invoice() {
     loadInvoices();
   }, []);
 
+  function formatDate(date) {
+    var formatedDate = new Date(date);
+
+    return formatedDate.toLocaleDateString();
+  }
+
   return (
     <Container>
       <Side>
@@ -35,7 +41,7 @@ export default function Invoice() {
               <Type>{invoice.card.name}</Type>
               <Amount>
                 <span>vencimento:</span>
-                <span>{invoice.expiryDate}</span>
+                <span>{formatDate(invoice.expiryDate)}</span>
               </Amount>
               <Amount>
                 <span>valor:</span>

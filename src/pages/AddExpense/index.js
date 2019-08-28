@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -16,6 +16,21 @@ export default function AddExpense({ match }) {
 
   const categories = ['Alimentação', 'Assinaturas', 'Beleza', 'Contas', 'Esporte', 'Lazer', 'Pet', 'Saúde', 'Tech', 'Transporte', 'Outros'];
 
+  useEffect(() => {
+    async function setFields() {
+      if (match.params.expense) {
+        const response = await api.get(`/expenses/${match.params.expense}`);
+
+        setDate(new Date(response.data.expense.date));
+        setAmount(response.data.expense.amount);
+        setShop(response.data.expense.shop);
+        setCategoryValue(response.data.expense.category);
+
+      }
+    }
+    setFields();
+  }, []);
+
   function handleClear() {
     setDate(new Date());
     setAmount('');
@@ -26,9 +41,16 @@ export default function AddExpense({ match }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    await api.post(`/invoices/${match.params.id}/expenses`, {
-      date, amount, shop, category: categoryValue
-    });
+    if (match.params.expense) {
+      await api.put(`/invoices/${match.params.invoice}/expenses`, {
+        date, amount, shop, category: categoryValue
+      });
+
+    } else {
+      await api.post(`/invoices/${match.params.invoice}/expenses`, {
+        date, amount, shop, category: categoryValue
+      });
+    }
 
     handleClear();
   }
@@ -36,11 +58,11 @@ export default function AddExpense({ match }) {
   return (
     <Container>
       <Side>
-        <SideMenu/>
+        <SideMenu />
       </Side>
       <Content>
         <Form onSubmit={handleSubmit}>
-          <Title>Adicionar Despesa</Title>
+        {match.params.expense ? (<Title>Editar Despesa</Title>) : (<Title>Adicionar Despesa</Title>)}
           <DatePicker
             className='form-date'
             dateFormat="dd/MM/yyyy"

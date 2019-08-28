@@ -11,9 +11,11 @@ import { Container, Side, Content, Form, Title, Field, Check, ButtonContainer, F
 export default function AddOutcome({ match }) {
   const [date, setDate] = useState(new Date());
   const [amount, setAmount] = useState('');
-  const [category, setCategory] = useState('');
+  const [categoryValue, setCategoryValue] = useState('');
   const [companyValue, setCompanyValue] = useState('');
   const [companies, setCompanies] = useState([]);
+
+  const categories = ['Compras', 'Pagamento de Mensalidade', 'Pagamento de Fatura', 'Saque', 'Transferência'];
 
   const type = "Outcome";
 
@@ -22,14 +24,16 @@ export default function AddOutcome({ match }) {
       const response = await api.get('/companies')
 
       setCompanies(response.data.companies);
+
     }
     loadCompanies();
   }, []);
 
+
   function handleClear() {
     setDate(new Date());
     setAmount('');
-    setCategory('');
+    setCategoryValue('');
     setCompanyValue('');
   }
 
@@ -37,8 +41,9 @@ export default function AddOutcome({ match }) {
     e.preventDefault();
 
     await api.post(`/accounts/${match.params.id}/movimentations/outcome`, {
-      date, amount, type, category, company_id: companyValue
+      date, amount, type, category: categoryValue, company_id: companyValue
     });
+
 
     handleClear();
   }
@@ -46,11 +51,11 @@ export default function AddOutcome({ match }) {
   return (
     <Container>
       <Side>
-        <SideMenu/>
+        <SideMenu />
       </Side>
       <Content>
         <Form onSubmit={handleSubmit} >
-          <Title>Adicionar Debito</Title>
+          <Title>Adicionar Saída</Title>
           <DatePicker
             className='form-date'
             dateFormat="dd/MM/yyyy"
@@ -64,12 +69,10 @@ export default function AddOutcome({ match }) {
             value={amount}
             onChange={e => setAmount(e.target.value)}
           />
-          <Check value={category} onChange={e => setCategory(e.target.value)}>
-            <option value="Compras">Compras</option>
-            <option value="Pagamento de mensalidade">Pagamento de mensalidade</option>
-            <option value="Pagamento de fatura">Pagamento de fatura</option>
-            <option value="Saque">Saque</option>
-            <option value="Transferência">Transferência</option>
+          <Check value={categoryValue} onChange={e => setCategoryValue(e.target.value)}>
+            {categories.map(category => (
+              <option key={category} value={category}>{category}</option>
+            ))}
           </Check>
           <Check value={companyValue} onChange={e => setCompanyValue(e.target.value)}>
             {companies.map(company => (

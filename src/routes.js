@@ -15,6 +15,7 @@ import AddAccount from './pages/AddAccount';
 import AccountDetail from './pages/AccountDetail';
 import AddIncome from './pages/AddIncome';
 import AddOutcome from './pages/AddOutcome';
+import EditMovimentatiom from './pages/EditMovimentation';
 import Card from './pages/Card';
 import AddCard from './pages/AddCard';
 import CardDetail from './pages/CardDetail';
@@ -65,6 +66,7 @@ const Routes = () => (
 
             <PrivateRoute path='/income/add/:id' component={AddIncome} />
             <PrivateRoute path='/outcome/add/:id' component={AddOutcome} />
+            <PrivateRoute path='/movimentation/edit/:id' component={EditMovimentatiom} />
 
             <PrivateRoute path='/card' exact component={Card} />
             <PrivateRoute path='/card/add' component={AddCard} />
@@ -88,13 +90,14 @@ const Routes = () => (
             <PrivateRoute path='/company/edit/:id' component={AddCompany} />
 
             <PrivateRoute path='/invoice' exact component={Invoice} />
-            <PrivateRoute path='/invoice/add/:id' component={AddInvoice} />
+            <PrivateRoute path='/invoice/add/:card' component={AddInvoice} />
             <PrivateRoute path='/invoice/detail/:id' component={InvoiceDetail} />
-            <PrivateRoute path='/invoice/edit/:id' component={AddInvoice} />
+            <PrivateRoute path='/invoice/edit/:invoice' component={AddInvoice} />
             <PrivateRoute path='/invoice/:paid/paid/:id' component={PaidInvoice} />
 
             <PrivateRoute path='/expense/:id' exact component={Expense} />
-            <PrivateRoute path='/expense/add/:id' component={AddExpense} />
+            <PrivateRoute path='/expense/add/:invoice' component={AddExpense} />
+            <PrivateRoute path='/expense/edit/:expense' component={AddExpense} />
 
             <PrivateRoute path='/receipt/:id' exact component={Receipt} />
             <PrivateRoute path='/receipt/add/:id' component={AddReceipt} />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { MdAttachFile, MdReceipt, MdDelete } from "react-icons/md";
+import { MdAttachFile, MdReceipt, MdDelete, MdEdit } from "react-icons/md";
 
 import { Container, Side, Top, Content, Tile, HeaderCell, TableCell, HeaderTile, Button } from './styles';
 import SideMenu from '../../components/SideMenu';
@@ -22,18 +22,24 @@ export default function Expense({ match }) {
 
     async function deleteItem(id) {
         api.delete(`/expenses/${id}`);
-    
+
         setExpenses(expenses.filter(expense => expense.id !== id));
-      }
+    }
+
+    function formatDate(date) {
+        var formatedDate = new Date(date);
+
+        return formatedDate.toLocaleDateString();
+    }
 
     return (
         <Container>
             <Side>
-                <SideMenu/>
+                <SideMenu />
             </Side>
             <Content>
                 <Top>
-                    <TopHeader/>
+                    <TopHeader />
                 </Top>
                 <div className='content'><h1>Despesas</h1></div>
                 <HeaderTile>
@@ -56,7 +62,7 @@ export default function Expense({ match }) {
                 {expenses.map(expense => (
                     <Tile key={expense.id}>
                         <TableCell>
-                            <span>{expense.date}</span>
+                            <span>{formatDate(expense.date)}</span>
                         </TableCell>
                         <TableCell>
                             <span>{expense.amount}</span>
@@ -75,9 +81,12 @@ export default function Expense({ match }) {
                                 <Link to={`/receipt/add/${expense.id}`}>
                                     <MdAttachFile color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
                                 </Link>
+                                <Link to={``}>
+                                    <MdEdit color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
+                                </Link>
                                 <Button type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem(expense.id) }}>
-                                <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
-                            </Button>
+                                    <MdDelete color='#695eb8' size={30} style={{ marginLeft: '10px' }} />
+                                </Button>
                             </div>
                         </TableCell>
                     </Tile>

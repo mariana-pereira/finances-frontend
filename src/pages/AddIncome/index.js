@@ -11,9 +11,11 @@ import { Container, Side, Content, Form, Title, Field, Check, ButtonContainer, F
 export default function AddIncome({ match }) {
   const [date, setDate] = useState(new Date());
   const [amount, setAmount] = useState('');
-  const [category, setCategory] = useState('');
+  const [categoryValue, setCategoryValue] = useState('');
   const [companyValue, setCompanyValue] = useState('');
   const [companies, setCompanies] = useState([]);
+
+  const categories = ['Bonificação', 'Cashback', 'Extra', 'Rendimento', 'Salário', 'Transferência'];
 
   const type = "Income";
 
@@ -29,7 +31,7 @@ export default function AddIncome({ match }) {
   function handleClear() {
     setDate(new Date());
     setAmount('');
-    setCategory('');
+    setCategoryValue('');
     setCompanyValue('');
   }
 
@@ -37,7 +39,7 @@ export default function AddIncome({ match }) {
     e.preventDefault();
 
     await api.post(`/accounts/${match.params.id}/movimentations/income`, {
-      date, amount, type, category, company_id: companyValue
+      date, amount, type, category: categoryValue, company_id: companyValue
     });
 
     handleClear();
@@ -65,13 +67,10 @@ export default function AddIncome({ match }) {
             onChange={e => setAmount(e.target.value)}
           />
 
-          <Check value={category} onChange={e => setCategory(e.target.value)}>
-            <option value="bonificacao">Bonificação</option>
-            <option value="cashback">Cashback</option>
-            <option value="extra">Extra</option>
-            <option value="rendimento">Rendimento</option>
-            <option value="salario">Salário</option>
-            <option value="transferencia">Transferência</option>
+          <Check value={categoryValue} onChange={e => setCategoryValue(e.target.value)}>
+            {categories.map(category => (
+              <option key={category} value={category}>{category}</option>
+            ))}
           </Check>
           <Check value={companyValue} onChange={e => setCompanyValue(e.target.value)}>
             {companies.map(company => (

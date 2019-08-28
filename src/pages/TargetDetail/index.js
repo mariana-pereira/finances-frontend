@@ -26,6 +26,12 @@ export default function TargetDetail({ match, history }) {
         history.push(`/target`);
     }
 
+    function formatDate(date) {
+        var formatedDate = new Date(date);
+
+        return formatedDate.toLocaleDateString();
+    }
+
     return (
         <Container>
             <Side>
@@ -37,7 +43,7 @@ export default function TargetDetail({ match, history }) {
                 </Top>
                 <div>
                     <h1>{target.name}</h1>
-                    <h4 style={{ marginBottom: '15px' }}>{target.deadline}</h4>
+                    <h4 style={{ marginBottom: '15px' }}>{formatDate(target.deadline)}</h4>
                     <p>Valor necessário: {target.necessaryAmount}</p>
                     <p>Valor atual: {target.actualAmount}</p>
                 </div>

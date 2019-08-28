@@ -92,4 +92,5 @@ export const TableCell = styled.div`
 export const Button = styled.button`
     border: 0;
     background: #ccc2da;
+    cursor: pointer;
 `;

@@ -28,6 +28,12 @@ export default function InvestmentDetail({ match, history }) {
         history.push(`/investment`);
     }
 
+    function formatDate(date) {
+        var formatedDate = new Date(date);
+
+        return formatedDate.toLocaleDateString();
+    }
+
     return (
         <Container>
             <Side>
@@ -42,8 +48,8 @@ export default function InvestmentDetail({ match, history }) {
                     <h4>{investment.type} {investment.tax}</h4>
                     <h4>Banco {investment.account_id}</h4>
                     <h4>Objetivo: {investment.target_id}</h4>
-                    <h4>Data da aplicação: {investment.applicationDate}</h4>
-                    <h4 style={{ marginBottom: '15px' }}>Data de resgate: {investment.redeemDate}</h4>
+                    <h4>Data da aplicação: {formatDate(investment.applicationDate)}</h4>
+                    <h4 style={{ marginBottom: '15px' }}>Data de resgate: {formatDate(investment.redeemDate)}</h4>
                     <p>Valor aplicado: {investment.applicationAmount}</p>
                     <p>Valor de rendimentos: {investment.profitsAmount}</p>
                     <p>Valor total: {investment.totalAmount}</p>

@@ -26,6 +26,12 @@ export default function InvoiceDetail({ match, history }) {
         history.push(`/invoice`);
     }
 
+    function formatDate(date) {
+        var formatedDate = new Date(date);
+    
+        return formatedDate.toLocaleDateString();
+      }
+
     return (
         <Container>
             <Side>
@@ -38,7 +44,7 @@ export default function InvoiceDetail({ match, history }) {
                 <div>
                     <h1>{invoice.name}</h1>
                     <h4>{invoice.month} {invoice.year}</h4>
-                    <h4 style={{ marginBottom: '15px' }}>{invoice.expiryDate}</h4>
+                    <h4 style={{ marginBottom: '15px' }}>{formatDate(invoice.expiryDate)}</h4>
                     <p>Valor: {invoice.invoiceAmount}</p>
                     {invoice.paid === true ? (
                         <p>Paga</p>
@@ -47,7 +53,7 @@ export default function InvoiceDetail({ match, history }) {
                         )}
                 </div>
                 <div>
-                    <Link to={`/invoice/edit/:id`}>
+                    <Link to={`/invoice/edit/${invoice.id}`}>
                         <Button type='button'>
                             <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
                         </Button>

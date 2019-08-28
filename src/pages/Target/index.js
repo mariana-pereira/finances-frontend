@@ -18,31 +18,37 @@ export default function Target() {
     loadTargets();
   }, []);
 
+  function formatDate(date) {
+    var formatedDate = new Date(date);
+
+    return formatedDate.toLocaleDateString();
+  }
+
   return (
     <Container>
       <Side>
-        <SideMenu/>
+        <SideMenu />
       </Side>
       <Content>
         <Top>
-          <TopHeader/>
+          <TopHeader />
         </Top>
         <div><h1>Objetivos</h1></div>
         {targets.map(target => (
           <Link key={target.id} to={`/target/detail/${target.id}`}>
-          <AccountContainer>
-            <Title>{target.name}</Title>
-            <Type>{target.deadline}</Type>
-            <Amount>
-              <span>Valor necessário:</span>
-              <span>{target.necessaryAmount}</span>
-            </Amount>
-            <Amount>
-              <span>Valor atual:</span>
-              <span>{target.actualAmount}</span>
-            </Amount>
-          </AccountContainer>
-        </Link>
+            <AccountContainer>
+              <Title>{target.name}</Title>
+              <Type>{formatDate(target.deadline)}</Type>
+              <Amount>
+                <span>Valor necessário:</span>
+                <span>{target.necessaryAmount}</span>
+              </Amount>
+              <Amount>
+                <span>Valor atual:</span>
+                <span>{target.actualAmount}</span>
+              </Amount>
+            </AccountContainer>
+          </Link>
         ))}
         <div>
           <Link to='/target/add'>
