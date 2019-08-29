@@ -10,12 +10,16 @@ import { Container, Side, Top, Content, Button, Card, CardContainer } from './st
 
 export default function InvestmentDetail({ match, history }) {
     const [investment, setInvestment] = useState({});
+    const [account, setAccount] = useState({});
+    const [target, setTarget] = useState({});
 
     useEffect(() => {
         async function loadInvestment() {
             const response = await api.get(`/investments/${match.params.id}`);
 
             setInvestment(response.data.investment);
+            setAccount(response.data.investment.account);
+            setTarget(response.data.investment.target);
 
         }
         loadInvestment();
@@ -46,8 +50,8 @@ export default function InvestmentDetail({ match, history }) {
                 <div>
                     <h1>{investment.name}</h1>
                     <h4>{investment.type} {investment.tax}</h4>
-                    <h4>Banco {investment.account_id}</h4>
-                    <h4>Objetivo: {investment.target_id}</h4>
+                    <h4>Banco {account.bank}</h4>
+                    <h4>Objetivo: {target.name}</h4>
                     <h4>Data da aplicação: {formatDate(investment.applicationDate)}</h4>
                     <h4 style={{ marginBottom: '15px' }}>Data de resgate: {formatDate(investment.redeemDate)}</h4>
                     <p>Valor aplicado: {investment.applicationAmount}</p>

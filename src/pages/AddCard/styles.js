@@ -35,6 +35,16 @@ export const Form = styled.form`
     display: flex;
     flex-direction: column;
     border-radius: 4px;
+
+    .form-date {
+    width: 440px;
+    margin-bottom: 30px;
+    height: 38px;
+    border-radius: 4px;
+    border: 1px solid #2e2f2b;
+    padding: 0 20px;
+    font-size: 14px; 
+    }
 `;
 
 export const Title = styled.h1`
@@ -45,15 +55,6 @@ export const Title = styled.h1`
 `;
 
 export const Field = styled.input`
-    margin-bottom: 30px;
-    height: 38px;
-    border-radius: 4px;
-    border: 1px solid #2e2f2b;
-    padding: 0 20px;
-    font-size: 14px;
-`;
-
-export const Check = styled.select`
     margin-bottom: 30px;
     height: 38px;
     border-radius: 4px;

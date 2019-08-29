@@ -26,6 +26,12 @@ export default function CardDetail({ match, history }) {
         history.push(`/card`);
     }
 
+    function formatDate(date) {
+        var formatedDate = new Date(date);
+
+        return formatedDate.toLocaleDateString();
+    }
+
     return (
         <Container>
             <Side>
@@ -38,7 +44,7 @@ export default function CardDetail({ match, history }) {
                 <div>
                     <h1>{card.name}</h1>
                     <h4>{card.number}</h4>
-                    <h4 style={{ marginBottom: '15px' }}>{card.expiryDate}</h4>
+                    <h4 style={{ marginBottom: '15px' }}>{formatDate(card.expiryDate)}</h4>
                     <p>Limite total: {card.totalLimit}</p>
                     <p>Limite disponível: {card.availableLimit}</p>
                 </div>

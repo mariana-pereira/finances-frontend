@@ -32,10 +32,10 @@ export default function Investment() {
           <Link key={investment.id} to={`/investment/detail/${investment.id}`}>
           <AccountContainer>
             <Title>{investment.name}</Title>
-            <Type>Banco {investment.account_id}</Type>
+            <Type>Banco {investment.account.bank}</Type>
             <Amount>
               <span>Objetivo:</span>
-              <span>{investment.target_id}</span>
+              <span>{investment.target.name}</span>
             </Amount>
             <Amount>
               <span>Valor aplicado:</span>

@@ -35,7 +35,6 @@ export default function AddInvoice({ match }) {
         setMonthValue(response.data.invoice.month);
         setYear(response.data.invoice.year);
         setExpiryDate(new Date(response.data.invoice.expiryDate));
-        //setCard(response.data.card.name);
       }
     }
     setFields();

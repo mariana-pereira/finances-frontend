@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import DatePicker from 'react-datepicker';
+
+import "react-datepicker/dist/react-datepicker.css";
 
 import SideMenu from '../../components/SideMenu';
 import api from '../../services/api';
 
-import { Container, Side, Content, Form, Title, Field, Check, ButtonContainer, FormButton } from './styles';
+import { Container, Side, Content, Form, Title, Field, ButtonContainer, FormButton } from './styles';
 
 export default function AddCard({ match }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [totalLimit, setTotalLimit] = useState('');
   const [availableLimit, setAvailableLimit] = useState('');
-  const [expiryDate, setExpiryDate] = useState('');
-
-  const dates = [];
-  var i = null;
-
-  for (i = 1; i < 32; i++) {
-    dates.push(i);
-  }
+  const [expiryDate, setExpiryDate] = useState(new Date());
 
   useEffect(() => {
     async function setFields() {
@@ -28,7 +24,7 @@ export default function AddCard({ match }) {
         setNumber(response.data.card.number);
         setTotalLimit(response.data.card.totalLimit);
         setAvailableLimit(response.data.card.availableLimit);
-        setExpiryDate(response.data.card.expiryDate);
+        setExpiryDate(new Date(response.data.invoice.expiryDate));
       }
     }
     setFields();
@@ -39,7 +35,7 @@ export default function AddCard({ match }) {
     setNumber('');
     setTotalLimit('');
     setAvailableLimit('');
-    setExpiryDate('');
+    setExpiryDate(new Date());
   }
 
   async function handleSubmit(e) {
@@ -99,11 +95,12 @@ export default function AddCard({ match }) {
             onChange={e => setAvailableLimit(e.target.value)}
 
           />
-          <Check value={expiryDate} onChange={e => setExpiryDate(e.target.value)}>
-            {dates.map(date => (
-              <option value={date}>{date}</option>
-            ))}
-          </Check>
+          <DatePicker
+            className='form-date'
+            dateFormat="dd/MM/yyyy"
+            selected={expiryDate}
+            onChange={date => setExpiryDate(date)}
+          />
           <ButtonContainer>
             <FormButton onClick={handleClear}>Cancelar</FormButton>
             <FormButton type="submit">Salvar</FormButton>

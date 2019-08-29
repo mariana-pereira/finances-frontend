@@ -22,35 +22,41 @@ export default function PaidInvoice({ match }) {
     loadInvoices();
   }, []);
 
+  function formatDate(date) {
+    var formatedDate = new Date(date);
+
+    return formatedDate.toLocaleDateString();
+  }
+
   return (
     <Container>
       <Side>
-        <SideMenu/>
+        <SideMenu />
       </Side>
       <Content>
         <Top>
-          <TopHeader/>
+          <TopHeader />
         </Top>
         {match.params.paid == 1 ? (
           <div><h1>Faturas Pagas</h1></div>
         ) : (
-          <div><h1>Faturas Abertas</h1></div>
-        )}
+            <div><h1>Faturas Abertas</h1></div>
+          )}
         {invoices.map(invoice => (
           <Link key={invoice.id} to='/invoice/detail'>
-          <AccountContainer>
-            <Title>{invoice.name}</Title>
-            <Type>{invoice.card_id}</Type>
-            <Amount>
-              <span>vencimento:</span>
-              <span>{invoice.expiryDate}</span>
-            </Amount>
-            <Amount>
-              <span>valor:</span>
-              <span>{invoice.invoiceAmount}</span>
-            </Amount>
-          </AccountContainer>
-        </Link>
+            <AccountContainer>
+              <Title>{invoice.name}</Title>
+              <Type>{invoice.card.name}</Type>
+              <Amount>
+                <span>vencimento:</span>
+                <span>{formatDate(invoice.expiryDate)}</span>
+              </Amount>
+              <Amount>
+                <span>valor:</span>
+                <span>{invoice.invoiceAmount}</span>
+              </Amount>
+            </AccountContainer>
+          </Link>
         ))}
       </Content>
     </Container>
