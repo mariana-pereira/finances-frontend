@@ -79,7 +79,7 @@ export const Button = styled.button`
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 60px;
+    margin-top: 40px;
 `;
 
 export const AccountContainer = styled.div`
@@ -122,4 +122,25 @@ export const Amount = styled.div`
         color: #2e2f2b;
         margin-right: 5px;
     }
+`;
+
+export const Form = styled.form`
+    width: 100%;
+    max-width: 300px;
+    margin: 30px auto 0;
+    padding: 30px;
+    background: #fff;
+  
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+`;
+
+export const Field = styled.input`
+    margin-top: 10px;
+    height: 38px;
+    border-radius: 4px;
+    border: 1px solid #2e2f2b;
+    padding: 0 20px;
+    font-size: 14px;
 `;

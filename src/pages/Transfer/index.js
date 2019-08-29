@@ -4,12 +4,12 @@ import SideMenu from '../../components/SideMenu';
 import TopHeader from '../../components/TopHeader';
 import api from '../../services/api';
 
-import { Container, Content, Side, Top, TransferBox, Check, Button, AccountContainer, Amount, Title, Type } from './styles';
-
+import { Container, Content, Side, Top, TransferBox, Check, Button, AccountContainer, Amount, Title, Type, Form, Field } from './styles';
 
 export default function Transfer() {
   const [originValue, setOriginValue] = useState('');
   const [targetValue, setTargetValue] = useState('');
+  const [amount, setAmount] = useState('');
   const [accounts, setAccounts] = useState([]);
   const [originAccount, setOriginAccount] = useState({});
   const [targetAccount, setTargetAccount] = useState({});
@@ -24,15 +24,47 @@ export default function Transfer() {
 
   }, []);
 
-  async function loadAccount(originValue, targetValue) {
-    const origin = await api.get(`/accounts/${originValue}`);
-    const target = await api.get(`/accounts/${targetValue}`);
+  async function handleOrigin(e) {
+    setOriginValue(e.target.value);
 
-    console.log(originValue)
+    const response = await api.get(`/accounts/${e.target.value}`);
+
+    setOriginAccount(response.data.account);
   }
 
-  loadAccount(originValue, targetValue);
-  
+  async function handleTarget(e) {
+    setTargetValue(e.target.value);
+
+    const response = await api.get(`/accounts/${e.target.value}`);
+
+    setTargetAccount(response.data.account);
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    await api.post(`/accounts/${originAccount.id}/movimentations/outcome`, {
+      date: new Date(),
+      amount,
+      type: 'Transferência',
+      category: 'Transferência',
+      company_id: 1
+    });
+
+    await api.post(`/accounts/${targetAccount.id}/movimentations/income`, {
+      date: new Date(),
+      amount,
+      type: 'Transferência',
+      category: 'Transferência',
+      company_id: 1
+    });
+
+    await api.patch(`/accounts/${originAccount.id}`);
+    await api.patch(`/accounts/${targetAccount.id}`);
+
+    setAmount('');
+  }
+
   return (
     <Container>
       <Side>
@@ -47,7 +79,7 @@ export default function Transfer() {
           <div>
             <Check
               value={originValue}
-              onChange={e => setOriginValue(e.target.value)}
+              onChange={(e) => handleOrigin(e)}
               style={{ marginRight: '150px' }}
             >
               {accounts.map(account => (
@@ -56,7 +88,7 @@ export default function Transfer() {
             </Check>
             <Check
               value={targetValue}
-              onChange={e => setTargetValue(e.target.value)}
+              onChange={(e) => handleTarget(e)}
               style={{ marginLeft: '150px' }}
             >
               {accounts.map(account => (
@@ -66,31 +98,40 @@ export default function Transfer() {
           </div>
           <div>
             <AccountContainer>
-              <Title>Banco Santander</Title>
-              <Type>Conta Corrente</Type>
+              <Title>Banco {originAccount.bank}</Title>
+              <Type>{originAccount.type}</Type>
               <Amount>
                 <span>Saldo em conta:</span>
-                <span>125.45</span>
+                <span>{originAccount.accountBalance}</span>
               </Amount>
               <Amount>
                 <span>Saldo investido:</span>
-                <span>55.78</span>
+                <span>{originAccount.investmentsBalance}</span>
               </Amount>
             </AccountContainer>
             <AccountContainer>
-              <Title>Banco Santander</Title>
-              <Type>Conta Corrente</Type>
+              <Title>Banco {targetAccount.bank}</Title>
+              <Type>{targetAccount.type}</Type>
               <Amount>
                 <span>Saldo em conta:</span>
-                <span>125.45</span>
+                <span>{targetAccount.accountBalance}</span>
               </Amount>
               <Amount>
                 <span>Saldo investido:</span>
-                <span>55.78</span>
+                <span>{targetAccount.investmentsBalance}</span>
               </Amount>
             </AccountContainer>
           </div>
-          <Button>Transferir</Button>
+          <Form onSubmit={handleSubmit}>
+            <Field
+              type='text'
+              name='amount'
+              placeholder='valor'
+              value={amount}
+              onChange={e => setAmount(e.target.value)}
+            />
+            <Button type='submit'>Transferir</Button>
+          </Form>
         </TransferBox>
       </Content>
     </Container>
