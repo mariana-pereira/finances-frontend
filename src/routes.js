@@ -26,6 +26,7 @@ import Investment from './pages/Investment';
 import AddInvestment from './pages/AddInvestment';
 import InvestmentDetail from './pages/InvestmentDetail';
 import AddProfit from './pages/AddProfit';
+import Profit from './pages/Profit';
 import Company from './pages/Company';
 import AddCompany from './pages/AddCompany';
 import Invoice from './pages/Invoice';
@@ -79,10 +80,11 @@ const Routes = () => (
             <PrivateRoute path='/target/edit/:id' component={AddTarget} />
 
             <PrivateRoute path='/investment' exact component={Investment} />
-            <PrivateRoute path='/investment/add/:id' component={AddInvestment} />
+            <PrivateRoute path='/investment/add/:account' component={AddInvestment} />
             <PrivateRoute path='/investment/detail/:id' component={InvestmentDetail} />
-            <PrivateRoute path='/investment/edit/:id' component={AddInvestment} />
+            <PrivateRoute path='/investment/edit/:investment' component={AddInvestment} />
 
+            <PrivateRoute path='/profit/:id' exact component={Profit} />
             <PrivateRoute path='/profit/add/:id' component={AddProfit} />
 
             <PrivateRoute path='/company' exact component={Company} />

@@ -59,9 +59,11 @@ export default function InvestmentDetail({ match, history }) {
                     <p>Valor total: {investment.totalAmount}</p>
                 </div>
                 <div>
-                    <Button type='button'>
-                        <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
-                    </Button>
+                    <Link to={`/investment/edit/${investment.id}`}>
+                        <Button type='button'>
+                            <MdEdit color='#695eb8' size={30} style={{ marginRight: '30px' }} />
+                        </Button>
+                    </Link>
                     <Button type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem() }}>
                         <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
                     </Button>
@@ -73,12 +75,12 @@ export default function InvestmentDetail({ match, history }) {
                             <h1>Adicionar rendimentos</h1>
                         </Card>
                     </Link>
-
-                    <Card>
-                        <MdList color='#695eb8' size={30} />
-                        <h1>Listar rendimentos</h1>
-                    </Card>
-
+                    <Link to={`/profit/${investment.id}`}>
+                        <Card>
+                            <MdList color='#695eb8' size={30} />
+                            <h1>Listar rendimentos</h1>
+                        </Card>
+                    </Link>
                 </CardContainer>
             </Content>
         </Container>

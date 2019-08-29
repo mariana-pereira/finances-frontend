@@ -29,6 +29,23 @@ export default function AddInvestment({ match }) {
     loadTargets();
   }, []);
 
+  useEffect(() => {
+    async function setFields() {
+      if (match.params.investment) {
+        const response = await api.get(`/investments/${match.params.investment}`);
+
+        setName(response.data.investment.name);
+        setTypeValue(response.data.investment.type);
+        setTax(response.data.investment.tax);
+        setApplicationDate(new Date(response.data.investment.applicationDate));
+        setRedeemDate(new Date(response.data.investment.redeemDate));
+        setApplicationAmount(response.data.investment.applicationAmount);
+        setTargetValue(response.data.investment.target_id);
+      }
+    }
+    setFields();
+  }, []);
+
   function handleClear() {
     setName('');
     setTypeValue('');
@@ -42,9 +59,16 @@ export default function AddInvestment({ match }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    await api.post(`/accounts/${match.params.id}/investments`, {
-      name, type: typeValue, tax, applicationDate, redeemDate, applicationAmount, target_id: targetValue
-    });
+    if (match.params.investment) {
+      await api.put(`/investments/${match.params.investment}`, {
+        name, type: typeValue, tax, applicationDate, redeemDate, applicationAmount, target_id: targetValue
+      });
+
+    } else {
+      await api.post(`/accounts/${match.params.account}/investments`, {
+        name, type: typeValue, tax, applicationDate, redeemDate, applicationAmount, target_id: targetValue
+      });
+    }
 
     handleClear();
   }
@@ -52,11 +76,11 @@ export default function AddInvestment({ match }) {
   return (
     <Container>
       <Side>
-        <SideMenu/>
+        <SideMenu />
       </Side>
       <Content>
         <Form onSubmit={handleSubmit} >
-          <Title>Investir</Title>
+        {match.params.investment ? (<Title>Editar Investimento</Title>) : (<Title>Adicionar Adicionar</Title>)}
           <Field
             type='text'
             name='name'

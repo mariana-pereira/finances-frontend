@@ -43,7 +43,7 @@ export default function PaidInvoice({ match }) {
             <div><h1>Faturas Abertas</h1></div>
           )}
         {invoices.map(invoice => (
-          <Link key={invoice.id} to='/invoice/detail'>
+          <Link key={invoice.id} to={`/invoice/detail/${invoice.id}`}>
             <AccountContainer>
               <Title>{invoice.name}</Title>
               <Type>{invoice.card.name}</Type>
