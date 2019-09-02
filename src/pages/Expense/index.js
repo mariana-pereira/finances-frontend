@@ -1,24 +1,60 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { MdAttachFile, MdReceipt, MdDelete, MdEdit } from "react-icons/md";
+import { MdAttachFile, MdReceipt, MdDelete, MdEdit, MdPieChart } from "react-icons/md";
 
-import { Container, Side, Top, Content, Tile, HeaderCell, TableCell, HeaderTile, Button } from './styles';
+import { Container, Side, Top, Content, Tile, HeaderCell, TableCell, HeaderTile, Button, Footer } from './styles';
 import SideMenu from '../../components/SideMenu';
 import TopHeader from '../../components/TopHeader';
 import api from '../../services/api';
 
 export default function Expense({ match }) {
     const [expenses, setExpenses] = useState([]);
+    const [value, setValue] = useState('');
+    const [total, setTotal] = useState('');
 
     useEffect(() => {
-        async function loadExpenses() {
-            const response = await api.get(`/invoices/${match.params.id}/expenses`)
+        if (match.params.id) {
+            async function loadExpenses() {
+                const response = await api.get(`/invoices/${match.params.id}/expenses`);
 
-            setExpenses(response.data.expenses);
+                setExpenses(response.data.expenses);
+                setTotal(response.data.total);
+            }
+            loadExpenses();
         }
-        loadExpenses();
     }, []);
+
+    useEffect(() => {
+        if (!match.params.id) {
+            async function loadExpenses() {
+                if (value == 'year') {
+                    const response = await api.get(`/expenses/year`, {
+                        headers: {
+                            year: new Date().getFullYear()
+                        }
+                    });
+
+                    setExpenses(response.data.expenses);
+                    setTotal(response.data.total);
+
+                } if (value == 'month') {
+                    const response = await api.get(`/expenses/month`, {
+                        headers: {
+                            month: new Date().getMonth() + 1,
+                            year: new Date().getFullYear()
+
+                        }
+                    });
+
+                    setExpenses(response.data.expenses);
+                    setTotal(response.data.total);
+                }
+
+            }
+            loadExpenses();
+        }
+    }, [value]);
 
     async function deleteItem(id) {
         api.delete(`/expenses/${id}`);
@@ -41,7 +77,37 @@ export default function Expense({ match }) {
                 <Top>
                     <TopHeader />
                 </Top>
+                <div className='icon'>
+                    <Link to={``}>
+                        <MdPieChart color='#695eb8' size={24} style={{ marginRight: '10px' }} />
+                    </Link>
+                </div>
                 <div className='content'><h1>Despesas</h1></div>
+                {!match.params.id && (
+                    <div className='check'>
+                        <div>
+                            <input
+                                type='radio'
+                                id='month'
+                                name='date'
+                                value='month'
+                                onChange={e => setValue(e.target.value)}
+                            />
+                            <label for='month'>Mês</label>
+                        </div>
+                        <div>
+                            <input
+                                type='radio'
+                                id='year'
+                                name='date'
+                                value='year'
+                                onChange={e => setValue(e.target.value)}
+                            />
+                            <label for='year'>Ano</label>
+                        </div>
+
+                    </div>
+                )}
                 <HeaderTile>
                     <HeaderCell>
                         <span>Data</span>
@@ -81,16 +147,25 @@ export default function Expense({ match }) {
                                 <Link to={`/receipt/add/${expense.id}`}>
                                     <MdAttachFile color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
                                 </Link>
-                                <Link to={`/expense/edit/${expense.id}`}>
-                                    <MdEdit color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
-                                </Link>
-                                <Button type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem(expense.id) }}>
-                                    <MdDelete color='#695eb8' size={30} style={{ marginLeft: '10px' }} />
-                                </Button>
+                                {!match.params.id && (
+                                    <React.Fragment>
+                                        <Link to={`/expense/edit/${expense.id}`}>
+                                            <MdEdit color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
+                                        </Link>
+                                        <Button type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem(expense.id) }}>
+                                            <MdDelete color='#695eb8' size={30} style={{ marginLeft: '10px' }} />
+                                        </Button>
+                                    </React.Fragment>
+                                )}
                             </div>
                         </TableCell>
                     </Tile>
                 ))}
+                <Footer>
+                    <div>
+                        <h4> Total: {total}</h4>
+                    </div>
+                </Footer>
             </Content>
         </Container>
     );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MdDelete, MdEdit } from "react-icons/md";
+import { MdDelete, MdEdit, MdPieChart } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
 import SideMenu from '../../components/SideMenu';
@@ -75,7 +75,7 @@ export default function Extract() {
                 <span>{movimentation.category}</span>
               </TableCell>
               <TableCell>
-                <span>{movimentation.company}</span>
+                <span>{movimentation.company.name}</span>
               </TableCell>
               <TableCell>
                 <span>{movimentation.account.bank}</span>

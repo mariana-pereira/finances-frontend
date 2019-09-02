@@ -77,7 +77,7 @@ export default function AddInvestment({ match }) {
         amount: applicationAmount, 
         type: 'Investimento', 
         category: 'Investimento', 
-        company_id: null
+        company_id: 1
       });
 
       await api.patch(`/accounts/${match.params.account}`);

@@ -23,7 +23,9 @@ export default function AddIncome({ match }) {
     async function loadCompanies() {
       const response = await api.get('/companies')
 
-      setCompanies(response.data.companies);
+      const companies = response.data.companies;
+
+      setCompanies(companies.filter(company => company.id !== 1));
     }
     loadCompanies();
   }, []);

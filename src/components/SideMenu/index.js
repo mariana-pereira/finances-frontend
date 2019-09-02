@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import { MdList, MdHome, MdAccountBalance, MdCreditCard, MdReceipt, MdTrendingUp, MdBusiness, MdSwapHoriz, MdPowerSettingsNew } from "react-icons/md";
+import { MdList, MdHome, MdAccountBalance, MdCreditCard, MdReceipt, MdTrendingUp, MdBusiness, MdSwapHoriz, MdPowerSettingsNew, MdAttachMoney } from "react-icons/md";
 import { FaBullseye, FaRegFileAlt } from "react-icons/fa";
 
 import { logout } from "../../services/auth";
@@ -58,6 +58,14 @@ export default function SideMenu() {
           <Link to='/extract'>
             <ShowButton>
               Extrato
+                </ShowButton>
+          </Link>
+        </NavItem>
+        <NavItem>
+          <MdAttachMoney color='#695eb8' size={24} />
+          <Link to='/expense'>
+            <ShowButton>
+              Despesas
                 </ShowButton>
           </Link>
         </NavItem>

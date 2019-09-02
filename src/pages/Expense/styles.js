@@ -30,6 +30,14 @@ export const Content = styled.div`
    background: #fff;
    margin-left: 250px;
 
+   .icon {
+       width: 90%;
+       display: flex;
+       align-items: center;
+       justify-content: flex-end;
+       margin-top: 35px;
+   }
+
    .content {
        width: 100%;
        display: flex;
@@ -41,6 +49,14 @@ export const Content = styled.div`
    h1 {
        color: #2e2f2b;
        margin-top: 20px;
+   }
+
+   .check {
+       width: 100%;
+       display: flex;
+       align-items: center;
+       justify-content: space-around;
+       padding: 35px;
    }
 `;
 
@@ -92,5 +108,25 @@ export const Button = styled.button`
     border: 0;
     background: #ccc2da;
     cursor: pointer;
+`;
+
+export const Footer = styled.footer`
+    width: 100%;
+    height: 60px;
+    margin-top: 30px;
+    bottom: 0;
+    
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    h4 {
+        font-size: 15px;
+        color: #2e2f2b;
+        margin-right: 20px;
+    }
 `;
 

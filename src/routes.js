@@ -97,6 +97,7 @@ const Routes = () => (
             <PrivateRoute path='/invoice/edit/:invoice' component={AddInvoice} />
             <PrivateRoute path='/invoice/:paid/paid/:id' component={PaidInvoice} />
 
+            <PrivateRoute path='/expense' exact component={Expense} />
             <PrivateRoute path='/expense/:id' exact component={Expense} />
             <PrivateRoute path='/expense/add/:invoice' component={AddExpense} />
             <PrivateRoute path='/expense/edit/:expense' component={AddExpense} />
