@@ -61,13 +61,27 @@ export default function AddInvestment({ match }) {
 
     if (match.params.investment) {
       await api.put(`/investments/${match.params.investment}`, {
-        name, type: typeValue, tax, applicationDate, redeemDate, applicationAmount, target_id: targetValue
+        name, type: typeValue, tax, applicationDate, redeemDate, applicationAmount
       });
+
+      await api.patch(`/investments/${match.params.investment}`);
+      await api.patch(`/targets/${targetValue}`);
 
     } else {
       await api.post(`/accounts/${match.params.account}/investments`, {
-        name, type: typeValue, tax, applicationDate, redeemDate, applicationAmount, target_id: targetValue
+        name, type: typeValue, tax, applicationDate, redeemDate, applicationAmount,  totalAmount: applicationAmount, target_id: targetValue
       });
+
+      await api.post(`/accounts/${match.params.account}/movimentations/outcome`, {
+        date: applicationDate, 
+        amount: applicationAmount, 
+        type: 'Investimento', 
+        category: 'Investimento', 
+        company_id: null
+      });
+
+      await api.patch(`/accounts/${match.params.account}`);
+      await api.patch(`/targets/${targetValue}`);
     }
 
     handleClear();
@@ -80,7 +94,7 @@ export default function AddInvestment({ match }) {
       </Side>
       <Content>
         <Form onSubmit={handleSubmit} >
-        {match.params.investment ? (<Title>Editar Investimento</Title>) : (<Title>Adicionar Adicionar</Title>)}
+        {match.params.investment ? (<Title>Editar Investimento</Title>) : (<Title>Adicionar Investimento</Title>)}
           <Field
             type='text'
             name='name'
@@ -90,7 +104,7 @@ export default function AddInvestment({ match }) {
           />
           <Check value={typeValue} onChange={e => setTypeValue(e.target.value)}>
             {types.map(type => (
-              <option value={type}>{type}</option>
+              <option key={type} value={type}>{type}</option>
             ))}
           </Check>
           <Field
@@ -100,11 +114,13 @@ export default function AddInvestment({ match }) {
             value={tax}
             onChange={e => setTax(e.target.value)}
           />
-          <Check value={targetValue} onChange={e => setTargetValue(e.target.value)}>
+          { match.params.account && (
+            <Check value={targetValue} onChange={e => setTargetValue(e.target.value)}>
             {targets.map(target => (
               <option key={target.id} value={target.id}>{target.name}</option>
             ))}
           </Check>
+          )}
           <DatePicker
             className='form-date'
             dateFormat="dd/MM/yyyy"

@@ -11,6 +11,8 @@ import { Container, Side, Content, Form, Title, Field, Check, ButtonContainer, F
 export default function AddExpense({ match }) {
   const [date, setDate] = useState(new Date());
   const [amount, setAmount] = useState('');
+  const [invoice, setInvoice] = useState('');
+  const [card, setCard] = useState('');
   const [shop, setShop] = useState('');
   const [categoryValue, setCategoryValue] = useState('');
 
@@ -25,6 +27,13 @@ export default function AddExpense({ match }) {
         setAmount(response.data.expense.amount);
         setShop(response.data.expense.shop);
         setCategoryValue(response.data.expense.category);
+        setInvoice(response.data.expense.invoice_id);
+        setCard(response.data.expense.card_id);
+
+      } else {
+        const response = await api.get(`/invoices/${match.params.invoice}`);
+
+        setCard(response.data.invoice.card_id);
 
       }
     }
@@ -42,14 +51,24 @@ export default function AddExpense({ match }) {
     e.preventDefault();
 
     if (match.params.expense) {
-      await api.put(`/invoices/${match.params.invoice}/expenses`, {
+      await api.put(`/expenses/${match.params.expense}`, {
         date, amount, shop, category: categoryValue
       });
 
+      await api.patch(`/invoices/${invoice}`);
+      await api.patch(`/cards/${card}`);
+
     } else {
+      var config = {
+        headers: {'card_id': card}
+      };
+
       await api.post(`/invoices/${match.params.invoice}/expenses`, {
         date, amount, shop, category: categoryValue
-      });
+      }, config);
+
+      await api.patch(`/invoices/${match.params.invoice}`);
+      await api.patch(`/cards/${card}`);
     }
 
     handleClear();

@@ -81,7 +81,7 @@ export default function Expense({ match }) {
                                 <Link to={`/receipt/add/${expense.id}`}>
                                     <MdAttachFile color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
                                 </Link>
-                                <Link to={``}>
+                                <Link to={`/expense/edit/${expense.id}`}>
                                     <MdEdit color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
                                 </Link>
                                 <Button type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem(expense.id) }}>

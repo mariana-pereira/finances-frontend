@@ -41,9 +41,10 @@ export default function AddOutcome({ match }) {
     e.preventDefault();
 
     await api.post(`/accounts/${match.params.id}/movimentations/outcome`, {
-      date, amount, type, category: categoryValue, company_id: companyValue
+      date, amount, type, category: categoryValue, company: companyValue
     });
 
+    await api.patch(`/accounts/${match.params.id}`);
 
     handleClear();
   }
@@ -76,7 +77,7 @@ export default function AddOutcome({ match }) {
           </Check>
           <Check value={companyValue} onChange={e => setCompanyValue(e.target.value)}>
             {companies.map(company => (
-              <option key={company.id} value={company.id}>{company.name}</option>
+              <option key={company.id} value={company.name}>{company.name}</option>
             ))}
           </Check>
           <ButtonContainer>

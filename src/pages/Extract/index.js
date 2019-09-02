@@ -75,7 +75,7 @@ export default function Extract() {
                 <span>{movimentation.category}</span>
               </TableCell>
               <TableCell>
-                <span>{movimentation.company.name}</span>
+                <span>{movimentation.company}</span>
               </TableCell>
               <TableCell>
                 <span>{movimentation.account.bank}</span>

@@ -10,7 +10,7 @@ import { Container, Side, Content, Form, Title, Field, ButtonContainer, FormButt
 
 export default function AddTarget({ match }) {
   const [name, setName] = useState('');
-  const [necessaryAmount, setNecessaryAmount] = useState(null);
+  const [necessaryAmount, setNecessaryAmount] = useState('');
   const [deadline, setDeadline] = useState(new Date());
 
   useEffect(() => {
@@ -36,12 +36,12 @@ export default function AddTarget({ match }) {
     e.preventDefault();
 
     if (match.params.id) {
-      await api.put('/targets', {
+      await api.put(`/targets/${match.params.id}`, {
         name, necessaryAmount, deadline
       });
 
     } else {
-      await api.post(`/targets/${match.params.id}`, {
+      await api.post('/targets', {
         name, necessaryAmount, deadline
       });
     }

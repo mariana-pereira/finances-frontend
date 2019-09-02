@@ -24,7 +24,7 @@ export default function AddCard({ match }) {
         setNumber(response.data.card.number);
         setTotalLimit(response.data.card.totalLimit);
         setAvailableLimit(response.data.card.availableLimit);
-        setExpiryDate(new Date(response.data.invoice.expiryDate));
+        setExpiryDate(new Date(response.data.card.expiryDate));
       }
     }
     setFields();
