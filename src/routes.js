@@ -34,6 +34,7 @@ import AddInvoice from './pages/AddInvoice';
 import InvoiceDetail from './pages/InvoiceDetail';
 import PaidInvoice from './pages/PaidInvoice';
 import Expense from './pages/Expense';
+import ExpenseStats from './pages/ExpenseStats';
 import AddExpense from './pages/AddExpense';
 import Receipt from './pages/Receipt';
 import AddReceipt from './pages/AddReceipt';
@@ -98,6 +99,7 @@ const Routes = () => (
             <PrivateRoute path='/invoice/:paid/paid/:id' component={PaidInvoice} />
 
             <PrivateRoute path='/expense' exact component={Expense} />
+            <PrivateRoute path='/expense/stats' exact component={ExpenseStats} />
             <PrivateRoute path='/expense/:id' exact component={Expense} />
             <PrivateRoute path='/expense/add/:invoice' component={AddExpense} />
             <PrivateRoute path='/expense/edit/:expense' component={AddExpense} />

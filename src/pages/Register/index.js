@@ -59,7 +59,7 @@ class Register extends Component {
                             onChange={e => this.setState({ email: e.target.value })}
                         />
                         <Field
-                            type='text'
+                            type='password'
                             name='password'
                             placeholder='senha'
                             onChange={e => this.setState({ password: e.target.value })}

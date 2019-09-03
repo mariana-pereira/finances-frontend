@@ -38,7 +38,7 @@ export default function Expense({ match }) {
                     setExpenses(response.data.expenses);
                     setTotal(response.data.total);
 
-                } if (value == 'month') {
+                } else if (value == 'month') {
                     const response = await api.get(`/expenses/month`, {
                         headers: {
                             month: new Date().getMonth() + 1,
@@ -77,11 +77,13 @@ export default function Expense({ match }) {
                 <Top>
                     <TopHeader />
                 </Top>
-                <div className='icon'>
-                    <Link to={``}>
-                        <MdPieChart color='#695eb8' size={24} style={{ marginRight: '10px' }} />
-                    </Link>
-                </div>
+                {!match.params.id && (
+                    <div className='icon'>
+                        <Link to={`/expense/stats`}>
+                            <MdPieChart color='#695eb8' size={24} style={{ marginRight: '10px' }} />
+                        </Link>
+                    </div>
+                )}
                 <div className='content'><h1>Despesas</h1></div>
                 {!match.params.id && (
                     <div className='check'>
