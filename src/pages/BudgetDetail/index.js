@@ -1,15 +1,32 @@
 import React, { useEffect, useState } from 'react';
+
+import Modal from 'react-modal';
+
 import { MdAddCircle, MdDelete, MdEdit } from "react-icons/md";
 
 import SideMenu from '../../components/SideMenu';
 import TopHeader from '../../components/TopHeader';
 import api from '../../services/api';
 
-import { Container, Side, Top, Content, CardContainer, Card, Button, ActionButton } from './styles';
+import { Container, Side, Top, Content, CardContainer, Card, Button, ActionButton, Form, Field, FormButton, ButtonContainer } from './styles';
 
 export default function BudgetDetail({ match }) {
     const [budgets, setBudgets] = useState([]);
     const [total, setTotal] = useState('');
+    const [show, setShow] = useState(false);
+    const [name, setName] = useState('');
+    const [amount, setAmount] = useState('');
+
+    const customStyles = {
+        content: {
+            top: '50%',
+            left: '60%',
+            right: 'auto',
+            bottom: 'auto',
+            transform: 'translate(-50%, -50%)',
+            textAlign: 'center'
+        }
+    };
 
     useEffect(() => {
         async function loadBudgets() {
@@ -24,6 +41,18 @@ export default function BudgetDetail({ match }) {
         }
         loadBudgets();
     }, [budgets]);
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+
+        await api.post('/budgets', {
+            name, amount, date: new Date()
+        });
+
+
+        setName('');
+        setAmount('');
+    }
 
     function formatDate(month) {
         var monthNames = [
@@ -41,6 +70,7 @@ export default function BudgetDetail({ match }) {
 
         setBudgets(budgets.filter(budget => budget.id !== id));
     }
+
 
     return (
         <Container>
@@ -71,9 +101,41 @@ export default function BudgetDetail({ match }) {
                             </div>
                         </Card>
                     ))}
-                    <Button><MdAddCircle color='#695eb8' size={60} /></Button>
+                    <Button onClick={() => setShow(true)}><MdAddCircle color='#695eb8' size={60} /></Button>
                 </CardContainer>
             </Content>
+            <Modal
+                ariaHideApp={false}
+                isOpen={show}
+                onRequestClose={() => setShow(false)}
+                style={customStyles}
+                contentLabel="Example Modal"
+            >
+
+                <h2>Adicionar Budget</h2>
+                <Form onSubmit={handleSubmit}>
+                    <Field
+                        type='text'
+                        name='name'
+                        placeholder='nome'
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+
+                    />
+                    <Field
+                        type='text'
+                        name='amount'
+                        placeholder='valor'
+                        value={amount}
+                        onChange={e => setAmount(e.target.value)}
+
+                    />
+                    <ButtonContainer>
+                        <FormButton onClick={() => setShow(false)}>Cancelar</FormButton>
+                        <FormButton type='submit'>Salvar</FormButton>
+                    </ButtonContainer>
+                </Form>
+            </Modal>
         </Container>
-    )
+    );
 }
