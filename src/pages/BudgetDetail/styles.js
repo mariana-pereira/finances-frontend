@@ -132,7 +132,7 @@ export const ButtonContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top: 100px;
+    margin-top: 40px;
 
 `;
 

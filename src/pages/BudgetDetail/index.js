@@ -14,8 +14,10 @@ export default function BudgetDetail({ match }) {
     const [budgets, setBudgets] = useState([]);
     const [total, setTotal] = useState('');
     const [show, setShow] = useState(false);
+    const [put, setPut] = useState(false);
     const [name, setName] = useState('');
     const [amount, setAmount] = useState('');
+    const [budgetId, setBudgetId] = useState('');
 
     const customStyles = {
         content: {
@@ -45,13 +47,12 @@ export default function BudgetDetail({ match }) {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        await api.post('/budgets', {
-            name, amount, date: new Date()
-        });
+            await api.post('/budgets', {
+                name, amount, date: new Date()
+            });
 
-
-        setName('');
-        setAmount('');
+            setName('');
+            setAmount('');
     }
 
     function formatDate(month) {
@@ -71,6 +72,19 @@ export default function BudgetDetail({ match }) {
         setBudgets(budgets.filter(budget => budget.id !== id));
     }
 
+    function handleEdit(id) {
+        setBudgetId(id);
+        setPut(true);
+    }
+
+    async function editItem () {
+        api.patch(`/budgets/${budgetId}`, {
+            value: amount
+          });
+
+        setBudgets(budgets);
+        setAmount('');
+    }
 
     return (
         <Container>
@@ -92,10 +106,10 @@ export default function BudgetDetail({ match }) {
                             <strong>{budget.name}</strong>
                             <p>{budget.amount}</p>
                             <div>
-                                <ActionButton type='button'>
+                                <ActionButton type='button' onClick={() => handleEdit(budget.id)}>
                                     <MdEdit color='#695eb8' size={20} />
                                 </ActionButton>
-                                <ActionButton type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem(budget.id) }}>
+                                <ActionButton type='button' onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem(budget.id) }}>
                                     <MdDelete color='#695eb8' size={20} />
                                 </ActionButton>
                             </div>
@@ -133,6 +147,28 @@ export default function BudgetDetail({ match }) {
                     <ButtonContainer>
                         <FormButton onClick={() => setShow(false)}>Cancelar</FormButton>
                         <FormButton type='submit'>Salvar</FormButton>
+                    </ButtonContainer>
+                </Form>
+            </Modal>
+            <Modal
+                ariaHideApp={false}
+                isOpen={put}
+                style={customStyles}
+            >
+
+                <h2>Editar Valor</h2>
+                <Form onSubmit={handleSubmit}>
+                    <Field
+                        type='text'
+                        name='amount'
+                        placeholder='valor'
+                        value={amount}
+                        onChange={e => setAmount(e.target.value)}
+
+                    />
+                    <ButtonContainer>
+                        <FormButton onClick={() => setPut(false)}>Cancelar</FormButton>
+                        <FormButton type='button' onClick={editItem}>Salvar</FormButton>
                     </ButtonContainer>
                 </Form>
             </Modal>
