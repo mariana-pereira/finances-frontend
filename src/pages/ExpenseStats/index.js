@@ -168,46 +168,57 @@ export default function Expense() {
                 {date == 'year' && (
                     <React.Fragment>
                         <Tile>
+                            <MdRestaurant color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
                             <span className='name'>Alimentação</span>
                             <span className='value'>{food}</span>
                         </Tile>
                         <Tile>
+                            <MdAssignmentTurnedIn color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
                             <span className='name'>Assinaturas</span>
                             <span className='value'>{subscription}</span>
                         </Tile>
                         <Tile>
+                            <FaSprayCan color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
                             <span className='name'>Beleza</span>
                             <span className='value'>{beauty}</span>
                         </Tile>
                         <Tile>
+                            <MdDescription color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
                             <span className='name'>Contas</span>
                             <span className='value'>{bills}</span>
                         </Tile>
                         <Tile>
+                            <FaFutbol color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
                             <span className='name'>Esporte</span>
                             <span className='value'>{sport}</span>
                         </Tile>
                         <Tile>
+                            <MdWeekend color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
                             <span className='name'>Lazer</span>
                             <span className='value'>{recreation}</span>
                         </Tile>
                         <Tile>
+                            <MdPets color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
                             <span className='name'>Pet</span>
                             <span className='value'>{pet}</span>
                         </Tile>
                         <Tile>
+                            <FaPills color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
                             <span className='name'>Saúde</span>
                             <span className='value'>{health}</span>
                         </Tile>
                         <Tile>
+                            <MdDevices color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
                             <span className='name'>Tech</span>
                             <span className='value'>{tech}</span>
                         </Tile>
                         <Tile>
+                            <MdDirectionsTransit color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
                             <span className='name'>Transporte</span>
                             <span className='value'>{transportation}</span>
                         </Tile>
                         <Tile>
+                            <MdBubbleChart color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
                             <span className='name'>Outros</span>
                             <span className='value'>{other}</span>
                         </Tile>
