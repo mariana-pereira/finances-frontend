@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import Extract from './pages/Extract';
+import ExtractStats from './pages/ExtractStats';
 import Transfer from './pages/Transfer';
 import Account from './pages/Account';
 import AddAccount from './pages/AddAccount';
@@ -107,7 +108,8 @@ const Routes = () => (
             <PrivateRoute path='/receipt/:id' exact component={Receipt} />
             <PrivateRoute path='/receipt/add/:id' component={AddReceipt} />
 
-            <PrivateRoute path='/extract' component={Extract} />
+            <PrivateRoute path='/extract' exact component={Extract} />
+            <PrivateRoute path='/extract/stats' exact component={ExtractStats} />
             <PrivateRoute path='/transfer' component={Transfer} />
 
             <PrivateRoute path='/budget' exact component={Budget} />

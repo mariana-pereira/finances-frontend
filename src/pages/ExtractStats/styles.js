@@ -30,19 +30,17 @@ export const Content = styled.div`
    background: #fff;
    margin-left: 250px;
 
+   .content {
+       width: 100%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       margin-bottom: 35px;
+   }
+
    h1 {
        color: #2e2f2b;
        margin-top: 20px;
-       text-align: center;
-       margin-bottom: 15px;
-   }
-
-   .icon {
-       width: 90%;
-       display: flex;
-       align-items: center;
-       justify-content: flex-end;
-       margin-top: 35px;
    }
 
    .check {
@@ -51,64 +49,38 @@ export const Content = styled.div`
        align-items: center;
        justify-content: space-around;
        padding: 35px;
+       margin-bottom: 30px;
    }
 `;
 
-export const ExtractContainer = styled.div`
-    border: 1px #fff;
-    border-radius: 5px;
-    background: #fff;
-    padding: 40px;
-`;
-
-export const HeaderTile = styled.div`
+export const Table = styled.div`
     width: 100%;
     max-width: 900px;
-    margin: 0 auto;
-    background: #2e2f2b;
-    border: 1px solid #2e2f2b;
-  
-    display: flex;
-    flex-direction: row;
+    margin-left: 200px;
+    margin-top: 50px;
+    margin-bottom: 30px;
 `;
 
 export const Tile = styled.div`
     width: 100%;
     max-width: 900px;
-    margin: 0 auto;
-    background: #ccc2da;
-    border: 1px solid #ccc2da;
+    margin: 20px auto;
+    
   
     display: flex;
-    flex-direction: row;
-`;
+    justify-content: space-around;
 
-export const HeaderCell = styled.div`
-    width: 20%
-    height: 60px;
-    background: #2e2f2b;
-    text-align: center;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
+    .name {
+        width: 50%;
+        font-size: 20px;
+        text-align: center;
+    }
 
-export const TableCell = styled.div`
-    width: 20%
-    height: 60px;
-    background: #ccc2da;
-    text-align: center;
-    color: #2e2f2b;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
-
-export const Button = styled.button`
-    border: 0;
-    background: #ccc2da;
-    cursor: pointer;
+    .value {
+        width: 50%;
+        font-size: 20px;
+        text-align: center;
+    }
 `;
 
 export const Footer = styled.footer`

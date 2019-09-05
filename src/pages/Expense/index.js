@@ -95,7 +95,7 @@ export default function Expense({ match }) {
                                 value='month'
                                 onChange={e => setValue(e.target.value)}
                             />
-                            <label for='month'>Mês</label>
+                            <label htmlFor='month'>Mês</label>
                         </div>
                         <div>
                             <input
@@ -105,7 +105,7 @@ export default function Expense({ match }) {
                                 value='year'
                                 onChange={e => setValue(e.target.value)}
                             />
-                            <label for='year'>Ano</label>
+                            <label htmlFor='year'>Ano</label>
                         </div>
 
                     </div>
