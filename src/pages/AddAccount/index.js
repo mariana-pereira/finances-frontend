@@ -9,7 +9,7 @@ export default function AddAccount({ match }) {
   const [bank, setBank] = useState('');
   const [branch, setBranch] = useState('');
   const [accountNumber, setAccountNumber] = useState('');
-  const [typeValue, setTypeValue] = useState('');
+  const [typeValue, setTypeValue] = useState('Conta Corrente');
 
   const types = ['Conta Corrente', 'Conta Poupança', 'Conta de pagamentos', 'Corretora'];
 

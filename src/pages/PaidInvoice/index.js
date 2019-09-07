@@ -37,7 +37,7 @@ export default function PaidInvoice({ match }) {
         <Top>
           <TopHeader />
         </Top>
-        {match.params.paid == 1 ? (
+        {match.params.paid == true ? (
           <div><h1>Faturas Pagas</h1></div>
         ) : (
             <div><h1>Faturas Abertas</h1></div>

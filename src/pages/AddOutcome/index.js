@@ -11,7 +11,7 @@ import { Container, Side, Content, Form, Title, Field, Check, ButtonContainer, F
 export default function AddOutcome({ match }) {
   const [date, setDate] = useState(new Date());
   const [amount, setAmount] = useState('');
-  const [categoryValue, setCategoryValue] = useState('');
+  const [categoryValue, setCategoryValue] = useState('Compras');
   const [companyValue, setCompanyValue] = useState('');
   const [companies, setCompanies] = useState([]);
 
@@ -26,6 +26,7 @@ export default function AddOutcome({ match }) {
       const companies = response.data.companies;
 
       setCompanies(companies.filter(company => company.id !== 1));
+      setCompanyValue(companies[1].id);
 
     }
     loadCompanies();
@@ -43,7 +44,7 @@ export default function AddOutcome({ match }) {
     e.preventDefault();
 
     await api.post(`/accounts/${match.params.id}/movimentations/outcome`, {
-      date, amount, type, category: categoryValue, company: companyValue
+      date, amount, type, category: categoryValue, company_id: companyValue
     });
 
     await api.patch(`/accounts/${match.params.id}`);
@@ -79,7 +80,7 @@ export default function AddOutcome({ match }) {
           </Check>
           <Check value={companyValue} onChange={e => setCompanyValue(e.target.value)}>
             {companies.map(company => (
-              <option key={company.id} value={company.name}>{company.name}</option>
+              <option key={company.id} value={company.id}>{company.name}</option>
             ))}
           </Check>
           <ButtonContainer>

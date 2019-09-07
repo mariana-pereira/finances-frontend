@@ -36,6 +36,12 @@ export default function Receipt({ match }) {
         setItems(items.filter(item => item.id !== id));
     }
 
+    function formatDate(date) {
+        var formatedDate = new Date(date);
+    
+        return formatedDate.toLocaleDateString();
+      }
+
     return (
         <Container>
             <Side>
@@ -45,7 +51,7 @@ export default function Receipt({ match }) {
                 <Top>
                     <TopHeader />
                 </Top>
-                <div className='content'><h1>Cupom {expense.date} {expense.shop}</h1></div>
+                <div className='content'><h1>Cupom {formatDate(expense.date)} {expense.shop}</h1></div>
                 <HeaderTile>
                     <HeaderItem>Item</HeaderItem>
                     <HeaderValue>Valor</HeaderValue>

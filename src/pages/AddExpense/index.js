@@ -14,7 +14,7 @@ export default function AddExpense({ match }) {
   const [invoice, setInvoice] = useState('');
   const [card, setCard] = useState('');
   const [shop, setShop] = useState('');
-  const [categoryValue, setCategoryValue] = useState('');
+  const [categoryValue, setCategoryValue] = useState('Alimentação');
 
   const categories = ['Alimentação', 'Assinaturas', 'Beleza', 'Contas', 'Esporte', 'Lazer', 'Pet', 'Saúde', 'Tech', 'Transporte', 'Outros'];
 

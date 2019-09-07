@@ -47,6 +47,12 @@ export default function AddReceipt({ match }) {
     handleClear();
   }
 
+  function formatDate(date) {
+    var formatedDate = new Date(date);
+
+    return formatedDate.toLocaleDateString();
+  }
+
   return (
     <Container>
       <Side>
@@ -54,7 +60,7 @@ export default function AddReceipt({ match }) {
       </Side>
       <Content>
         <Top>
-          <h1>Cupom {expense.date} {expense.shop}</h1>
+          <h1>Cupom {formatDate(expense.date)} {expense.shop}</h1>
         </Top>
         <HeaderTile>
           <HeaderItem>Item</HeaderItem>

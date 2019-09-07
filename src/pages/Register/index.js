@@ -31,7 +31,7 @@ class Register extends Component {
         } else {
           try {
             await api.post("/auth/register", { name, email, password });
-            this.props.history.push("/login");
+            this.props.history.push("/");
           } catch (err) {
             console.log(err);
             this.setState({ error: "Ocorreu um erro ao registrar sua conta. T.T" });

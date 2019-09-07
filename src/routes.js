@@ -56,7 +56,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const Routes = () => (
     <BrowserRouter>
         <Switch>
-            <Route path='/login' component={Login} />
+            <Route path='/' exact component={Login} />
             <Route path='/register' component={Register} />
             <Route path='/forgot_password' component={ForgotPassword} />
             <Route path='/reset_password' component={ResetPassword} />

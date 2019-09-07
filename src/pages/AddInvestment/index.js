@@ -10,7 +10,7 @@ import { Container, Side, Content, Form, Title, Field, Check, ButtonContainer, F
 
 export default function AddInvestment({ match }) {
   const [name, setName] = useState('');
-  const [typeValue, setTypeValue] = useState('');
+  const [typeValue, setTypeValue] = useState('Ações');
   const [tax, setTax] = useState('');
   const [applicationDate, setApplicationDate] = useState(new Date());
   const [redeemDate, setRedeemDate] = useState(new Date());
@@ -25,6 +25,7 @@ export default function AddInvestment({ match }) {
       const response = await api.get('/targets')
 
       setTargets(response.data.targets);
+      setTargetValue(response.data.targets[0].id);
     }
     loadTargets();
   }, []);

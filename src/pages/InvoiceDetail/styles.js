@@ -97,3 +97,17 @@ export const Card = styled.div`
     }
 `;
 
+export const PayButton = styled.button`
+    max-width: 200px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: 0;
+    background: #695eb8;
+    color: #fafafa;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+`;
+

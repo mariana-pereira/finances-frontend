@@ -111,7 +111,7 @@ export default function SideMenu() {
         </NavItem>
         <NavItem>
           <MdPowerSettingsNew color='#695eb8' size={24} />
-          <Link to='/login'>
+          <Link to='/'>
             <ShowButton onClick={handleLogout}>
               Logout
                 </ShowButton>

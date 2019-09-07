@@ -6,7 +6,7 @@ import SideMenu from '../../components/SideMenu';
 import TopHeader from '../../components/TopHeader';
 import api from '../../services/api';
 
-import { Container, Side, Top, Content, Button, Card, CardContainer } from './styles';
+import { Container, Side, Top, Content, Button, Card, CardContainer, PayButton } from './styles';
 
 export default function InvoiceDetail({ match, history }) {
     const [invoice, setInvoice] = useState({});
@@ -28,9 +28,16 @@ export default function InvoiceDetail({ match, history }) {
 
     function formatDate(date) {
         var formatedDate = new Date(date);
-    
+
         return formatedDate.toLocaleDateString();
-      }
+    }
+
+    async function handlePay(id) {
+        await api.patch(`/invoices/${id}/payment`);
+
+        history.push(`/invoice/0/paid/${invoice.card_id}`)
+
+    }
 
     return (
         <Container>
@@ -61,6 +68,11 @@ export default function InvoiceDetail({ match, history }) {
                     <Button type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem() }}>
                         <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
                     </Button>
+                </div>
+                <div>
+                    {invoice.paid == false && (
+                        <PayButton onClick={() => handlePay(invoice.id)}>Pagar</PayButton>
+                    )}
                 </div>
                 <CardContainer>
                     <Link to={`/expense/add/${invoice.id}`}>

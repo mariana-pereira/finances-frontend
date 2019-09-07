@@ -10,7 +10,7 @@ import { Container, Side, Content, Form, Title, Check, Field, ButtonContainer, F
 
 export default function AddInvoice({ match }) {
   const [card, setCard] = useState('');
-  const [monthValue, setMonthValue] = useState('');
+  const [monthValue, setMonthValue] = useState('Janeiro');
   const [year, setYear] = useState('');
   const [expiryDate, setExpiryDate] = useState(new Date());
 

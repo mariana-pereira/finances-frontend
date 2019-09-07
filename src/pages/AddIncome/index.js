@@ -11,13 +11,11 @@ import { Container, Side, Content, Form, Title, Field, Check, ButtonContainer, F
 export default function AddIncome({ match }) {
   const [date, setDate] = useState(new Date());
   const [amount, setAmount] = useState('');
-  const [categoryValue, setCategoryValue] = useState('');
+  const [categoryValue, setCategoryValue] = useState('Bonificação');
   const [companyValue, setCompanyValue] = useState('');
   const [companies, setCompanies] = useState([]);
 
   const categories = ['Bonificação', 'Cashback', 'Extra', 'Rendimento', 'Salário', 'Transferência'];
-
-  const type = "Income";
 
   useEffect(() => {
     async function loadCompanies() {
@@ -26,6 +24,7 @@ export default function AddIncome({ match }) {
       const companies = response.data.companies;
 
       setCompanies(companies.filter(company => company.id !== 1));
+      setCompanyValue(companies[1].id);
     }
     loadCompanies();
   }, []);
@@ -41,7 +40,7 @@ export default function AddIncome({ match }) {
     e.preventDefault();
 
     await api.post(`/accounts/${match.params.id}/movimentations/income`, {
-      date, amount, type, category: categoryValue, company: companyValue
+      date, amount, category: categoryValue, company_id: companyValue
     });
 
     await api.patch(`/accounts/${match.params.id}`);
@@ -78,7 +77,7 @@ export default function AddIncome({ match }) {
           </Check>
           <Check value={companyValue} onChange={e => setCompanyValue(e.target.value)}>
             {companies.map(company => (
-              <option key={company.id} value={company.name}>{company.name}</option>
+              <option key={company.id} value={company.id}>{company.name}</option>
             ))}
           </Check>
           <ButtonContainer>
