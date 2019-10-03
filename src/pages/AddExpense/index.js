@@ -16,7 +16,7 @@ export default function AddExpense({ match }) {
   const [shop, setShop] = useState('');
   const [categoryValue, setCategoryValue] = useState('Alimentação');
 
-  const categories = ['Alimentação', 'Assinaturas', 'Beleza', 'Contas', 'Esporte', 'Lazer', 'Pet', 'Saúde', 'Tech', 'Transporte', 'Outros'];
+  const categories = ['Alimentação', 'Assinaturas', 'Beleza', 'Contas', 'Esporte', 'Lazer', 'Pet', 'Saúde', 'Tech', 'Transporte', 'Vestuário', 'Outros'];
 
   useEffect(() => {
     async function setFields() {
