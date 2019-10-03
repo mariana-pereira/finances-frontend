@@ -48,7 +48,7 @@ export default function BudgetDetail({ match }) {
         e.preventDefault();
 
             await api.post('/budgets', {
-                name, amount, date: new Date()
+                name, amount, month: match.params.month, year: match.params.year
             });
 
             setName('');

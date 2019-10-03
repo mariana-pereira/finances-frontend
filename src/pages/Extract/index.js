@@ -15,7 +15,7 @@ export default function Extract() {
 
   useEffect(() => {
     async function loadMovimentations() {
-      if (value == 'month') {
+      if (value === 'month') {
         const response = await api.get('/movimentations/month', {
           headers: {
             month: new Date().getMonth() + 1,
@@ -26,7 +26,7 @@ export default function Extract() {
         setMovimentations(response.data.movimentations);
         setTotal(response.data.total);
       }
-      else if (value == 'year') {
+      else if (value === 'year') {
         const response = await api.get('/movimentations/year', {
           headers: {
             year: new Date().getFullYear()
@@ -36,7 +36,7 @@ export default function Extract() {
         setMovimentations(response.data.movimentations);
         setTotal(response.data.total);
       }
-      else if (value == 'all') {
+      else if (value === 'all') {
         const response = await api.get('/movimentations');
 
         setMovimentations(response.data.movimentations);
