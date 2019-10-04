@@ -44,7 +44,7 @@ export default function AddExpense({ match }) {
     setDate(new Date());
     setAmount('');
     setShop('');
-    setCategoryValue('');
+    setCategoryValue('Alimentação');
   }
 
   async function handleSubmit(e) {

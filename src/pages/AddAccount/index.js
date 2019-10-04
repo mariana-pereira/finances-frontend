@@ -31,7 +31,7 @@ export default function AddAccount({ match }) {
     setBank('');
     setBranch('');
     setAccountNumber('');
-    setTypeValue('');
+    useState('Conta Corrente');
   }
 
   async function handleSubmit(e) {

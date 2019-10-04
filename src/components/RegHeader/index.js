@@ -7,7 +7,7 @@ const RegHeader = () => (
     <Container>
         <span>
             Tem uma conta?
-            <Link to='/login'>
+            <Link to='/'>
                 <NBButton>Conecte-se</NBButton>
             </Link>
         </span>
