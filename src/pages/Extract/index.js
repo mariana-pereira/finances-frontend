@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { MdDelete, MdEdit, MdPieChart } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+import Header from '../../components/HeaderMenu';
+
 import api from '../../services/api';
 
 import { Container, Side, Content, Top, ExtractContainer, TableCell, Tile, HeaderCell, HeaderTile, Button, Footer } from './styles';
@@ -60,13 +60,8 @@ export default function Extract() {
 
   return (
     <Container>
-      <Side>
-        <SideMenu />
-      </Side>
+      <Header />
       <Content>
-        <Top>
-          <TopHeader />
-        </Top>
         <div className='icon'>
                         <Link to={`/extract/stats`}>
                             <MdPieChart color='#695eb8' size={24} style={{ marginRight: '10px' }} />

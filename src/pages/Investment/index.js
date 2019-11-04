@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Container, Side, Top, Content, AccountContainer, Title, Type, Amount } from './styles';
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+import Header from '../../components/HeaderMenu';
 import api from '../../services/api';
 
 export default function Investment() {
@@ -20,13 +19,8 @@ export default function Investment() {
 
   return (
     <Container>
-      <Side>
-        <SideMenu/>
-      </Side>
+      <Header />
       <Content>
-        <Top>
-          <TopHeader/>
-        </Top>
         <div><h1>Investimentos</h1></div>
         {investments.map(investment => (
           <Link key={investment.id} to={`/investment/detail/${investment.id}`}>

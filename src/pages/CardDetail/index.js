@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdDone, MdAdd, MdDoneAll, MdEdit, MdDelete } from "react-icons/md";
 
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+import Header from '../../components/HeaderMenu';
+
 import api from '../../services/api';
 
 import { Container, Side, Top, Content, Button, Card, CardContainer } from './styles';
@@ -34,13 +34,8 @@ export default function CardDetail({ match, history }) {
 
     return (
         <Container>
-            <Side>
-                <SideMenu />
-            </Side>
+            <Header />
             <Content>
-                <Top>
-                    <TopHeader />
-                </Top>
                 <div>
                     <h1>{card.name}</h1>
                     <h4>{card.number}</h4>

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Container, Side, Top, Content, AccountContainer, Title, Type, Amount } from './styles';
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+import Header from '../../components/HeaderMenu';
 import api from '../../services/api';
 
 export default function PaidInvoice({ match }) {
@@ -30,13 +29,8 @@ export default function PaidInvoice({ match }) {
 
   return (
     <Container>
-      <Side>
-        <SideMenu />
-      </Side>
+      <Header />
       <Content>
-        <Top>
-          <TopHeader />
-        </Top>
         {match.params.paid == true ? (
           <div><h1>Faturas Pagas</h1></div>
         ) : (

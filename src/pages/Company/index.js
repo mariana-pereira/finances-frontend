@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdEdit, MdDelete, MdBusiness } from "react-icons/md";
 
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+import Header from '../../components/HeaderMenu';
+
 import api from '../../services/api';
 
 import { Container, Side, Top, Content, ActionButton, Card, CardContainer, Button } from './styles';
@@ -31,13 +31,8 @@ export default function Company() {
 
   return (
     <Container>
-      <Side>
-        <SideMenu />
-      </Side>
+      <Header />
       <Content>
-        <Top>
-          <TopHeader />
-        </Top>
         <div>
           <h1>Empresas</h1>
         </div>

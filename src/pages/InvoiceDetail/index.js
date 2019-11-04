@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdAdd, MdList, MdEdit, MdDelete } from "react-icons/md";
 
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+import Header from '../../components/HeaderMenu';
+
 import api from '../../services/api';
 
 import { Container, Side, Top, Content, Button, Card, CardContainer, PayButton } from './styles';
@@ -41,13 +41,8 @@ export default function InvoiceDetail({ match, history }) {
 
     return (
         <Container>
-            <Side>
-                <SideMenu />
-            </Side>
+            <Header />
             <Content>
-                <Top>
-                    <TopHeader />
-                </Top>
                 <div>
                     <h1>{invoice.name}</h1>
                     <h4>{invoice.month} {invoice.year}</h4>

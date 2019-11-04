@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { MdDelete } from "react-icons/md";
 
 import { Container, Side, Top, Content, Tile, HeaderTile, HeaderItem, HeaderValue, ItemCell, ValueCell, Button, Footer } from './styles';
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+import Header from '../../components/HeaderMenu';
 import api from '../../services/api';
 
 export default function Receipt({ match }) {
@@ -44,13 +43,8 @@ export default function Receipt({ match }) {
 
     return (
         <Container>
-            <Side>
-                <SideMenu />
-            </Side>
+            <Header />
             <Content>
-                <Top>
-                    <TopHeader />
-                </Top>
                 <div className='content'><h1>Cupom {formatDate(expense.date)} {expense.shop}</h1></div>
                 <HeaderTile>
                     <HeaderItem>Item</HeaderItem>

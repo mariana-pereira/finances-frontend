@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Container, Side, Top, Content, AccountContainer, Title, Type, Amount, Button } from './styles';
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+import Header from '../../components/HeaderMenu';
 import api from '../../services/api';
 
 export default function Card() {
@@ -20,13 +19,8 @@ export default function Card() {
 
   return (
     <Container>
-      <Side>
-        <SideMenu/>
-      </Side>
+      <Header />
       <Content>
-        <Top>
-          <TopHeader/>
-        </Top>
         <div><h1>Cartões</h1></div>
         {cards.map(card => (
           <Link key={card.id} to={`/card/detail/${card.id}`}>

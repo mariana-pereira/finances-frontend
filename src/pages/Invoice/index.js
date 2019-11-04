@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Container, Side, Top, Content, AccountContainer, Title, Type, Amount } from './styles';
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+import Header from '../../components/HeaderMenu';
 import api from '../../services/api';
 
 export default function Invoice() {
@@ -26,13 +25,8 @@ export default function Invoice() {
 
   return (
     <Container>
-      <Side>
-        <SideMenu />
-      </Side>
+      <Header />
       <Content>
-        <Top>
-          <TopHeader />
-        </Top>
         <div><h1>Faturas</h1></div>
         {invoices.map(invoice => (
           <Link key={invoice.id} to={`/invoice/detail/${invoice.id}`}>

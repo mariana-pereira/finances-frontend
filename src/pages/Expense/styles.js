@@ -7,28 +7,11 @@ export const Container = styled.div`
     display: flex;
 `;
 
-export const Side = styled.div`
-    background: #2e2f2b;
-    width: 250px;
-    z-index: 10;
-    bottom: 0;
-    position: fixed;
-    transition: all .2s ease-out;
-    top: 0;
-    box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
-`;
-
-export const Top = styled.header`
-    width: 100%;
-    height: 60px;
-    background: #bdb4c9;
-`;
-
 export const Content = styled.div`
    height: 100%; 
    width: 100%;
    background: #fff;
-   margin-left: 250px;
+   margin-top: 60px;
 
    .icon {
        width: 90%;

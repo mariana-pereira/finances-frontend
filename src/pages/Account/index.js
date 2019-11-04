@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Container, Side, Top, Content, AccountContainer, Title, Type, Amount, Button } from './styles';
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+
+import Header from '../../components/HeaderMenu';
 import api from '../../services/api';
 
 export default function Account() {
@@ -20,13 +20,8 @@ export default function Account() {
 
     return (
       <Container>
-        <Side>
-          <SideMenu/>
-        </Side>
+        <Header />
         <Content>
-          <Top>
-            <TopHeader/>
-          </Top>
           <div><h1>Contas</h1></div>
           { accounts.map(account => (
             <Link key={account.id} to={`/account/detail/${account.id}`}>

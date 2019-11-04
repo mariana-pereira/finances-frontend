@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import { MdAttachFile, MdReceipt, MdDelete, MdEdit, MdPieChart } from "react-icons/md";
 
 import { Container, Side, Top, Content, Tile, HeaderCell, TableCell, HeaderTile, Button, Footer } from './styles';
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+import Header from '../../components/HeaderMenu';
 import api from '../../services/api';
 
 export default function Expense({ match }) {
@@ -70,13 +69,8 @@ export default function Expense({ match }) {
 
     return (
         <Container>
-            <Side>
-                <SideMenu />
-            </Side>
+            <Header />
             <Content>
-                <Top>
-                    <TopHeader />
-                </Top>
                 {!match.params.id && (
                     <div className='icon'>
                         <Link to={`/expense/stats`}>

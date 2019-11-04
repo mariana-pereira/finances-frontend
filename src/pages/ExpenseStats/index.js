@@ -4,8 +4,7 @@ import { MdAssignmentTurnedIn, MdPets, MdDescription, MdWeekend, MdDevices, MdBu
 import { FaPills, FaFutbol, FaSprayCan } from "react-icons/fa";
 
 import { Container, Side, Top, Content, Tile } from './styles';
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+import Header from '../../components/HeaderMenu';
 import api from '../../services/api';
 
 export default function Expense() {
@@ -76,13 +75,8 @@ export default function Expense() {
 
     return (
         <Container>
-            <Side>
-                <SideMenu />
-            </Side>
+            <Header />
             <Content>
-                <Top>
-                    <TopHeader />
-                </Top>
                 <div className='content'><h1>Stats</h1></div>
                 <div className='check'>
                     <div>

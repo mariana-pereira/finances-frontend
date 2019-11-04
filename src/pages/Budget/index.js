@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import YearPicker from "react-year-picker";
 
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+import Header from '../../components/HeaderMenu';
 import api from '../../services/api';
 
 import { Container, Side, Top, Content, CardContainer, Card } from './styles';
@@ -49,13 +48,8 @@ export default function Budget() {
 
     return (
         <Container>
-            <Side>
-                <SideMenu />
-            </Side>
+            <Header />
             <Content>
-                <Top>
-                    <TopHeader />
-                </Top>
                 <div className='title'><YearPicker className='year-picker' onChange={date => setYear(date)} /></div>
                 {year && (
                     <CardContainer>

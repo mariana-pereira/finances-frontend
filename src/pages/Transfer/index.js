@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+import Header from '../../components/HeaderMenu';
 import api from '../../services/api';
 
 import { Container, Content, Side, Top, TransferBox, Check, Button, AccountContainer, Amount, Title, Type, Form, Field } from './styles';
@@ -67,13 +66,8 @@ export default function Transfer() {
 
   return (
     <Container>
-      <Side>
-        <SideMenu />
-      </Side>
+      <Header />
       <Content>
-        <Top>
-          <TopHeader />
-        </Top>
         <div><h1>Transferir</h1></div>
         <TransferBox>
           <div>

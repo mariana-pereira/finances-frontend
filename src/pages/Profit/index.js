@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import { MdAttachFile, MdReceipt, MdDelete, MdEdit } from "react-icons/md";
 
 import { Container, Side, Top, Content, Tile, HeaderCell, TableCell, HeaderTile, Button } from './styles';
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+import Header from '../../components/HeaderMenu';
 import api from '../../services/api';
 
 export default function Profit({ match }) {
@@ -34,13 +33,8 @@ export default function Profit({ match }) {
 
     return (
         <Container>
-            <Side>
-                <SideMenu />
-            </Side>
+            <Header />
             <Content>
-                <Top>
-                    <TopHeader />
-                </Top>
                 <div className='content'><h1>Rendimentos</h1></div>
                 <HeaderTile>
                     <HeaderCell>

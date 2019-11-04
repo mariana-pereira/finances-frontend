@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import SideMenu from '../../components/SideMenu';
+import HeaderMenu from '../../components/HeaderMenu';
 import api from '../../services/api';
 
 import { Container, Side, Content, Form, Title, Field, Check, ButtonContainer, FormButton } from './styles';
@@ -31,7 +31,7 @@ export default function AddAccount({ match }) {
     setBank('');
     setBranch('');
     setAccountNumber('');
-    useState('Conta Corrente');
+    //useState('Conta Corrente');
   }
 
   async function handleSubmit(e) {
@@ -53,9 +53,7 @@ export default function AddAccount({ match }) {
 
   return (
     <Container>
-      <Side>
-        <SideMenu />
-      </Side>
+      <HeaderMenu></HeaderMenu>
       <Content>
         <Form onSubmit={handleSubmit} >
           {match.params.id ? (<Title>Editar Conta</Title>) : (<Title>Adicionar Conta</Title>)}

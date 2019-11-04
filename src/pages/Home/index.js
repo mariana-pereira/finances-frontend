@@ -4,8 +4,8 @@ import { FaPiggyBank, FaRegFileAlt, FaDollarSign } from "react-icons/fa";
 
 import api from '../../services/api';
 
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+import Header from '../../components/HeaderMenu';
+
 
 import { Container, Content, Side, CardContainer, Card, Top, TileContainer, Table, HeaderCell, HeaderTile, Tile, TableCell } from './styles';
 
@@ -116,13 +116,8 @@ export default function Home() {
 
   return (
     <Container>
-      <Side>
-        <SideMenu />
-      </Side>
+      <Header />
       <Content>
-        <Top>
-          <TopHeader />
-        </Top>
         <CardContainer>
           <Link to='/account'>
             <Card>

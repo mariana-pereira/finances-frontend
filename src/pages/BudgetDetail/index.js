@@ -4,8 +4,8 @@ import Modal from 'react-modal';
 
 import { MdAddCircle, MdDelete, MdEdit } from "react-icons/md";
 
-import SideMenu from '../../components/SideMenu';
-import TopHeader from '../../components/TopHeader';
+import Header from '../../components/HeaderMenu';
+
 import api from '../../services/api';
 
 import { Container, Side, Top, Content, CardContainer, Card, Button, ActionButton, Form, Field, FormButton, ButtonContainer } from './styles';
@@ -88,13 +88,8 @@ export default function BudgetDetail({ match }) {
 
     return (
         <Container>
-            <Side>
-                <SideMenu />
-            </Side>
+            <Header />
             <Content>
-                <Top>
-                    <TopHeader />
-                </Top>
                 <div className='title'><h1>{formatDate(match.params.month)}</h1></div>
                 <CardContainer>
                     <Card>
