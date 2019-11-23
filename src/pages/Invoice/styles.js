@@ -12,6 +12,7 @@ export const Content = styled.div`
    width: 100%;
    background: #fff;
    margin-top: 60px;
+   padding: 20px;
 
    div {
        width: 100%;

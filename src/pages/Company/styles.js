@@ -33,7 +33,16 @@ export const CardContainer = styled.div`
     padding: 50px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 30px
+    grid-gap: 30px;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        margin-top: 60px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+  }
 `;
 
 export const Card = styled.div`
@@ -57,6 +66,18 @@ export const Card = styled.div`
         color: #2e2f2b;
         font-size: 16px;
     }
+
+    @media (max-width: 768px) {
+        width: 300px;
+        height: 200px;
+        border: 0;
+        border-radius: 5px;
+        background: #bdb4c9;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+  }
 `;
 
 export const ActionButton = styled.button`

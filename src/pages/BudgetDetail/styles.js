@@ -29,12 +29,17 @@ export const Content = styled.div`
 
 export const CardContainer = styled.div`
     width: 100%;
-    height: 250px;
     padding: 50px;
     
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-gap: 30px;
+
+    @media (max-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 30px;
+  }
 `;
 
 export const Card = styled.div`

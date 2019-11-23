@@ -12,6 +12,7 @@ export const Content = styled.div`
    width: 100%;
    background: #fff;
    margin-top: 60px;
+   padding: 20px;
 
    div {
        width: 100%;
@@ -24,6 +25,7 @@ export const Content = styled.div`
        color: #2e2f2b;
        margin-top: 20px;
    }
+
 `;
 
 export const AccountContainer = styled.div`

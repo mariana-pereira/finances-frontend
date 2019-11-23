@@ -117,9 +117,6 @@ export default function Expense({ match }) {
                     <HeaderCell>
                         <span>Categoria</span>
                     </HeaderCell>
-                    <HeaderCell>
-                        <span>Recibo</span>
-                    </HeaderCell>
                 </HeaderTile>
                 {expenses.map(expense => (
                     <Tile key={expense.id}>
@@ -134,26 +131,6 @@ export default function Expense({ match }) {
                         </TableCell>
                         <TableCell>
                             <span>{expense.category}</span>
-                        </TableCell>
-                        <TableCell>
-                            <div>
-                                <Link to={`/receipt/${expense.id}`}>
-                                    <MdReceipt color='#695eb8' size={24} style={{ marginRight: '10px' }} />
-                                </Link>
-                                <Link to={`/receipt/add/${expense.id}`}>
-                                    <MdAttachFile color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
-                                </Link>
-                                {!match.params.id && (
-                                    <React.Fragment>
-                                        <Link to={`/expense/edit/${expense.id}`}>
-                                            <MdEdit color='#695eb8' size={24} style={{ marginLeft: '10px' }} />
-                                        </Link>
-                                        <Button type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem(expense.id) }}>
-                                            <MdDelete color='#695eb8' size={30} style={{ marginLeft: '10px' }} />
-                                        </Button>
-                                    </React.Fragment>
-                                )}
-                            </div>
                         </TableCell>
                     </Tile>
                 ))}

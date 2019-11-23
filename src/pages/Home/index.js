@@ -155,9 +155,6 @@ export default function Home() {
                 <span>Categoria</span>
               </HeaderCell>
               <HeaderCell>
-                <span>Origem</span>
-              </HeaderCell>
-              <HeaderCell>
                 <span>Conta</span>
               </HeaderCell>
             </HeaderTile>
@@ -171,9 +168,6 @@ export default function Home() {
                 </TableCell>
                 <TableCell>
                   <span>{income.category}</span>
-                </TableCell>
-                <TableCell>
-                  <span>{income.company.name}</span>
                 </TableCell>
                 <TableCell>
                   <span>{income.account.bank}</span>
@@ -194,9 +188,6 @@ export default function Home() {
                 <span>Categoria</span>
               </HeaderCell>
               <HeaderCell>
-                <span>Destino</span>
-              </HeaderCell>
-              <HeaderCell>
                 <span>Conta</span>
               </HeaderCell>
             </HeaderTile>
@@ -210,9 +201,6 @@ export default function Home() {
                 </TableCell>
                 <TableCell>
                   <span>{outcome.category}</span>
-                </TableCell>
-                <TableCell>
-                  <span>{outcome.company.name}</span>
                 </TableCell>
                 <TableCell>
                   <span>{outcome.account.bank}</span>
@@ -230,13 +218,10 @@ export default function Home() {
                 <span>Valor</span>
               </HeaderCell>
               <HeaderCell>
-                <span>Estabelecimento</span>
+                <span>Loja</span>
               </HeaderCell>
               <HeaderCell>
                 <span>Categoria</span>
-              </HeaderCell>
-              <HeaderCell>
-                <span>Cartão</span>
               </HeaderCell>
             </HeaderTile>
             {expenses.map(expense => (
@@ -252,9 +237,6 @@ export default function Home() {
                 </TableCell>
                 <TableCell>
                   <span>{expense.category}</span>
-                </TableCell>
-                <TableCell>
-                  <span>{expense.card.name}</span>
                 </TableCell>
               </Tile>
             ))}

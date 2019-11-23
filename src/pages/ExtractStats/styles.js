@@ -39,9 +39,18 @@ export const Content = styled.div`
 export const Table = styled.div`
     width: 100%;
     max-width: 900px;
-    margin-left: 200px;
+    padding: 0 300px;
     margin-top: 50px;
     margin-bottom: 30px;
+
+
+    @media (max-width: 480px) {
+        width: 100%;
+        padding: 40px;
+        max-width: 400px;
+        margin-top: 50px;
+        margin-bottom: 30px;
+  }
 `;
 
 export const Tile = styled.div`

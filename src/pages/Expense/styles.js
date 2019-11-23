@@ -10,6 +10,7 @@ export const Container = styled.div`
 export const Content = styled.div`
    height: 100%; 
    width: 100%;
+   padding: 20px;
    background: #fff;
    margin-top: 60px;
 
@@ -66,7 +67,7 @@ export const Tile = styled.div`
 `;
 
 export const HeaderCell = styled.div`
-    width: 20%
+    width: 25%
     height: 60px;
     background: #2e2f2b;
     text-align: center;
@@ -77,7 +78,7 @@ export const HeaderCell = styled.div`
 `;
 
 export const TableCell = styled.div`
-    width: 20%
+    width: 25%
     height: 60px;
     background: #ccc2da;
     text-align: center;

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     height: 100%;
-    overflow: hidden;
     width: 100%;
     display: flex;
 `;
@@ -47,11 +46,19 @@ export const Button = styled.button`
 
 export const CardContainer = styled.div`
     width: 100%;
-    height: 250px;
+    margin-bottom: 30px;
     
     display: flex;
     align-items: center;
     justify-content: space-around;
+
+    @media (max-width:480px) {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 export const Card = styled.div`
@@ -78,4 +85,17 @@ export const Card = styled.div`
         font-size: 16px;
         color: #2e2f2b;
     }
+
+    @media (max-width:480px) {
+        width: 300px;
+        height: 200px;
+        border: 0;
+        border-radius: 5px;
+        background: #bdb4c9;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
 `;
+

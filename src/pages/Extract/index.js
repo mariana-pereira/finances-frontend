@@ -63,10 +63,10 @@ export default function Extract() {
       <Header />
       <Content>
         <div className='icon'>
-                        <Link to={`/extract/stats`}>
-                            <MdPieChart color='#695eb8' size={24} style={{ marginRight: '10px' }} />
-                        </Link>
-                    </div>
+          <Link to={`/extract/stats`}>
+            <MdPieChart color='#695eb8' size={24} style={{ marginRight: '10px' }} />
+          </Link>
+        </div>
         <h1>Extrato</h1>
         <div className='check'>
           <div>
@@ -112,13 +112,7 @@ export default function Extract() {
               <span>Categoria</span>
             </HeaderCell>
             <HeaderCell>
-              <span>Empresa</span>
-            </HeaderCell>
-            <HeaderCell>
               <span>Conta</span>
-            </HeaderCell>
-            <HeaderCell>
-              <span></span>
             </HeaderCell>
           </HeaderTile>
           {movimentations.map(movimentation => (
@@ -133,18 +127,7 @@ export default function Extract() {
                 <span>{movimentation.category}</span>
               </TableCell>
               <TableCell>
-                <span>{movimentation.company.name}</span>
-              </TableCell>
-              <TableCell>
                 <span>{movimentation.account.bank}</span>
-              </TableCell>
-              <TableCell>
-                <Link to={`/movimentation/edit/${movimentation.id}`}>
-                  <MdEdit color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
-                </Link>
-                <Button type='button' onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteItem(movimentation.id) }}>
-                  <MdDelete color='#695eb8' size={30} style={{ marginLeft: '30px' }} />
-                </Button>
               </TableCell>
             </Tile>
           ))}

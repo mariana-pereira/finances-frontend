@@ -38,6 +38,12 @@ export const CardContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 30px;
+
+    @media (max-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 30px;
+  }
 `;
 
 export const Card = styled.div`

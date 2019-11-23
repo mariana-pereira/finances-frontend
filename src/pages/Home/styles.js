@@ -16,11 +16,18 @@ export const Content = styled.div`
 
 export const CardContainer = styled.div`
     width: 100%;
-    height: 250px;
-    
+    margin-top: 30px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+
+    @media (max-width: 768px) {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+  }
 `;
 
 export const Card = styled.div`
@@ -46,6 +53,18 @@ export const Card = styled.div`
         font-size: 16px;
         color: #2e2f2b;
     }
+
+    @media (max-width: 768px) {
+        width: 300px;
+        height: 200px;
+        border: 0;
+        border-radius: 5px;
+        background: #fff;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+  }
 `;
 
 export const TileContainer = styled.div`
@@ -94,7 +113,7 @@ export const Tile = styled.div`
 `;
 
 export const HeaderCell = styled.div`
-    width: 20%
+    width: 25%
     height: 60px;
     background: #2e2f2b;
     text-align: center;
@@ -105,7 +124,7 @@ export const HeaderCell = styled.div`
 `;
 
 export const TableCell = styled.div`
-    width: 20%
+    width: 25%
     height: 60px;
     background: #fff;
     text-align: center;
