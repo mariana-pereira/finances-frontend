@@ -22,7 +22,7 @@ export const Content = styled.div`
    height: 100%; 
    width: 100%;
    background: #fff;
-   margin-left: 250px;
+   margin-top: 60px;
 `;
 
 export const Form = styled.form`

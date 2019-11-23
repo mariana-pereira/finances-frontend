@@ -22,7 +22,7 @@ export const Content = styled.div`
    height: 100%; 
    width: 100%;
    background: #fff;
-   margin-left: 250px;
+   margin-top: 60px;
 `;
 
 export const Form = styled.form`
@@ -44,6 +44,18 @@ export const Form = styled.form`
     border: 1px solid #2e2f2b;
     padding: 0 20px;
     font-size: 14px; 
+    }
+
+    @media (max-width: 500px) {
+        .form-date {
+            width: 350px;
+            margin-bottom: 30px;
+            height: 38px;
+            border-radius: 4px;
+            border: 1px solid #2e2f2b;
+            padding: 0 20px;
+            font-size: 14px; 
+        }
     }
 `;
 

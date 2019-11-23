@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker';
 
 import "react-datepicker/dist/react-datepicker.css";
 
-import SideMenu from '../../components/SideMenu';
+import Menu from '../../components/HeaderMenu';
 import api from '../../services/api';
 
 import { Container, Side, Content, Form, Title, Field, ButtonContainer, FormButton } from './styles';
@@ -48,9 +48,7 @@ export default function AddProfit({ match }) {
 
   return (
     <Container>
-      <Side>
-        <SideMenu/>
-      </Side>
+      <Menu />
       <Content>
         <Form onSubmit={handleSubmit}>
           <Title>Adicionar Rendimento</Title>

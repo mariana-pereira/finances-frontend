@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker';
 
 import "react-datepicker/dist/react-datepicker.css";
 
-import SideMenu from '../../components/SideMenu';
+import Menu from '../../components/HeaderMenu';
 import api from '../../services/api';
 
 import { Container, Side, Content, Form, Title, Field, Check, ButtonContainer, FormButton } from './styles';
@@ -90,9 +90,7 @@ export default function AddInvestment({ match }) {
 
   return (
     <Container>
-      <Side>
-        <SideMenu />
-      </Side>
+      <Menu />
       <Content>
         <Form onSubmit={handleSubmit} >
         {match.params.investment ? (<Title>Editar Investimento</Title>) : (<Title>Adicionar Investimento</Title>)}
